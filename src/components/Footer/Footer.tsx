@@ -18,19 +18,23 @@ const Footer = () => {
         {/* Navegação do Footer */}
         <nav className="flex gap-4 md:gap-6">
           <Link
-            to="#"
+            to="/termos"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs text-muted-foreground dark:text-gray-300 hover:underline underline-offset-4"
           >
             Termos
           </Link>
           <Link
-            to="#"
+            to="/politica-de-privacidade"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs text-muted-foreground dark:text-gray-300 hover:underline underline-offset-4"
           >
             Privacidade
           </Link>
           <Link
-            to="#"
+            to="/contato"
             className="text-xs text-muted-foreground dark:text-gray-300 hover:underline underline-offset-4"
           >
             Contato

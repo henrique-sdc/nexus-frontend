@@ -281,7 +281,7 @@ export default function Home() {
                 <Button asChild>
                   <div className="dark:text-white hover:text-gray-200 dark:hover:text-zinc-400 transition-all duration-100">
                     <Link
-                      to="/empresas/register"
+                      to="/register?tab=empresa"
                       className="inline-flex items-center gap-2"
                     >
                       Cadastre-se como Empresa{" "}
@@ -295,13 +295,11 @@ export default function Home() {
         </section>
 
         {/* Seção: Pronto para Transformar Sua Experiência de Recrutamento? */}
-        <section className="relative py-16 md:py-24">
-          {/* Fundo com gradiente */}
+        <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
-          {/* Overlay preto semitransparente apenas no dark mode */}
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
-          <div className="container mx-auto px-4 relative">
-            <div className="mx-auto max-w-[800px] space-y-6">
+          <div className="container mx-auto px-4 relative flex items-center justify-center min-h-[50vh]">
+            <div className="mx-auto max-w-[800px] space-y-6 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-white">
                 Pronto para Transformar Sua Experiência de Recrutamento?
               </h2>
@@ -318,16 +316,14 @@ export default function Home() {
                   <Link to="/register">Cadastre-se como Candidato</Link>
                 </Button>
                 <Button
-                  className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 transition-all duration-100"
+                  className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"
                   size="lg"
                   variant="outline"
                   asChild
                 >
-                  <div className="dark:text-black hover:bg-gray-100 hover:text-black transition-all duration-300">
-                    <Link to="/empresas/register">
-                      Cadastre-se como Empresa
-                    </Link>
-                  </div>
+                  <Link to="/register?tab=empresa">
+                    Cadastre-se como Empresa
+                  </Link>
                 </Button>
               </div>
             </div>

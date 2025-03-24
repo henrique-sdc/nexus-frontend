@@ -39,15 +39,13 @@ export default function Login() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-black dark:to-gray-900 py-12">
       <div className="container mx-auto px-4">
         {/* Link para voltar à página inicial */}
-        <div className="dark:text-white hover:text-white dark:hover:text-zinc-400 transition-all duration-75">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Voltar para Início
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors dark:text-white dark:hover:text-zinc-400 hover:text-black"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Voltar para Início
+        </Link>
 
         <div className="mb-8 "></div>
 
