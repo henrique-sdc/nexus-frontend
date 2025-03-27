@@ -68,7 +68,7 @@ export default function Home() {
               </div>
 
               {/* Coluna da direita - Imagem */}
-              <div className="relative aspect-square md:aspect-auto">
+              <div className="relative md:aspect-auto">
                 {/* Fundo de gradiente com blur */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-full blur-3xl -z-10"></div>
                 <div className="relative bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/40 dark:to-indigo-900/40 p-6 rounded-2xl border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
@@ -228,7 +228,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 items-center">
               {/* Coluna da esquerda - Imagem */}
               <div className="relative order-last lg:order-first">
-                <div className="relative aspect-square md:aspect-auto">
+                <div className="relative md:aspect-auto">
                   {/* Fundo de gradiente com blur */}
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-300/20 to-gray-300/20 dark:from-gray-300/20 dark:to-gray-300/20 rounded-full blur-3xl -z-10"></div>
                   {/* Container da imagem com efeito e borda */}

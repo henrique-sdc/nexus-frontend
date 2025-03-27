@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
+import { Badge } from "src/components/ui/badge";
 import { Button } from "src/components/ui/button";
 import {
   Card,
@@ -7,158 +8,117 @@ import {
   CardHeader,
   CardTitle,
 } from "src/components/ui/card";
-import { Input } from "src/components/ui/input";
+import { Sheet, SheetContent } from "src/components/ui/sheet";
+import { SidebarProvider } from "src/components/ui/sidebar";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "src/components/ui/tabs";
-import { Badge } from "src/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
-import {
-  BarChart3,
-  Brain,
-  Building2,
-  FileCheck,
-  Filter,
-  MessageSquare,
-  Search,
-  Settings,
-  Star,
-  Users,
-} from "lucide-react";
+import { cn } from "src/lib/utils";
+import { Brain, FileCheck, Filter, Star, Users } from "lucide-react";
+import { DashboardNavbar } from "src/components/Dashboards/DashboardNavbar";
+import { EmpresaSidebar } from "src/components/Dashboards/Empresas/EmpresaSidebar";
 
-const CompanyDashboard: React.FC = () => {
+const DashboardEmpresa: React.FC = () => {
+  // --- Estado ---
+  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true); // Estado da sidebar desktop (aberta/fechada)
+  const [isMobileSheetOpen, setIsMobileSheetOpen] = useState(false); // Estado da sidebar mobile (Sheet)
+
+  // --- Dados de Exemplo da Empresa (Substitua por dados reais/fetch) ---
+  const empresaData = {
+    name: "TechCorp Inc.",
+    accountType: "Conta de Administrador",
+    initials: "TC",
+    logoSrc: "https://github.com/shadcn.png", // Usando uma imagem de exemplo
+    messageCount: 4, // Exemplo de contagem de mensagens
+    notificationCount: 7, // Exemplo de contagem de notificações
+  };
+
+  // --- Handlers para controlar a Sidebar ---
+  const toggleDesktopSidebar = () => setIsDesktopSidebarOpen((prev) => !prev);
+  const openMobileSheet = () => setIsMobileSheetOpen(true);
+
   return (
-    <div className="min-h-screen bg-background dark:bg-gray-900">
-      {" "}
-      <div className="flex">
-        {/* Sidebar */}
-        <div className="hidden lg:flex flex-col w-64 border-r h-screen sticky top-0 dark:border-gray-700">
-          {" "}
-          <div className="p-4 border-b dark:border-gray-700">
-            {" "}
-            <div className="flex items-center gap-2">
-              <div className="relative h-8 w-8 overflow-hidden rounded-full bg-gradient-to-br from-purple-600 to-indigo-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-4 w-4 rounded-full bg-white/20 blur-[2px]"></div>
-                </div>
-              </div>
-              <span className="text-xl font-bold dark:text-white">Nexus</span>{" "}
-            </div>
-          </div>
-          <div className="flex-1 py-4">
-            <nav className="space-y-1 px-2">
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-md bg-accent px-3 py-2 text-sm font-medium dark:bg-gray-800 dark:text-white"
-              >
-                <Users className="h-5 w-5" />
-                <span>Candidatos</span>
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                <Building2 className="h-5 w-5" />
-                <span>Vagas</span>
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                <MessageSquare className="h-5 w-5" />
-                <span>Mensagens</span>
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                <BarChart3 className="h-5 w-5" />
-                <span>Análises</span>
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                <Settings className="h-5 w-5" />
-                <span>Configurações</span>
-              </Link>
-            </nav>
-          </div>
-          <div className="p-4 border-t dark:border-gray-700">
-            {" "}
-            <div className="flex items-center gap-3">
-              <Avatar>
-                <AvatarImage
-                  src="/placeholder.svg?height=40&width=40"
-                  alt="Company Logo"
-                />
-                <AvatarFallback>TC</AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="text-sm font-medium dark:text-white">
-                  TechCorp Inc.
-                </p>{" "}
-                <p className="text-xs text-muted-foreground dark:text-gray-400">
-                  Conta de Administrador
-                </p>{" "}
-              </div>
-            </div>
-          </div>
+    <SidebarProvider>
+      {/* Container principal flexível */}
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950 dark:text-white">
+        {/* --- Sidebar Desktop (Fixa/Recolhida) --- */}
+        <div
+          className={cn(
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
+            "bg-background dark:bg-gray-900", // Fundo explícito
+            isDesktopSidebarOpen ? "w-64" : "w-16" // Largura dinâmica
+          )}
+        >
+          {/* Renderiza o Sidebar da Empresa */}
+          <EmpresaSidebar
+            isOpen={isDesktopSidebarOpen}
+            toggleSidebar={toggleDesktopSidebar} // Passa a função de toggle
+            empresaName={empresaData.name}
+            empresaAccountType={empresaData.accountType}
+            empresaInitials={empresaData.initials}
+            empresaAvatarSrc={empresaData.logoSrc}
+            messageCount={empresaData.messageCount} // Passa contagem de mensagens
+            // Adicione outras props necessárias para EmpresaSidebar
+          />
         </div>
+        {/* --- Sidebar Mobile (Sheet) --- */}
+        <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
+          <SheetContent
+            side="left"
+            className={cn(
+              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
+              "bg-white dark:bg-gray-900" // Fundo explícito
+            )}
+          >
+            {/* Renderiza o Sidebar da Empresa para mobile */}
+            <EmpresaSidebar
+              isOpen={true} // Sempre aberto no Sheet
+              isMobileView={true}
+              empresaName={empresaData.name}
+              empresaAccountType={empresaData.accountType}
+              empresaInitials={empresaData.initials}
+              empresaAvatarSrc={empresaData.logoSrc}
+              messageCount={empresaData.messageCount}
+              // Se necessário adicionarei outras props necessárias para EmpresaSidebar
+            />
+          </SheetContent>
+        </Sheet>
+        {/* --- Área de Conteúdo Principal --- */}
+        {/* Adicionado 'min-w-0' para permitir que o container flex encolha corretamente */}
+        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
+          {/* Navbar Superior */}
+          <DashboardNavbar
+            onMobileMenuClick={openMobileSheet} // Função para abrir o Sheet mobile
+            userName={empresaData.name} // Usar nome da empresa ou do admin
+            userInitials={empresaData.initials}
+            userAvatarSrc={empresaData.logoSrc}
+            notificationCount={empresaData.notificationCount}
+          />
 
-        {/* Main Content */}
-        <div className="flex-1">
-          <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-6 dark:border-gray-700 dark:bg-gray-900">
-            {" "}
-            {}
-            <div className="lg:hidden flex items-center gap-2">
-              <div className="relative h-8 w-8 overflow-hidden rounded-full bg-gradient-to-br from-purple-600 to-indigo-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-4 w-4 rounded-full bg-white/20 blur-[2px]"></div>
-                </div>
-              </div>
-              <span className="text-xl font-bold dark:text-white">Nexus</span>{" "}
-            </div>
-            <div className="w-full flex-1">
-              <form>
-                <div className="relative">
-                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground dark:text-gray-400" />{" "}
-                  <Input
-                    type="search"
-                    placeholder="Pesquisar candidatos, habilidades ou cargos..."
-                    className="w-full bg-background pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
-                  />
-                </div>
-              </form>
-            </div>
-            <Button variant="outline" size="icon" className="rounded-full">
-              <Settings className="h-4 w-4 dark:text-white" />{" "}
-              <span className="sr-only">Configurações</span>
-            </Button>
-            <Avatar>
-              <AvatarImage
-                src="/placeholder.svg?height=40&width=40"
-                alt="Company Logo"
-              />
-              <AvatarFallback>TC</AvatarFallback>
-            </Avatar>
-          </header>
+          {/* Conteúdo Principal (Main) */}
+          {/* Adicionado overflow-x-hidden para evitar scroll horizontal indesejado */}
+          <main className="flex-1 p-4 md:p-6 gap-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+            {/* ---- INÍCIO DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}
 
-          <main className="grid gap-6 p-6">
+            {/* Cabeçalho do Conteúdo (Título e Botões) */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h1 className="text-2xl font-bold tracking-tight dark:text-white">
+                <h1 className="text-2xl font-semibold tracking-tight dark:text-white">
                   Busca de Candidatos
-                </h1>{" "}
+                </h1>
                 <p className="text-muted-foreground dark:text-gray-400">
-                  Encontre o candidato perfeito para sua equipe
-                </p>{" "}
+                  Encontre o candidato perfeito para sua equipe.
+                </p>
               </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" className="h-8 gap-1">
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 gap-1 dark:text-white dark:border-gray-600"
+                >
                   <Filter className="h-3.5 w-3.5" />
                   <span>Filtros</span>
                 </Button>
@@ -168,441 +128,465 @@ const CompanyDashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Card className="dark:bg-gray-800">
-                {" "}
+            {/* Cards de Estatísticas */}
+            <div className="mt-6 mb-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Card 1: Total de Candidatos */}
+              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium dark:text-white">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
                     Total de Candidatos
-                  </CardTitle>{" "}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold dark:text-white">
-                    1.248
-                  </div>{" "}
+                    1.248 {/* Exemplo */}
+                  </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +24 esta semana
-                  </p>{" "}
+                    +24 esta semana {/* Exemplo */}
+                  </p>
                 </CardContent>
               </Card>
-              <Card className="dark:bg-gray-800">
-                {" "}
+              {/* Card 2: Pré-selecionados */}
+              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium dark:text-white">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
                     Pré-selecionados
-                  </CardTitle>{" "}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold dark:text-white">36</div>{" "}
+                  <div className="text-2xl font-bold dark:text-white">
+                    36 {/* Exemplo */}
+                  </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +5 esta semana
-                  </p>{" "}
+                    +5 esta semana {/* Exemplo */}
+                  </p>
                 </CardContent>
               </Card>
-              <Card className="dark:bg-gray-800">
-                {" "}
+              {/* Card 3: Entrevistas Agendadas */}
+              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium dark:text-white">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
                     Entrevistas Agendadas
-                  </CardTitle>{" "}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold dark:text-white">12</div>{" "}
+                  <div className="text-2xl font-bold dark:text-white">
+                    12 {/* Exemplo */}
+                  </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +3 esta semana
-                  </p>{" "}
+                    +3 esta semana {/* Exemplo */}
+                  </p>
                 </CardContent>
               </Card>
-              <Card className="dark:bg-gray-800">
-                {" "}
+              {/* Card 4: Vagas Abertas */}
+              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium dark:text-white">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
                     Vagas Abertas
-                  </CardTitle>{" "}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold dark:text-white">8</div>{" "}
+                  <div className="text-2xl font-bold dark:text-white">
+                    8 {/* Exemplo */}
+                  </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +2 esta semana
-                  </p>{" "}
+                    +2 esta semana {/* Exemplo */}
+                  </p>
                 </CardContent>
               </Card>
             </div>
 
+            {/* Abas para Listagem de Candidatos */}
             <Tabs defaultValue="all" className="w-full">
-              <div className="flex items-center justify-between">
-                <TabsList className="dark:bg-gray-800 dark:border-gray-700 rounded-md p-1">
-                  {" "}
+              {/* Container para Abas e Ordenação */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+                {/* Lista de Abas (TabsList) */}
+                <TabsList className="dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md p-1 flex-wrap h-auto sm:h-10">
+                  {/* Ajuste para wrap e altura auto/fixa */}
                   <TabsTrigger
                     value="all"
-                    className="dark:text-white data-[state=active]:bg-zinc-300  data-[state=active]:text-black dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white"
+                    className="dark:text-gray-300 data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white"
                   >
                     Todos os Candidatos
-                  </TabsTrigger>{" "}
+                  </TabsTrigger>
                   <TabsTrigger
                     value="recommended"
-                    className="dark:text-white data-[state=active]:bg-zinc-300  data-[state=active]:text-black dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white"
+                    className="dark:text-gray-300 data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white"
                   >
                     Recomendados
-                  </TabsTrigger>{" "}
+                  </TabsTrigger>
                   <TabsTrigger
                     value="shortlisted"
-                    className="dark:text-white data-[state=active]:bg-zinc-300  data-[state=active]:text-black dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white"
+                    className="dark:text-gray-300 data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white"
                   >
                     Pré-selecionados
-                  </TabsTrigger>{" "}
+                  </TabsTrigger>
                 </TabsList>
-                <div className="flex items-center gap-2">
+                {/* Seletor de Ordenação */}
+                <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
+                  {" "}
+                  {/* Garante que não quebre layout */}
                   <span className="text-sm text-muted-foreground dark:text-gray-400">
                     Ordenar por:
-                  </span>{" "}
-                  <select className="h-8 rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                    {" "}
-                    {}
-                    <option>Relevância</option>
-                    <option>Recente</option>
-                    <option>Experiência</option>
+                  </span>
+                  {/* Usando um select básico, pode ser substituído por um DropdownMenu do ShadCN */}
+                  <select className="flex-grow sm:flex-grow-0 h-8 rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                    <option value="relevance">Relevância</option>
+                    <option value="recent">Recente</option>
+                    <option value="experience">Experiência</option>
                   </select>
                 </div>
               </div>
 
-              <TabsContent value="all" className="mt-4">
+              {/* Conteúdo da Aba "Todos os Candidatos" */}
+              <TabsContent value="all" className="mt-0">
                 <div className="grid gap-4">
-                  {/* Candidate Card 1 */}
-                  <Card className="overflow-hidden dark:bg-gray-800">
-                    {" "}
+                  {/* --- Card Candidato 1 --- */}
+                  <Card className="overflow-hidden dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+                    {/* Layout Flexível para conteúdo e sidebar do card */}
                     <div className="flex flex-col md:flex-row">
-                      <div className="p-6 md:w-2/3">
-                        <div className="flex items-start justify-between mb-4">
+                      {/* Seção Principal do Card (Esquerda/Topo) */}
+                      <div className="p-4 md:p-6 md:flex-grow-[2] md:basis-0">
+                        {" "}
+                        {/* Equivalente a md:w-2/3 */}
+                        {/* Cabeçalho do Candidato (Avatar, Nome, Badge, Ação) */}
+                        <div className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3">
+                          {/* Info do Candidato */}
                           <div className="flex items-center gap-4">
-                            <Avatar className="h-12 w-12">
+                            <Avatar className="h-12 w-12 flex-shrink-0">
                               <AvatarImage
-                                src="/placeholder.svg?height=50&width=50"
-                                alt="Candidate"
+                                src="https://github.com/shadcn.png" // Placeholder
+                                alt="Jane Doe"
                               />
                               <AvatarFallback>JD</AvatarFallback>
                             </Avatar>
                             <div>
                               <h3 className="font-semibold dark:text-white">
                                 Jane Doe
-                              </h3>{" "}
+                              </h3>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Engenheira de Software Sênior
-                              </p>{" "}
+                              </p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400">
-                              98% de Compatibilidade
+                          {/* Ações / Badges */}
+                          <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
+                            <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400 whitespace-nowrap">
+                              98% Compatível
                             </Badge>
-                            <Button variant="ghost" size="icon">
-                              <Star className="h-4 w-4 dark:text-white" />{" "}
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8"
+                            >
+                              <Star className="h-4 w-4 text-muted-foreground hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400" />
+                              <span className="sr-only">Pré-selecionar</span>
                             </Button>
                           </div>
                         </div>
-
+                        {/* Detalhes (Habilidades, Experiência, Scores) */}
                         <div className="space-y-4">
+                          {/* Habilidades */}
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
-                              Habilidades
-                            </h4>{" "}
-                            <div className="flex flex-wrap gap-2">
-                              <Badge variant="outline">React</Badge>
-                              <Badge variant="outline">TypeScript</Badge>
-                              <Badge variant="outline">Node.js</Badge>
-                              <Badge variant="outline">GraphQL</Badge>
-                              <Badge variant="outline">AWS</Badge>
+                            <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              Habilidades Principais
+                            </h4>
+                            <div className="flex flex-wrap gap-1.5">
+                              <Badge variant="secondary">React</Badge>
+                              <Badge variant="secondary">TypeScript</Badge>
+                              <Badge variant="secondary">Node.js</Badge>
+                              <Badge variant="secondary">GraphQL</Badge>
+                              <Badge variant="secondary">AWS</Badge>
                             </div>
                           </div>
-
+                          {/* Resumo */}
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
-                              Experiência
-                            </h4>{" "}
-                            <p className="text-sm text-muted-foreground dark:text-gray-400">
-                              {" "}
+                            <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              Resumo da Experiência
+                            </h4>
+                            <p className="text-sm text-muted-foreground dark:text-gray-400 line-clamp-2">
                               Mais de 7 anos de experiência em desenvolvimento
-                              full-stack com foco em aplicações web escaláveis.
+                              full-stack com foco em aplicações web escaláveis e
+                              otimizadas. Liderança técnica em projetos...
                             </p>
                           </div>
-
-                          <div className="flex items-center gap-6">
-                            <div className="flex items-center gap-2">
-                              <Brain className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-                              <span className="text-sm dark:text-white">
-                                Lógica: 95%
-                              </span>{" "}
+                          {/* Scores */}
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm">
+                            <div className="flex items-center gap-1 text-purple-600 dark:text-purple-400">
+                              <Brain className="h-3.5 w-3.5" />
+                              <span>Lógica: 95%</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <Users className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-                              <span className="text-sm dark:text-white">
-                                Cultural: 92%
-                              </span>{" "}
+                            <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400">
+                              <Users className="h-3.5 w-3.5" />
+                              <span>Cultural: 92%</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <FileCheck className="h-4 w-4 text-violet-600 dark:text-violet-400" />
-                              <span className="text-sm dark:text-white">
-                                Habilidades: 98%
-                              </span>{" "}
+                            <div className="flex items-center gap-1 text-violet-600 dark:text-violet-400">
+                              <FileCheck className="h-3.5 w-3.5" />
+                              <span>Técnico: 98%</span>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="bg-accent/50 p-6 flex flex-col justify-between md:w-1/3 dark:bg-gray-700/50">
+                      {/* Barra Lateral do Card (Direita/Baixo) */}
+                      <div className="bg-gray-50 dark:bg-gray-800/40 p-4 md:p-6 flex flex-col justify-between md:flex-grow-[1] md:basis-0 border-t md:border-t-0 md:border-l dark:border-gray-700/50">
                         {" "}
-                        {}
-                        <div className="space-y-4">
+                        {/* Equivalente a md:w-1/3 */}
+                        {/* Informações Adicionais */}
+                        <div className="space-y-3 mb-4 md:mb-0">
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
                               Localização
-                            </h4>{" "}
+                            </h4>
                             <p className="text-sm dark:text-gray-300">
                               San Francisco, CA (Remoto)
-                            </p>{" "}
+                            </p>
                           </div>
-
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
                               Educação
-                            </h4>{" "}
+                            </h4>
                             <p className="text-sm dark:text-gray-300">
-                              Mestrado em Ciência da Computação, Universidade de
-                              Stanford
-                            </p>{" "}
+                              M.Sc. Ciência da Computação, Stanford
+                            </p>
                           </div>
-
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
                               Disponibilidade
-                            </h4>{" "}
+                            </h4>
                             <p className="text-sm dark:text-gray-300">
-                              2 semanas de aviso prévio
-                            </p>{" "}
+                              2 semanas
+                            </p>
                           </div>
                         </div>
-                        <div className="flex flex-col gap-2 mt-4">
-                          <Button>Ver Perfil Completo</Button>
-                          <Button variant="outline">Contato</Button>
+                        {/* Botões de Ação */}
+                        <div className="flex flex-col gap-2 mt-auto">
+                          {" "}
+                          {/* mt-auto empurra para baixo */}
+                          <Button size="sm">Ver Perfil Completo</Button>
+                          <Button size="sm" variant="outline">
+                            Agendar Entrevista
+                          </Button>
                         </div>
                       </div>
                     </div>
                   </Card>
 
-                  {/* Candidate Card 2 */}
-                  <Card className="overflow-hidden dark:bg-gray-800">
-                    {" "}
+                  {/* --- Card Candidato 2 (Estrutura similar) --- */}
+                  <Card className="overflow-hidden dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                     <div className="flex flex-col md:flex-row">
-                      <div className="p-6 md:w-2/3">
-                        <div className="flex items-start justify-between mb-4">
+                      {/* Seção Principal */}
+                      <div className="p-4 md:p-6 md:flex-grow-[2] md:basis-0">
+                        {/* Cabeçalho */}
+                        <div className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3">
+                          {/* Info */}
                           <div className="flex items-center gap-4">
-                            <Avatar className="h-12 w-12">
-                              <AvatarImage
-                                src="/placeholder.svg?height=50&width=50"
-                                alt="Candidate"
-                              />
+                            <Avatar className="h-12 w-12 flex-shrink-0">
                               <AvatarFallback>MS</AvatarFallback>
                             </Avatar>
                             <div>
                               <h3 className="font-semibold dark:text-white">
                                 Michael Smith
-                              </h3>{" "}
+                              </h3>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Gerente de Produto
-                              </p>{" "}
+                              </p>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400">
-                              85% de Compatibilidade
+                          {/* Ações / Badges */}
+                          <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
+                            <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 whitespace-nowrap">
+                              85% Compatível
                             </Badge>
-                            <Button variant="ghost" size="icon">
-                              <Star className="h-4 w-4 dark:text-white" />{" "}
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8"
+                            >
+                              <Star className="h-4 w-4 text-muted-foreground hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400" />
+                              <span className="sr-only">Pré-selecionar</span>
                             </Button>
                           </div>
                         </div>
-
+                        {/* Detalhes */}
                         <div className="space-y-4">
+                          {/* Habilidades */}
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
-                              Habilidades
-                            </h4>{" "}
-                            <div className="flex flex-wrap gap-2">
-                              <Badge variant="outline">
-                                Estratégia de Produto
+                            <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              Habilidades Principais
+                            </h4>
+                            <div className="flex flex-wrap gap-1.5">
+                              <Badge variant="secondary">
+                                Estratégia Produto
                               </Badge>
-                              <Badge variant="outline">Ágil</Badge>
-                              <Badge variant="outline">
-                                Pesquisa de Usuário
+                              <Badge variant="secondary">
+                                Metodologias Ágeis
                               </Badge>
-                              <Badge variant="outline">Roadmapping</Badge>
+                              <Badge variant="secondary">UX Research</Badge>
+                              <Badge variant="secondary">Roadmapping</Badge>
                             </div>
                           </div>
-
+                          {/* Resumo */}
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
-                              Experiência
-                            </h4>{" "}
-                            <p className="text-sm text-muted-foreground dark:text-gray-400">
-                              {" "}
+                            <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              Resumo da Experiência
+                            </h4>
+                            <p className="text-sm text-muted-foreground dark:text-gray-400 line-clamp-2">
                               5 anos de experiência em gerenciamento de produtos
-                              para produtos SaaS com foco em soluções B2B.
+                              SaaS B2B, focado em crescimento e retenção.
                             </p>
                           </div>
-
-                          <div className="flex items-center gap-6">
-                            <div className="flex items-center gap-2">
-                              <Brain className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-                              <span className="text-sm dark:text-white">
-                                Lógica: 88%
-                              </span>{" "}
+                          {/* Scores */}
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm">
+                            <div className="flex items-center gap-1 text-purple-600 dark:text-purple-400">
+                              <Brain className="h-3.5 w-3.5" />
+                              <span>Lógica: 88%</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <Users className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-                              <span className="text-sm dark:text-white">
-                                Cultural: 90%
-                              </span>{" "}
+                            <div className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400">
+                              <Users className="h-3.5 w-3.5" />
+                              <span>Cultural: 90%</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <FileCheck className="h-4 w-4 text-violet-600 dark:text-violet-400" />
-                              <span className="text-sm dark:text-white">
-                                Habilidades: 85%
-                              </span>{" "}
+                            <div className="flex items-center gap-1 text-violet-600 dark:text-violet-400">
+                              <FileCheck className="h-3.5 w-3.5" />
+                              <span>Produto: 85%</span> {/* Exemplo */}
                             </div>
                           </div>
                         </div>
                       </div>
-
-                      <div className="bg-accent/50 p-6 flex flex-col justify-between md:w-1/3 dark:bg-gray-700/50">
-                        {" "}
-                        {}
-                        <div className="space-y-4">
+                      {/* Barra Lateral */}
+                      <div className="bg-gray-50 dark:bg-gray-800/40 p-4 md:p-6 flex flex-col justify-between md:flex-grow-[1] md:basis-0 border-t md:border-t-0 md:border-l dark:border-gray-700/50">
+                        <div className="space-y-3 mb-4 md:mb-0">
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
                               Localização
-                            </h4>{" "}
+                            </h4>
                             <p className="text-sm dark:text-gray-300">
-                              Nova York, NY
-                            </p>{" "}
+                              New York, NY (Híbrido)
+                            </p>
                           </div>
-
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
                               Educação
-                            </h4>{" "}
+                            </h4>
                             <p className="text-sm dark:text-gray-300">
                               MBA, Harvard Business School
-                            </p>{" "}
+                            </p>
                           </div>
-
                           <div>
-                            <h4 className="text-sm font-medium mb-1 dark:text-white">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
                               Disponibilidade
-                            </h4>{" "}
+                            </h4>
                             <p className="text-sm dark:text-gray-300">
                               Imediata
-                            </p>{" "}
+                            </p>
                           </div>
                         </div>
-                        <div className="flex flex-col gap-2 mt-4">
-                          <Button>Ver Perfil Completo</Button>
-                          <Button variant="outline">Contato</Button>
+                        <div className="flex flex-col gap-2 mt-auto">
+                          <Button size="sm">Ver Perfil Completo</Button>
+                          <Button size="sm" variant="outline">
+                            Agendar Entrevista
+                          </Button>
                         </div>
                       </div>
                     </div>
                   </Card>
+
+                  {/* Adicionar mais cards de candidatos conforme necessário */}
                 </div>
               </TabsContent>
 
-              <TabsContent value="recommended" className="mt-4">
-                <Card className="dark:bg-gray-800">
-                  {" "}
+              {/* Conteúdo da Aba "Recomendados" */}
+              <TabsContent value="recommended" className="mt-0">
+                <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                   <CardContent className="p-6">
-                    <div className="flex items-center justify-center py-8">
-                      <div className="text-center">
-                        <img
-                          src="/placeholder.svg?height=120&width=120"
-                          width={120}
-                          height={120}
-                          alt="Recomendações de IA"
-                          className="mx-auto mb-4"
-                        />
-                        <h3 className="text-lg font-medium mb-2 dark:text-white">
-                          Recomendações com IA
-                        </h3>{" "}
-                        <p className="text-muted-foreground max-w-md mx-auto mb-4 dark:text-gray-300">
-                          {" "}
-                          Nossa IA está analisando os requisitos da sua vaga e
-                          os perfis dos candidatos para fornecer recomendações
-                          personalizadas.
-                        </p>
-                        <Button>Gerar Recomendações</Button>
+                    {/* Estado Vazio/Placeholder */}
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                      <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
+                        <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />
                       </div>
+                      <h3 className="text-lg font-medium mb-2 dark:text-white">
+                        Recomendações Inteligentes em Breve
+                      </h3>
+                      <p className="text-muted-foreground max-w-md mx-auto mb-4 dark:text-gray-400 text-sm">
+                        Nossa IA está processando os melhores candidatos para
+                        suas vagas abertas. Volte em breve para ver as
+                        recomendações.
+                      </p>
+                      <Button disabled>Atualizando Recomendações...</Button>
                     </div>
                   </CardContent>
                 </Card>
               </TabsContent>
 
-              <TabsContent value="shortlisted" className="mt-4">
-                <Card className="dark:bg-gray-800">
-                  {" "}
+              {/* Conteúdo da Aba "Pré-selecionados" */}
+              <TabsContent value="shortlisted" className="mt-0">
+                <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
                   <CardContent className="p-6">
-                    <div className="flex items-center justify-center py-8">
-                      <div className="text-center">
-                        <img
-                          src="/placeholder.svg?height=120&width=120"
-                          width={120}
-                          height={120}
-                          alt="Candidatos pré-selecionados"
-                          className="mx-auto mb-4"
-                        />
-                        <h3 className="text-lg font-medium mb-2 dark:text-white">
-                          Nenhum Candidato Pré-selecionado Ainda
-                        </h3>{" "}
-                        <p className="text-muted-foreground max-w-md mx-auto mb-4 dark:text-gray-300">
-                          {" "}
-                          Comece a pré-selecionar candidatos clicando no ícone
-                          de estrela nos perfis que correspondem às suas
-                          necessidades.
-                        </p>
-                        <Button variant="outline">
-                          Ver Todos os Candidatos
-                        </Button>
+                    {/* Estado Vazio/Placeholder */}
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                      <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/30">
+                        <Star className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />
                       </div>
+                      <h3 className="text-lg font-medium mb-2 dark:text-white">
+                        Nenhum Candidato Pré-selecionado
+                      </h3>
+                      <p className="text-muted-foreground max-w-md mx-auto mb-4 dark:text-gray-400 text-sm">
+                        Você ainda não pré-selecionou nenhum candidato. Clique
+                        no ícone de estrela{" "}
+                        <Star className="inline h-4 w-4 align-text-bottom" />{" "}
+                        nos perfis para adicioná-los aqui.
+                      </p>
+                      {/* Adicionar um botão ou link para voltar para a aba "Todos" se desejado */}
+                      {/* <Button variant="outline">Ver Todos os Candidatos</Button> */}
                     </div>
                   </CardContent>
                 </Card>
               </TabsContent>
             </Tabs>
 
-            <div className="flex items-center justify-between">
-              <div className="text-sm text-muted-foreground dark:text-gray-400">
-                {" "}
-                Exibindo <strong>2</strong> de <strong>1.248</strong> candidatos
+            {/* Paginação */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t dark:border-gray-700/50">
+              <div className="text-sm text-muted-foreground dark:text-gray-400 order-2 sm:order-1">
+                Exibindo <strong>1-2</strong> de <strong>1.248</strong>{" "}
+                candidatos {/* Exemplo */}
               </div>
-              <div className="flex items-center gap-2">
+              {/* Componente de Paginação (simplificado com botões) */}
+              <div className="flex items-center gap-1 order-1 sm:order-2">
                 <Button variant="outline" size="sm" disabled>
                   Anterior
                 </Button>
-                <Button variant="outline" size="sm" className="w-8 p-0">
+                {/* Idealmente, isso seria gerado dinamicamente */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-8 w-8 bg-accent dark:bg-gray-700" // Página atual
+                >
                   1
                 </Button>
-                <Button variant="outline" size="sm" className="w-8 p-0">
+                <Button variant="outline" size="icon" className="h-8 w-8">
                   2
                 </Button>
-                <Button variant="outline" size="sm" className="w-8 p-0">
+                <Button variant="outline" size="icon" className="h-8 w-8">
                   3
+                </Button>
+                <span className="text-muted-foreground px-1">...</span>
+                <Button variant="outline" size="icon" className="h-8 w-8">
+                  624
                 </Button>
                 <Button variant="outline" size="sm">
                   Próximo
                 </Button>
               </div>
             </div>
+
+            {/* ---- FIM DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}
           </main>
-        </div>
-      </div>
-    </div>
+        </div>{" "}
+        {/* Fim da área de conteúdo principal */}
+      </div>{" "}
+      {/* Fim do container flex principal */}
+    </SidebarProvider>
   );
 };
 
-export default CompanyDashboard;
+export default DashboardEmpresa;

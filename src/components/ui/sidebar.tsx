@@ -137,7 +137,8 @@ function SidebarProvider({
             } as React.CSSProperties
           }
           className={cn(
-            "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+            // tirei daqui as linhas " flex min-h-svh w-full" tava bugando a responsividade do site
+            "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar",
             className
           )}
           {...props}

@@ -70,6 +70,7 @@ function SheetContent({
         {...props}
       >
         {children}
+        {/* tirei daqui o "focus:ring-offset-2" e coloquei no tema preto o texto em branco para o "X" ficar mais bonito */}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
           <XIcon className="size-4 dark:text-white" />
           <span className="sr-only">Close</span>

@@ -1,8 +1,9 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Search, Bell, Menu } from "lucide-react";
 import { Button } from "src/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
-// Removido o import não utilizado de Sheet, SheetContent, SheetTrigger, CandidateSidebar
+import ModeToggle from "../DarkMode/ModeToggle";
 
 // Interface para as props do Navbar
 interface DashboardNavbarProps {
@@ -20,6 +21,14 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
   userAvatarSrc,
   notificationCount,
 }) => {
+  const location = useLocation();
+  // Define o placeholder conforme a URL:
+  // Se estiver em /dashboard-empresa, exibe "Pesquisar por candidatos, habilidades..."
+  // Caso contrário, mantém "Pesquisar por vagas, empresas..."
+  const placeholderText = location.pathname.startsWith("/dashboard-empresa")
+    ? "Pesquisar por candidatos, habilidades..."
+    : "Pesquisar por vagas, empresas...";
+
   return (
     // bg-background garante que tenha fundo sólido quando sobrepõe o conteúdo.
     <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6 dark:border-gray-700 dark:bg-gray-900">
@@ -29,7 +38,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
         <Button
           variant="outline"
           size="icon"
-          className="shrink-0 lg:hidden" // Mantido lg:hidden aqui é redundante devido ao container pai, mas não prejudica
+          className="shrink-0 lg:hidden"
           onClick={onMobileMenuClick} // Chama a função para abrir o Sheet no componente pai (DashboardCandidato)
         >
           <Menu className="h-5 w-5" />
@@ -58,7 +67,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
             {/* Input estilizado */}
             <input
               type="search"
-              placeholder="Pesquisar por vagas, empresas..."
+              placeholder={placeholderText}
               className="w-full rounded-md border border-input bg-background pl-8 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:w-2/3 lg:w-1/3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:placeholder-gray-400"
             />
           </div>
@@ -68,6 +77,10 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       {/* Ícones e Avatar do Usuário à Direita */}
       <div className="flex items-center gap-3 md:gap-4 ml-auto">
         {" "}
+        {/* Botao de troca de modo */}
+        <div className="hover:text-gray-200 dark:hover:text-zinc-900 transition-all duration-100">
+          <ModeToggle />
+        </div>
         {/* ml-auto empurra para a direita */}
         {/* Botão de Notificações */}
         <Button
@@ -85,10 +98,12 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
           )}
         </Button>
         {/* Avatar do Usuário */}
-        <Avatar className="h-9 w-9 shrink-0">
-          <AvatarImage src={userAvatarSrc} alt={userName} />
-          <AvatarFallback>{userInitials}</AvatarFallback>
-        </Avatar>
+        <div className="hidden sm:block">
+          <Avatar className="h-9 w-9 shrink-0">
+            <AvatarImage src={userAvatarSrc} alt={userName} />
+            <AvatarFallback>{userInitials}</AvatarFallback>
+          </Avatar>
+        </div>
       </div>
     </header>
   );
