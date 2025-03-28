@@ -15,6 +15,7 @@ import NotFoundPage from "./pages/NotFound";
 import CandidateDashboard from "./pages/DashboardCandidato";
 import TestsPage from "./pages/TestePage";
 import CompanyPage from "./pages/DashboardEmpresa";
+import ProfileCompletionPage from "./pages/ConclusaoPerfil";
 
 function App() {
   return (
@@ -30,9 +31,10 @@ function App() {
       <Route path="/politica-de-privacidade" element={<ServicesPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/contato" element={<ContatoPage />} />
-      <Route path="/dashboard-candidato" element={<CandidateDashboard />} />
-      <Route path="/dashboard-empresa" element={<CompanyPage />} />
+      <Route path="/dashboard/candidato" element={<CandidateDashboard />} />
+      <Route path="/dashboard/empresa" element={<CompanyPage />} />
       <Route path="/tests" element={<TestsPage />} />
+      <Route path="/complete-profile" element={<ProfileCompletionPage />} />
       {/* Rota curinga para páginas não encontradas */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
