@@ -61,7 +61,8 @@ const DashboardEmpresa: React.FC = () => {
             empresaInitials={empresaData.initials}
             empresaAvatarSrc={empresaData.logoSrc}
             messageCount={empresaData.messageCount} // Passa contagem de mensagens
-            // Adicione outras props necessárias para EmpresaSidebar
+            onNavigate={() => {}}
+            activePage="dashboard"
           />
         </div>
         {/* --- Sidebar Mobile (Sheet) --- */}
@@ -73,7 +74,6 @@ const DashboardEmpresa: React.FC = () => {
               "bg-white dark:bg-gray-900" // Fundo explícito
             )}
           >
-            {/* Renderiza o Sidebar da Empresa para mobile */}
             <EmpresaSidebar
               isOpen={true} // Sempre aberto no Sheet
               isMobileView={true}
@@ -82,7 +82,8 @@ const DashboardEmpresa: React.FC = () => {
               empresaInitials={empresaData.initials}
               empresaAvatarSrc={empresaData.logoSrc}
               messageCount={empresaData.messageCount}
-              // Se necessário adicionarei outras props necessárias para EmpresaSidebar
+              onNavigate={() => {}}
+              activePage="dashboard"
             />
           </SheetContent>
         </Sheet>

@@ -22,6 +22,10 @@ import JobsPage from "./pages/VagasCompativeis";
 import AvaliationPage from "./pages/Avaliacoes";
 import SavedJobsPage from "./pages/VagasSalvas";
 import ConfigsCandidatePage from "./pages/ConfigsCandidato";
+import VagasEmpresaPage from "./pages/VagasEmpresa";
+import MensagesCompanyPage from "./pages/MensagensEmpresa";
+import AnalisesPage from "./pages/AnaliseEmpresa";
+import ConfigsEmpresaPage from "./pages/ConfigsEmpresa";
 
 function App() {
   return (
@@ -40,7 +44,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/contato" element={<ContatoPage />} />
         <Route path="/dashboard/candidato" element={<CandidateDashboard />} />
-        <Route path="/dashboard/empresa" element={<CompanyPage />} />
+        <Route path="/dashboard/empresa/candidatos" element={<CompanyPage />} />
         <Route path="/tests" element={<TestsPage />} />
         <Route path="/complete-profile" element={<ProfileCompletionPage />} />
         <Route path="/dashboard/candidato/perfil" element={<ProfilePage />} />
@@ -53,6 +57,19 @@ function App() {
         <Route
           path="/dashboard/candidato/configuracoes"
           element={<ConfigsCandidatePage />}
+        />
+        <Route
+          path="/dashboard/empresa/gerenciar-vagas"
+          element={<VagasEmpresaPage />}
+        />
+        <Route
+          path="/dashboard/empresa/mensagens"
+          element={<MensagesCompanyPage />}
+        />
+        <Route path="/dashboard/empresa/analises" element={<AnalisesPage />} />
+        <Route
+          path="/dashboard/empresa/configuracoes"
+          element={<ConfigsEmpresaPage />}
         />
         {/* Rota curinga para páginas não encontradas */}
         <Route path="*" element={<NotFoundPage />} />

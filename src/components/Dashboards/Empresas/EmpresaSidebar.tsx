@@ -30,6 +30,8 @@ interface EmpresaSidebarProps {
   empresaInitials: string;
   empresaAvatarSrc?: string;
   messageCount: number;
+  onNavigate?: (path: string) => void; // Mantido na interface, mas não usado para navegação principal
+  activePage: string; // Identificador da página ativa para highlight
 }
 
 export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
@@ -41,15 +43,17 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
   empresaInitials,
   empresaAvatarSrc,
   messageCount,
+  // onNavigate, // Não precisamos mais desestruturar se não for usar
+  activePage,
 }) => {
-  // Classe base para os botões do menu
+  // Classe base para os botões do menu (sem alterações)
   const menuButtonClass = (isActive = false): string =>
     cn(
-      "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-gray-400 hover:bg-accent hover:text-foreground",
+      "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-gray-400 hover:bg-accent hover:text-foreground w-full text-left", // Garantir alinhamento e largura
       !isOpen ? "justify-center px-2" : "",
       isActive
         ? "bg-accent text-foreground dark:bg-gray-700 dark:text-white" // Estilo ativo
-        : ""
+        : "hover:dark:bg-gray-800" // Estilo hover não ativo no dark mode (opcional)
     );
 
   return (
@@ -100,10 +104,12 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
         <SidebarMenu className="space-y-1 px-2">
           {/* Item: Candidatos */}
           <SidebarMenuItem>
+            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass(true)}>
-                {" "}
-                {/* Exemplo ativo - ajuste conforme necessário */}
+              <Link
+                to="/dashboard/empresa/candidatos" // Define a rota correta
+                className={menuButtonClass(activePage === "candidatos")} // Verifica se é a página ativa
+              >
                 <Users className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Candidatos</span>}
               </Link>
@@ -112,8 +118,12 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Vagas */}
           <SidebarMenuItem>
+            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              <Link
+                to="/dashboard/empresa/gerenciar-vagas" // Rota para gerenciar vagas
+                className={menuButtonClass(activePage === "gerenciar-vagas")}
+              >
                 <Building2 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Vagas</span>}
               </Link>
@@ -122,8 +132,13 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Mensagens */}
           <SidebarMenuItem>
+            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              <Link
+                to="/dashboard/empresa/mensagens" // Rota para mensagens
+                className={menuButtonClass(activePage === "mensagens")}
+              >
+                {/* Div interna para layout do badge */}
                 <div className="flex items-center gap-3">
                   <MessageSquare className="h-5 w-5 flex-shrink-0" />
                   {isOpen && (
@@ -140,7 +155,9 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
                 </div>
                 {/* Badge indicador no modo recolhido */}
                 {!isOpen && messageCount > 0 && (
-                  <span className="absolute right-1/4 top-1 block h-2 w-2 rounded-full bg-purple-600 ring-background dark:ring-gray-900">
+                  <span className="absolute right-1/4 top-1 block h-2 w-2 rounded-full bg-purple-600 ring-background dark:ring-gray-9000">
+                    {" "}
+                    {/* Ajustado ring e right */}
                     <span className="sr-only">
                       {messageCount} mensagens não lidas
                     </span>
@@ -152,8 +169,12 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Análises */}
           <SidebarMenuItem>
+            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              <Link
+                to="/dashboard/empresa/analises" // Rota para análises
+                className={menuButtonClass(activePage === "analises")}
+              >
                 <BarChart3 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Análises</span>}
               </Link>
@@ -162,8 +183,12 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Configurações */}
           <SidebarMenuItem>
+            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              <Link
+                to="/dashboard/empresa/configuracoes" // Rota para configurações
+                className={menuButtonClass(activePage === "configuracoes")}
+              >
                 <Settings className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Configurações</span>}
               </Link>
