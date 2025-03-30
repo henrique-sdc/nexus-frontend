@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import {
   BarChart3,
   Building2,
-  Calendar,
+  // Calendar,
   FileCheck,
   Heart,
-  MessageSquare,
+  // MessageSquare,
   PanelRightOpen,
   Settings,
   User,
@@ -19,7 +19,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "src/components/ui/sidebar";
-import { Badge } from "src/components/ui/badge";
+// import { Badge } from "src/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
 import { cn } from "src/lib/utils";
 
@@ -33,6 +33,8 @@ interface CandidatoSidebarProps {
   userInitials: string;
   userAvatarSrc?: string;
   messageCount: number;
+  onNavigate?: (page: string) => void; // Mantido caso use para navegação interna sem router
+  activePage?: string; // *** ADICIONADO: Prop para saber qual página está ativa ***
 }
 
 export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
@@ -44,15 +46,18 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
   userInitials,
   userAvatarSrc,
   messageCount,
+  onNavigate, // Recebe a prop mas não a utiliza diretamente nos links (usamos <Link>)
+  activePage, // *** RECEBIDO: Prop para saber qual página está ativa ***
 }) => {
   // Classe base para os botões do menu
+  // Função não precisa de alterações, já recebe o booleano isActive
   const menuButtonClass = (isActive = false): string =>
     cn(
       "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-gray-400 hover:bg-accent hover:text-foreground",
       !isOpen ? "justify-center px-2" : "",
       isActive
-        ? "bg-accent text-foreground dark:bg-gray-700 dark:text-white"
-        : ""
+        ? "bg-accent text-foreground dark:bg-gray-700 dark:text-white" // Estilo ativo
+        : "hover:dark:bg-gray-800" // Estilo hover não ativo no dark mode (opcional, pode ajustar)
     );
 
   return (
@@ -102,13 +107,20 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
 
       {/* Conteúdo Principal da Sidebar (Menu) */}
       <SidebarContent className="flex-1 py-4 pt-8 dark:pt-12 overflow-y-auto">
+        {" "}
+        {/* Ajuste pt se necessário */}
         <SidebarMenu className="space-y-1 px-2">
           {/* Item: Painel de Controle */}
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass(true)}>
-                {" "}
-                {/* Exemplo ativo */}
+              {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+              {/* Supondo que a página principal do dashboard tenha activePage='dashboard' ou 'overview' */}
+              <Link
+                to="/dashboard/candidato"
+                className={menuButtonClass(
+                  activePage === "dashboard" || activePage === "overview"
+                )}
+              >
                 <BarChart3 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Painel de Controle</span>}
               </Link>
@@ -118,7 +130,11 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           {/* Item: Meu Perfil */}
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+              <Link
+                to="/dashboard/candidato/perfil"
+                className={menuButtonClass(activePage === "profile")}
+              >
                 <User className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Meu Perfil</span>}
               </Link>
@@ -128,7 +144,11 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           {/* Item: Vagas Compatíveis */}
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+              <Link
+                to="/dashboard/candidato/vagas"
+                className={menuButtonClass(activePage === "vagas")}
+              >
                 <Building2 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Vagas Compatíveis</span>}
               </Link>
@@ -138,7 +158,14 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           {/* Item: Avaliações */}
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="/tests" className={menuButtonClass()}>
+              {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+              {/* Ajuste o 'activePage' conforme a rota/nome real */}
+              <Link
+                to="/dashboard/candidato/avaliacoes"
+                className={menuButtonClass(
+                  activePage === "avaliacoes" || activePage === "tests"
+                )}
+              >
                 <FileCheck className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Avaliações</span>}
               </Link>
@@ -146,30 +173,30 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           </SidebarMenuItem>
 
           {/* Item: Mensagens */}
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              {/* O Link agora ocupa todo o botão */}
-              <Link to="#" className={menuButtonClass()}>
+          {/* <SidebarMenuItem>
+            <SidebarMenuButton asChild> */}
+          {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+          {/* <Link
+                to="/dashboard/candidato/mensagens"
+                className={menuButtonClass(activePage === "mensagens")}
+              >
                 <div className="flex items-center gap-3">
-                  {" "}
-                  {/* Wrapper para controlar layout interno */}
                   <MessageSquare className="h-5 w-5 flex-shrink-0" />
                   {isOpen && (
-                    // Container para texto e badge quando aberto
                     <div className="flex flex-1 justify-between items-center">
-                      <span>Mensagens</span>
-                      <div className="ml-20"></div>
-                      {messageCount > 0 && (
+                      <span>Mensagens</span> */}
+          {/* <div className="ml-auto"></div> Removido div extra, ml-auto no badge funciona */}
+          {/* {messageCount > 0 && (
                         <Badge className="ml-auto h-5 px-1.5 text-xs bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">
                           {messageCount}
                         </Badge>
                       )}
                     </div>
                   )}
-                </div>
-                {/* Badge indicador no modo recolhido (posicionado absolutamente relativo ao Link/Button) */}
-                {!isOpen && messageCount > 0 && (
-                  <span className="absolute right-1/4 top-1 block h-2 w-2 rounded-full bg-purple-600 ring-background dark:ring-gray-900">
+                </div> */}
+          {/* Badge indicador no modo recolhido */}
+          {/* {!isOpen && messageCount > 0 && (
+                  <span className="absolute right-1.5 top-1 block h-2 w-2 rounded-full bg-purple-600 ring-2 ring-background dark:ring-gray-900">
                     <span className="sr-only">
                       {messageCount} mensagens não lidas
                     </span>
@@ -177,12 +204,16 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
                 )}
               </Link>
             </SidebarMenuButton>
-          </SidebarMenuItem>
+          </SidebarMenuItem> */}
 
           {/* Item: Vagas Salvas */}
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+              <Link
+                to="/dashboard/candidato/salvas"
+                className={menuButtonClass(activePage === "salvas")}
+              >
                 <Heart className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Vagas Salvas</span>}
               </Link>
@@ -190,19 +221,27 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           </SidebarMenuItem>
 
           {/* Item: Entrevistas */}
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+          {/* <SidebarMenuItem>
+            <SidebarMenuButton asChild> */}
+          {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+          {/* <Link
+                to="/dashboard/candidato/entrevistas"
+                className={menuButtonClass(activePage === "entrevistas")}
+              >
                 <Calendar className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Entrevistas</span>}
               </Link>
             </SidebarMenuButton>
-          </SidebarMenuItem>
+          </SidebarMenuItem> */}
 
           {/* Item: Configurações */}
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="#" className={menuButtonClass()}>
+              {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
+              <Link
+                to="/dashboard/candidato/configuracoes"
+                className={menuButtonClass(activePage === "configuracoes")}
+              >
                 <Settings className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Configurações</span>}
               </Link>
@@ -225,6 +264,8 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           </Avatar>
           {isOpen && (
             <div className="overflow-hidden">
+              {" "}
+              {/* Para garantir que o truncate funcione */}
               <p className="text-sm font-medium dark:text-white truncate">
                 {userName}
               </p>

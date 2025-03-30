@@ -49,6 +49,20 @@ export const ThemeProvider = ({ children }: Props) => {
     }
   }, [isDark]);
 
+  // Opcional: Atualiza o tema se o usuário alterar a preferência do sistema
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Só altera se não houver um tema salvo no localStorage
+      if (!localStorage.getItem("theme")) {
+        setIsDark(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       {children}

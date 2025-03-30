@@ -344,7 +344,7 @@ const CandidatoDashboard: React.FC = () => {
                       <Avatar className="h-8 w-8 flex-shrink-0 mt-1">
                         {" "}
                         <AvatarImage
-                          src="/placeholder.svg?height=32&width=32"
+                          src="/https://github.com/shadcn.png"
                           alt="TC"
                         />{" "}
                         <AvatarFallback>TC</AvatarFallback>{" "}
@@ -398,7 +398,7 @@ const CandidatoDashboard: React.FC = () => {
                       <Avatar className="h-8 w-8 flex-shrink-0 mt-1">
                         {" "}
                         <AvatarImage
-                          src="/placeholder.svg?height=32&width=32"
+                          src="/https://github.com/shadcn.png"
                           alt="IL"
                         />{" "}
                         <AvatarFallback>IL</AvatarFallback>{" "}
@@ -448,7 +448,7 @@ const CandidatoDashboard: React.FC = () => {
                       <Avatar className="h-8 w-8 flex-shrink-0 mt-1">
                         {" "}
                         <AvatarImage
-                          src="/placeholder.svg?height=32&width=32"
+                          src="/https://github.com/shadcn.png"
                           alt="FW"
                         />{" "}
                         <AvatarFallback>FW</AvatarFallback>{" "}
