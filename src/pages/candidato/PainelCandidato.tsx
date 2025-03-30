@@ -306,7 +306,7 @@ const CandidatoDashboard: React.FC = () => {
                 <CardFooter>
                   {" "}
                   <Link
-                    to="/tests"
+                    to="/dashboard/candidato/testes"
                     className="text-sm text-purple-600 dark:text-purple-400 hover:underline"
                   >
                     {" "}

@@ -211,7 +211,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
             <SidebarMenuButton asChild>
               {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
               <Link
-                to="/dashboard/candidato/salvas"
+                to="/dashboard/candidato/vagas-salvas"
                 className={menuButtonClass(activePage === "salvas")}
               >
                 <Heart className="h-5 w-5 flex-shrink-0" />

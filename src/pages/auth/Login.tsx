@@ -100,7 +100,7 @@ export default function Login() {
                 {/* Link para recuperação de senha */}
                 <div className="flex justify-end">
                   <Link
-                    to="/forgot-password"
+                    to="/recuperar-senha"
                     className="text-sm text-muted-foreground hover:text-zinc-400 transition-all duration-75 dark:text-white"
                   >
                     Esqueceu a senha?
@@ -135,7 +135,7 @@ export default function Login() {
               <p className="text-xs text-center text-muted-foreground">
                 Ainda não tem uma conta?{" "}
                 <Link
-                  to="/register"
+                  to="/cadastro"
                   className="underline underline-offset-2 hover:text-zinc-400 transition-all duration-75"
                 >
                   Cadastre-se

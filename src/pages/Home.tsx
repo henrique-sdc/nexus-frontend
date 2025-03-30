@@ -54,7 +54,7 @@ export default function Home() {
                     size="lg"
                     asChild
                   >
-                    <Link to="/register">Comece Agora</Link>
+                    <Link to="/cadastro">Comece Agora</Link>
                   </Button>
                   <Button
                     className="bg-white hover:bg-gray-100 hover:text-black transition-all duration-300"
@@ -62,7 +62,7 @@ export default function Home() {
                     variant="outline"
                     asChild
                   >
-                    <Link to="/empresas">Para Empresas</Link>
+                    <Link to="/para-empresas">Para Empresas</Link>
                   </Button>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function Home() {
                 <Button asChild>
                   <div className="dark:text-white  hover:text-gray-200 dark:hover:text-zinc-400 transition-all duration-100">
                     <Link
-                      to="/register"
+                      to="/cadastro"
                       className="inline-flex items-center gap-2"
                     >
                       Crie Seu Perfil <ArrowRight className="h-4 w-4" />
@@ -281,7 +281,7 @@ export default function Home() {
                 <Button asChild>
                   <div className="dark:text-white hover:text-gray-200 dark:hover:text-zinc-400 transition-all duration-100">
                     <Link
-                      to="/register?tab=empresa"
+                      to="/cadastro?tab=empresa"
                       className="inline-flex items-center gap-2"
                     >
                       Cadastre-se como Empresa{" "}
@@ -313,7 +313,7 @@ export default function Home() {
                   asChild
                   className="bg-black text-white hover:bg-purple-800 hover:text-white transition-all duration-300"
                 >
-                  <Link to="/register">Cadastre-se como Candidato</Link>
+                  <Link to="/cadastro">Cadastre-se como Candidato</Link>
                 </Button>
                 <Button
                   className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"
@@ -321,7 +321,7 @@ export default function Home() {
                   variant="outline"
                   asChild
                 >
-                  <Link to="/register?tab=empresa">
+                  <Link to="/cadastro?tab=empresa">
                     Cadastre-se como Empresa
                   </Link>
                 </Button>

@@ -62,7 +62,7 @@ export default function CandidatosPage() {
                     size="lg"
                     asChild
                   >
-                    <Link to="/register">Crie Seu Perfil</Link>
+                    <Link to="/cadastro">Crie Seu Perfil</Link>
                   </Button>
                   {/* <Button
                     className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 transition-all duration-100"
@@ -389,7 +389,7 @@ export default function CandidatosPage() {
                   asChild
                   className="bg-black text-white hover:bg-purple-800 hover:text-white transition-all duration-300"
                 >
-                  <Link to="/register">Crie seu perfil</Link>
+                  <Link to="/cadastro">Crie seu perfil</Link>
                 </Button>
                 <Button
                   className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"

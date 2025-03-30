@@ -20,6 +20,15 @@ import { cn } from "src/lib/utils";
 import { Brain, FileCheck, Filter, Star, Users } from "lucide-react";
 import { DashboardNavbar } from "src/components/Dashboards/DashboardNavbar";
 import { EmpresaSidebar } from "src/components/Dashboards/Empresas/EmpresaSidebar";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "src/components/ui/pagination";
 
 const DashboardEmpresa: React.FC = () => {
   // --- Estado ---
@@ -35,6 +44,20 @@ const DashboardEmpresa: React.FC = () => {
     messageCount: 4, // Exemplo de contagem de mensagens
     notificationCount: 7, // Exemplo de contagem de notificações
   };
+
+  // --- Dados de Paginação (Exemplo) ---
+  const currentPage: number = 2;
+  const totalPages = 10; // Exemplo
+  const itemsPerPage = 10; // Exemplo
+  const totalItems = 1248; // Exemplo
+
+  const handlePageChange = (page: number) => {
+    console.log("Mudar para página:", page);
+    // Aqui eu atualizaria o estado da página atual e buscaria novos dados
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage + 1;
+  const endIndex = Math.min(currentPage * itemsPerPage, totalItems);
 
   // --- Handlers para controlar a Sidebar ---
   const toggleDesktopSidebar = () => setIsDesktopSidebarOpen((prev) => !prev);
@@ -101,7 +124,7 @@ const DashboardEmpresa: React.FC = () => {
 
           {/* Conteúdo Principal (Main) */}
           {/* Adicionado overflow-x-hidden para evitar scroll horizontal indesejado */}
-          <main className="flex-1 p-4 md:p-6 gap-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          <main className="flex-1 flex flex-col p-4 md:p-6 gap-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
             {/* ---- INÍCIO DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}
 
             {/* Cabeçalho do Conteúdo (Título e Botões) */}
@@ -546,38 +569,97 @@ const DashboardEmpresa: React.FC = () => {
             </Tabs>
 
             {/* Paginação */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t dark:border-gray-700/50">
-              <div className="text-sm text-muted-foreground dark:text-gray-400 order-2 sm:order-1">
-                Exibindo <strong>1-2</strong> de <strong>1.248</strong>{" "}
-                candidatos {/* Exemplo */}
+            <div
+              className={cn(
+                "flex flex-col sm:flex-row items-center justify-center sm:justify-between", // Responsividade e Alinhamento
+                "gap-4 pt-4 border-t dark:border-gray-700/50", // Estilos
+                "mt-auto" // Empurra para baixo
+              )}
+            >
+              {/* Texto informativo */}
+              <div className="text-sm text-muted-foreground dark:text-gray-400 shrink-0">
+                {" "}
+                {/* shrink-0 evita que encolha demais */}
+                Exibindo{" "}
+                <strong>
+                  {startIndex}-{endIndex}
+                </strong>{" "}
+                de <strong>{totalItems}</strong> candidatos
               </div>
-              {/* Componente de Paginação (simplificado com botões) */}
-              <div className="flex items-center gap-1 order-1 sm:order-2">
-                <Button variant="outline" size="sm" disabled>
-                  Anterior
-                </Button>
-                {/* Idealmente, isso seria gerado dinamicamente */}
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8 bg-accent dark:bg-gray-700" // Página atual
-                >
-                  1
-                </Button>
-                <Button variant="outline" size="icon" className="h-8 w-8">
-                  2
-                </Button>
-                <Button variant="outline" size="icon" className="h-8 w-8">
-                  3
-                </Button>
-                <span className="text-muted-foreground px-1">...</span>
-                <Button variant="outline" size="icon" className="h-8 w-8">
-                  624
-                </Button>
-                <Button variant="outline" size="sm">
-                  Próximo
-                </Button>
-              </div>
+
+              {/* Componente de Paginação do ShadCN */}
+              {/* Não precisa de classes extras de alinhamento aqui, o pai cuida */}
+              <Pagination>
+                <PaginationContent>
+                  {/* Botão Anterior */}
+                  <PaginationItem>
+                    <PaginationPrevious
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      className={cn(
+                        currentPage === 1
+                          ? "pointer-events-none opacity-50"
+                          : ""
+                      )}
+                      aria-disabled={currentPage === 1}
+                    />
+                  </PaginationItem>
+
+                  {/* Números (Lógica de exemplo) */}
+                  <PaginationItem>
+                    <PaginationLink
+                      onClick={() => handlePageChange(1)}
+                      isActive={currentPage === 1}
+                    >
+                      1
+                    </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink
+                      onClick={() => handlePageChange(2)}
+                      isActive={currentPage === 2}
+                    >
+                      2
+                    </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink
+                      onClick={() => handlePageChange(3)}
+                      isActive={currentPage === 3}
+                    >
+                      3
+                    </PaginationLink>
+                  </PaginationItem>
+                  {totalPages > 5 && currentPage < totalPages - 2 && (
+                    <PaginationItem>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  )}
+                  {totalPages > 4 && currentPage < totalPages - 1 && (
+                    <PaginationItem>
+                      <PaginationLink
+                        onClick={() => handlePageChange(totalPages)}
+                        isActive={currentPage === totalPages}
+                      >
+                        {totalPages}
+                      </PaginationLink>
+                    </PaginationItem>
+                  )}
+                  {/* Fim da lógica de exemplo dos números */}
+
+                  {/* Botão Próximo */}
+                  <PaginationItem>
+                    <PaginationNext
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      className={cn(
+                        currentPage === totalPages
+                          ? "pointer-events-none opacity-50"
+                          : ""
+                      )}
+                      aria-disabled={currentPage === totalPages}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
             </div>
 
             {/* ---- FIM DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}

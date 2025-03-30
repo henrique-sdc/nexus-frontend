@@ -42,7 +42,7 @@ const NavBar = () => {
             Início
           </NavLink>
           <NavLink
-            to="/candidatos"
+            to="/para-candidatos"
             className={({ isActive }) =>
               isActive ? activeClasses : inactiveClasses
             }
@@ -50,7 +50,7 @@ const NavBar = () => {
             Para Candidatos
           </NavLink>
           <NavLink
-            to="/empresas"
+            to="/para-empresas"
             className={({ isActive }) =>
               isActive ? activeClasses : inactiveClasses
             }
@@ -58,7 +58,7 @@ const NavBar = () => {
             Para Empresas
           </NavLink>
           <NavLink
-            to="/sobre"
+            to="/sobre-nos"
             className={({ isActive }) =>
               isActive ? activeClasses : inactiveClasses
             }
@@ -87,7 +87,7 @@ const NavBar = () => {
             <Button className="bg-black dark:bg-white" asChild>
               <NavLink
                 className="text-white dark:text-black hover:bg-purple-800 hover:text-white dark:hover:bg-purple-800 dark:hover:text-white transition-all duration-300"
-                to="/register"
+                to="/cadastro"
               >
                 Cadastre-se
               </NavLink>
@@ -134,7 +134,7 @@ const NavBar = () => {
               Início
             </NavLink>
             <NavLink
-              to="/candidatos"
+              to="/para-candidatos"
               onClick={() => setMobileMenuOpen(false)}
               className={({ isActive }) =>
                 isActive ? activeClasses : inactiveClasses
@@ -143,7 +143,7 @@ const NavBar = () => {
               Para Candidatos
             </NavLink>
             <NavLink
-              to="/empresas"
+              to="/para-empresas"
               onClick={() => setMobileMenuOpen(false)}
               className={({ isActive }) =>
                 isActive ? activeClasses : inactiveClasses
@@ -152,7 +152,7 @@ const NavBar = () => {
               Para Empresas
             </NavLink>
             <NavLink
-              to="/sobre"
+              to="/sobre-nos"
               onClick={() => setMobileMenuOpen(false)}
               className={({ isActive }) =>
                 isActive ? activeClasses : inactiveClasses
@@ -178,7 +178,7 @@ const NavBar = () => {
               <Button className="bg-black dark:bg-white mt-2" asChild>
                 <NavLink
                   className="text-white dark:text-black hover:bg-purple-800 hover:text-white dark:hover:bg-purple-800 dark:hover:text-white transition-all duration-300"
-                  to="/register"
+                  to="/cadastro"
                 >
                   Cadastre-se
                 </NavLink>

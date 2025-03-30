@@ -64,7 +64,7 @@ export default function EmpresasPage() {
                     size="lg"
                     asChild
                   >
-                    <Link to="/register?tab=empresa">Cadastre Sua Empresa</Link>
+                    <Link to="/cadastro?tab=empresa">Cadastre Sua Empresa</Link>
                   </Button>
                   {/* <Button
                     className="bg-white hover:bg-gray-100 hover:text-black transition-all duration-300"
@@ -318,7 +318,7 @@ export default function EmpresasPage() {
                     variant="outline"
                     asChild
                   >
-                    <Link to="/register?tab=empresa">Começar</Link>
+                    <Link to="/cadastro?tab=empresa">Começar</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -372,7 +372,7 @@ export default function EmpresasPage() {
                     size="lg"
                     asChild
                   >
-                    <Link to="/register?tab=empresa">Começar</Link>
+                    <Link to="/cadastro?tab=empresa">Começar</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -423,7 +423,7 @@ export default function EmpresasPage() {
                     variant="outline"
                     asChild
                   >
-                    <Link to="/register?tab=empresa">Entre em Contato</Link>
+                    <Link to="/cadastro?tab=empresa">Entre em Contato</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -629,7 +629,7 @@ export default function EmpresasPage() {
                   size="lg"
                   asChild
                 >
-                  <Link to="/register?tab=empresa">Cadastre Sua Empresa</Link>
+                  <Link to="/cadastro?tab=empresa">Cadastre Sua Empresa</Link>
                 </Button>
                 <Button
                   className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"

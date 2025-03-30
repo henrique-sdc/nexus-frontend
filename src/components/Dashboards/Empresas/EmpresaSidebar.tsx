@@ -107,7 +107,7 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
             {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
               <Link
-                to="/dashboard/empresa/candidatos" // Define a rota correta
+                to="/dashboard/empresa"
                 className={menuButtonClass(activePage === "candidatos")} // Verifica se é a página ativa
               >
                 <Users className="h-5 w-5 flex-shrink-0" />
