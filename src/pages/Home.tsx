@@ -1,20 +1,29 @@
+// Importações de bibliotecas e componentes
 import { Link } from "react-router-dom";
 import { Button } from "src/components/ui/button";
 import { FileCheck, Brain, Building2, ArrowRight } from "lucide-react";
-import "../styles/App.css";
+
+// Importação de componentes de layout
 import NavBar from "src/components/NavBar/NavBar";
 import Footer from "src/components/Footer/Footer";
-import telemarketingImage from "../assets/images/telemarketin.png";
-import companyImage from "../assets/images/empresa.png";
 
+// Importação de imagens (variáveis em português)
+import imagemTelemarketing from "../assets/images/telemarketin.png";
+import imagemEmpresa from "../assets/images/empresa.png";
+
+/**
+ * Componente Home
+ * Página principal da aplicação que exibe o banner, informações sobre a plataforma,
+ * seções para candidatos e empresas, e call-to-action final.
+ */
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* NavBar */}
+      {/* Cabeçalho com a NavBar */}
       <NavBar />
 
       <main className="flex-1">
-        {/* Seção: Unificando o Recrutamento com Conexões Potencializadas por IA */}
+        {/* Seção do Banner Principal */}
         <section className="relative overflow-hidden py-24 md:py-32">
           {/* Fundo para modo claro */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:hidden -z-10"></div>
@@ -32,7 +41,7 @@ export default function Home() {
 
           <div className="container mx-auto px-4 relative">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-20 items-center">
-              {/* Coluna da esquerda - Texto */}
+              {/* Conteúdo textual do banner */}
               <div className="space-y-6">
                 <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-500/30 px-3 py-1 text-sm dark:text-white">
                   Revolucionando o Recrutamento
@@ -67,16 +76,16 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Coluna da direita - Imagem */}
+              {/* Imagem do banner */}
               <div className="relative md:aspect-auto">
-                {/* Fundo de gradiente com blur */}
+                {/* Efeito de fundo para a imagem gradiente com blur */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-full blur-3xl -z-10"></div>
                 <div className="relative bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/40 dark:to-indigo-900/40 p-6 rounded-2xl border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
                   <img
-                    src={telemarketingImage}
+                    src={imagemTelemarketing}
                     width={800}
                     height={400}
-                    alt="Nexus Platform"
+                    alt="Plataforma Nexus"
                     className="rounded-xl"
                   />
                 </div>
@@ -85,7 +94,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Seção: Como o Nexus Funciona */}
+        {/* Seção "Como o Nexus Funciona" */}
         <section className="py-16 md:py-24 dark:bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center space-y-4 mb-12">
@@ -98,7 +107,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-8 md:grid-cols-3">
-              {/* Caixa 1 */}
+              {/* Card 1: Avaliação Única */}
               <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.4)] transition-all">
                 <div
                   className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 
@@ -117,7 +126,7 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Caixa 2 */}
+              {/* Card 2: Correspondência Potencializada por IA */}
               <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.4)] transition-all">
                 <div
                   className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 
@@ -136,7 +145,7 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Caixa 3 */}
+              {/* Card 3: Recrutamento Eficiente */}
               <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.4)] transition-all">
                 <div
                   className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 
@@ -158,7 +167,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Seção: Mostre Seu Verdadeiro Potencial (Para Candidatos) */}
+        {/* Seção para Candidatos */}
         <section className="relative py-16 md:py-24">
           {/* Fundo com gradiente */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
@@ -188,22 +197,19 @@ export default function Home() {
                 {/* Lista */}
                 <ul className="space-y-2 inline-block text-left">
                   <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>{" "}
-                    {/* flex-shrink-0 para segurança */}
+                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>
                     <span className="dark:text-stone-200">
                       Um único perfil para múltiplas candidaturas
                     </span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>{" "}
-                    {/* flex-shrink-0 para segurança */}
+                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>
                     <span className="dark:text-stone-200">
                       Avaliação completa de habilidades
                     </span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>{" "}
-                    {/* flex-shrink-0 para segurança */}
+                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>
                     <span className="dark:text-stone-200">
                       Correspondência de emprego aprimorada por IA
                     </span>
@@ -228,11 +234,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Seção: Encontre Seus Candidatos Ideais Mais Rápido (Para Empresas) */}
+        {/* Seção para Empresas */}
         <section className="py-16 md:py-24 dark:bg-black">
           <div className="container mx-auto px-4">
             <div className="grid gap-10 lg:grid-cols-2 items-center">
-              {/* Coluna da esquerda - Imagem */}
+              {/* Imagem ilustrativa para empresas */}
               <div className="relative order-last lg:order-first">
                 <div className="relative md:aspect-auto">
                   {/* Fundo de gradiente com blur */}
@@ -240,7 +246,7 @@ export default function Home() {
                   {/* Container da imagem com efeito e borda */}
                   <div className="relative bg-gradient-to-br from-indigo-100 to-blue-100 dark:from-cyan-950 dark:to-blue-950 p-6 rounded-2xl border border-indigo-200/50 dark:border-blue-950/50 backdrop-blur-sm">
                     <img
-                      src={companyImage}
+                      src={imagemEmpresa}
                       width={800}
                       height={400}
                       alt="Empresa"
@@ -250,7 +256,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Coluna da direita - Conteúdo */}
               <div className="space-y-6">
                 <div className="inline-block rounded-lg bg-indigo-100 dark:bg-indigo-900/30 px-3 py-1 text-sm dark:text-white">
                   Para Empresas
@@ -301,7 +306,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Seção: Pronto para Transformar Sua Experiência de Recrutamento? */}
+        {/* Seção de Call-to-Action Final */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
@@ -337,8 +342,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
+      {/* Rodapé */}
       <Footer />
     </div>
   );

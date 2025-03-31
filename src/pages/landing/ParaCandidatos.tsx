@@ -1,6 +1,24 @@
+/**
+ * Página para Candidatos
+ *
+ * Esta página apresenta as principais informações para candidatos, incluindo:
+ * 1. Banner inicial com call-to-action.
+ * 2. Seção "Como Funciona para Candidatos" com passos.
+ * 3. Seção de Benefícios destacados.
+ * 4. Seção de Histórias de Sucesso com depoimentos.
+ * 5. Call-to-Action Final.
+ *
+ * Observação: Mantivemos um botão comentado para eventual uso futuro.
+ */
+
 import React from "react";
-import NavBar from "src/components/NavBar/NavBar";
 import { Link } from "react-router-dom";
+
+// Componentes de layout
+import NavBar from "src/components/NavBar/NavBar";
+import Footer from "src/components/Footer/Footer";
+
+// Componentes da biblioteca de UI
 import { Button } from "src/components/ui/button";
 import {
   Card,
@@ -9,20 +27,19 @@ import {
   CardHeader,
   CardTitle,
 } from "src/components/ui/card";
-import { Brain, FileCheck, Users } from "lucide-react";
-import Footer from "src/components/Footer/Footer";
 import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
 
-// Página de Candidatos
+// Ícones utilizados
+import { Brain, FileCheck, Users } from "lucide-react";
+
 export default function CandidatosPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* NavBar */}
+      {/* Cabeçalho: Barra de Navegação */}
       <NavBar />
 
-      {/* Conteúdo principal */}
       <main className="flex-1">
-        {/* Seção: Unificando o Recrutamento com Conexões Potencializadas por IA */}
+        {/* Seção: Banner Inicial */}
         <section className="relative overflow-hidden py-24 md:py-32">
           {/* Fundo para modo claro */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:hidden -z-10"></div>
@@ -40,8 +57,8 @@ export default function CandidatosPage() {
 
           <div className="container mx-auto px-4 relative">
             <div className="flex flex-col items-center justify-center gap-10 lg:gap-20 text-center">
-              {/* Coluna única com o texto centralizado */}
               <div className="space-y-6">
+                {/* Rótulo de Destaque */}
                 <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-500/30 px-3 py-1 text-sm dark:text-white">
                   Para Quem Busca Vagas
                 </div>
@@ -64,6 +81,7 @@ export default function CandidatosPage() {
                   >
                     <Link to="/cadastro">Crie Seu Perfil</Link>
                   </Button>
+                  {/* Botão comentado para uso futuro */}
                   {/* <Button
                     className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 transition-all duration-100"
                     size="lg"
@@ -80,7 +98,7 @@ export default function CandidatosPage() {
           </div>
         </section>
 
-        {/* Seção: Como Funciona Para Candidatos */}
+        {/* Seção: Como Funciona para Candidatos */}
         <section id="como-funciona" className="py-16 md:py-24 dark:bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center space-y-4 mb-12">
@@ -168,15 +186,10 @@ export default function CandidatosPage() {
         {/* Seção: Principais Benefícios */}
         <section className="relative py-16 md:py-24">
           {" "}
-          {/* Removido o bg-gradient daqui */}
-          {/* Fundo com gradiente (igual ao da outra seção) */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
-          {/* Overlay preto semitransparente apenas no dark mode (igual ao da outra seção) */}
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
           <div className="container mx-auto px-4 relative">
             {" "}
-            {/* Adicionado 'relative' aqui */}
-            {/* Título e descrição (centralizados) */}
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-white">
                 Principais Benefícios
@@ -185,9 +198,8 @@ export default function CandidatosPage() {
                 Por que os candidatos escolhem a Nexus para sua busca de emprego
               </p>
             </div>
-            {/* Grid com os cards (agora em uma div separada) */}
             <div className="grid gap-8 md:grid-cols-3">
-              {/* Card 1: Avaliação Única */}
+              {/* Benefício 1: Avaliação Única */}
               <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-purple-200/50 dark:border-purple-800/50">
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
@@ -209,7 +221,7 @@ export default function CandidatosPage() {
                 </CardContent>
               </Card>
 
-              {/* Card 2: Correspondência com IA */}
+              {/* Benefício 2: Correspondência com IA */}
               <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-indigo-200/50 dark:border-indigo-800/50">
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900/30">
@@ -232,7 +244,7 @@ export default function CandidatosPage() {
                 </CardContent>
               </Card>
 
-              {/* Card 3: Foco em Você */}
+              {/* Benefício 3: Foco em Você */}
               <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-violet-200/50 dark:border-violet-800/50">
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30">
@@ -271,7 +283,7 @@ export default function CandidatosPage() {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {/* Card 1: Sarah J. */}
+              {/* Depoimento 1 */}
               <Card className="bg-background border-purple-200/50 dark:border-purple-800/50">
                 <CardHeader>
                   <div className="flex items-center gap-4">
@@ -302,7 +314,7 @@ export default function CandidatosPage() {
                 </CardContent>
               </Card>
 
-              {/* Card 2: Marcus T. */}
+              {/* Depoimento 2 */}
               <Card className="bg-background border-indigo-200/50 dark:border-indigo-800/50">
                 <CardHeader>
                   <div className="flex items-center gap-4">
@@ -333,7 +345,7 @@ export default function CandidatosPage() {
                 </CardContent>
               </Card>
 
-              {/* Card 3: Elena R. */}
+              {/* Depoimento 3 */}
               <Card className="bg-background border-violet-200/50 dark:border-violet-800/50 md:col-span-2 lg:col-span-1">
                 <CardHeader>
                   <div className="flex items-center gap-4">
@@ -368,11 +380,9 @@ export default function CandidatosPage() {
           </div>
         </section>
 
-        {/* Seção: Pronto para Transformar Sua Experiência de Recrutamento? */}
+        {/* Seção: Call-to-Action Final */}
         <section className="relative">
-          {/* Fundo com gradiente */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
-          {/* Overlay preto semitransparente apenas no dark mode */}
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
           <div className="container mx-auto px-4 relative flex items-center justify-center min-h-[50vh]">
             <div className="mx-auto max-w-[800px] space-y-6 text-center">
@@ -404,8 +414,7 @@ export default function CandidatosPage() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
+      {/* Rodapé */}
       <Footer />
     </div>
   );

@@ -1,3 +1,11 @@
+/**
+ * Página Sobre Nós
+ *
+ * Esta página apresenta a Nexus, contando sua história, missão, valores,
+ * equipe fundadora, impacto e convidando o usuário a fazer parte da jornada.
+ *
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "src/components/ui/button";
@@ -16,6 +24,7 @@ import Footer from "src/components/Footer/Footer";
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
+      {/* Cabeçalho: Barra de Navegação */}
       <NavBar />
 
       <main className="flex-1">
@@ -63,7 +72,6 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl blur-3xl -z-10"></div>
                 <div className="relative bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/40 dark:to-indigo-900/40 p-6 rounded-2xl border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
-                  {/* Substitua o placeholder pela sua imagem */}
                   <img
                     src="https://rizzattigestao.com.br/wp-content/uploads/animar-o-equipe.jpg"
                     width={900}
@@ -108,58 +116,45 @@ export default function AboutPage() {
         {/* Seção: Nossa Missão e Valores */}
         <section className="relative py-16 md:py-24">
           {" "}
-          {/* Removido o bg-gradient daqui */}
-          {/* Fundo com gradiente (igual ao da outra seção) */}
+          {/* Fundo com gradiente */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
           {/* Overlay preto semitransparente apenas no dark mode (igual ao da outra seção) */}
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
           <div className="container mx-auto px-4 relative">
             {" "}
-            {/* Adicionado 'relative' aqui */}
-            {/* Título e descrição (centralizados) */}
+            {/* Título e descrição */}
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-white">
                 {" "}
-                {/* Mantive as classes */}
-                Nossa Missão e Valores {/* Texto do segundo código */}
+                Nossa Missão e Valores
               </h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed dark:text-stone-200">
                 {" "}
-                {/* Mantive as classes */}
                 Os princípios que guiam tudo o que fazemos{" "}
-                {/* Texto do segundo código */}
               </p>
             </div>
-            {/* Grid com os cards (agora em uma div separada) */}
+            {/* Grid com os cards */}
             <div className="grid gap-8 md:grid-cols-3">
               {/* Card 1: Inovação */}
               <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-purple-200/50 dark:border-purple-800/50">
                 {" "}
-                {/* Mantive as classes */}
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
                     {" "}
-                    {/* Mantive as classes */}
                     <Lightbulb className="h-6 w-6 text-purple-600 dark:text-purple-400" />{" "}
-                    {/* Ícone do segundo código */}
                   </div>
                   <CardTitle className="dark:text-white">Inovação</CardTitle>{" "}
-                  {/* Texto do segundo código e mantive a classe */}
                   <CardDescription className="dark:text-stone-200">
                     {" "}
-                    {/* Mantive a classe */}
                     Ultrapassando os limites da tecnologia de recrutamento{" "}
-                    {/* Texto do segundo código */}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground dark:text-stone-200">
                     {" "}
-                    {/* Mantive as classes */}
                     Inovamos constantemente para criar soluções que tornem o
                     processo de recrutamento mais eficiente, eficaz e agradável
                     para todas as partes envolvidas.{" "}
-                    {/* Texto do segundo código */}
                   </p>
                 </CardContent>
               </Card>
@@ -167,31 +162,24 @@ export default function AboutPage() {
               {/* Card 2: Equidade */}
               <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-indigo-200/50 dark:border-indigo-800/50">
                 {" "}
-                {/* Mantive as classes */}
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900/30">
                     {" "}
-                    {/* Mantive as classes */}
                     <Users className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />{" "}
-                    {/* Ícone do segundo código */}
                   </div>
                   <CardTitle className="dark:text-white">Equidade</CardTitle>{" "}
-                  {/* Texto do segundo código e mantive a classe */}
                   <CardDescription className="dark:text-stone-200">
                     {" "}
-                    {/* Mantive a classe */}
                     Criando oportunidades justas para todos{" "}
-                    {/* Texto do segundo código */}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground dark:text-stone-200">
                     {" "}
-                    {/* Mantive as classes */}
                     Estamos comprometidos em criar um campo de atuação
                     equilibrado, onde os candidatos são avaliados com base em
                     suas verdadeiras habilidades e potencial, não apenas em seus
-                    currículos. {/* Texto do segundo código */}
+                    currículos.
                   </p>
                 </CardContent>
               </Card>
@@ -199,31 +187,24 @@ export default function AboutPage() {
               {/* Card 3: Confiança */}
               <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-violet-200/50 dark:border-violet-800/50">
                 {" "}
-                {/* Mantive as classes */}
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30">
                     {" "}
-                    {/* Mantive as classes */}
                     <Shield className="h-6 w-6 text-violet-600 dark:text-violet-400" />{" "}
-                    {/* Ícone do segundo código */}
                   </div>
                   <CardTitle className="dark:text-white">Confiança</CardTitle>{" "}
-                  {/* Texto do segundo código e mantive a classe */}
                   <CardDescription className="dark:text-stone-200">
                     {" "}
-                    {/* Mantive a classe */}
                     Construindo relacionamentos baseados em integridade{" "}
-                    {/* Texto do segundo código */}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground dark:text-stone-200">
                     {" "}
-                    {/* Mantive as classes */}
                     Priorizamos a transparência, a segurança de dados e as
                     práticas éticas em tudo o que fazemos, conquistando a
                     confiança de candidatos e empresas que usam nossa
-                    plataforma. {/* Texto do segundo código */}
+                    plataforma.
                   </p>
                 </CardContent>
               </Card>
@@ -236,11 +217,10 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl dark:text-white">
-                Nossa Equipe Fundadora {/* Alterei o título */}
+                Nossa Equipe Fundadora
               </h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed dark:text-stone-200">
                 Conheça os visionários que criaram a Nexus{" "}
-                {/* Alterei a descrição */}
               </p>
             </div>
 
@@ -377,7 +357,6 @@ export default function AboutPage() {
         {/* Seção: Nosso Impacto */}
         <section className="py-16 md:py-24 relative">
           {" "}
-          {/* Adicionado 'relative' aqui */}
           {/* Fundo com gradiente e overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950/60 -z-20"></div>
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
@@ -444,7 +423,6 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 dark:from-purple-800/20 dark:to-indigo-800/20 rounded-2xl blur-3xl -z-10"></div>
                 <div className="relative bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/40 dark:to-indigo-900/40 p-6 rounded-2xl border border-purple-200/50 dark:border-purple-800/50 backdrop-blur-sm">
-                  {/* Substitua o placeholder pela sua imagem */}
                   <img
                     src="https://aterraambiental.com/wp-content/uploads/2022/10/Avaliacao-de-Impacto-Ambiental.png"
                     width={800}
@@ -479,6 +457,7 @@ export default function AboutPage() {
                 >
                   <Link to="/cadastro">Crie Seu Perfil</Link>
                 </Button>
+                {/* Botão comentado para uso futuro */}
                 {/* <Button
                   className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"
                   size="lg"
@@ -492,7 +471,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-
+      {/* Rodapé */}
       <Footer />
     </div>
   );

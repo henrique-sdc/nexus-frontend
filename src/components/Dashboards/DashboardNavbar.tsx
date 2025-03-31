@@ -31,7 +31,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
 
   return (
     // bg-background garante que tenha fundo sólido quando sobrepõe o conteúdo.
-    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6 dark:border-gray-700 dark:bg-gray-900">
+    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6 dark:border-zinc-700 dark:bg-zinc-900">
       {/* Botão do Menu Mobile (Sheet Trigger) - visível apenas em telas pequenas */}
       <div className="lg:hidden">
         {/* O botão agora apenas chama a função passada por props para abrir o Sheet */}
@@ -63,12 +63,12 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       <div className="w-full flex-1">
         <form>
           <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground dark:text-gray-400" />
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground dark:text-zinc-400" />
             {/* Input estilizado */}
             <input
               type="search"
               placeholder={placeholderText}
-              className="w-full rounded-md border border-input bg-background pl-8 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:w-2/3 lg:w-1/3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:placeholder-gray-400"
+              className="w-full rounded-md border border-input bg-background pl-8 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:w-2/3 lg:w-1/3 dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-300 dark:placeholder-zinc-400"
             />
           </div>
         </form>
@@ -78,7 +78,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       <div className="flex items-center gap-3 md:gap-4 ml-auto">
         {" "}
         {/* Botao de troca de modo */}
-        <div className="hover:text-gray-200 dark:hover:text-zinc-900 transition-all duration-100">
+        <div className="rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">
           <ModeToggle />
         </div>
         {/* ml-auto empurra para a direita */}

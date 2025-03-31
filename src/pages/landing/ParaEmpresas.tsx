@@ -1,6 +1,23 @@
+/**
+ * Página para Empresas
+ *
+ * Esta página apresenta a plataforma Nexus para empresas, destacando:
+ * - Um banner inicial com call-to-action para cadastro da empresa;
+ * - Seção "Como Funciona para Empresas" com os passos do processo;
+ * - Seção de Benefícios principais para o recrutamento;
+ * - Seção de Empresas Parceiras exibindo logos;
+ * - Seção final de call-to-action para incentivar o cadastro.
+ *
+ */
+
 import React from "react";
-import NavBar from "src/components/NavBar/NavBar";
 import { Link } from "react-router-dom";
+
+// Componentes de layout
+import NavBar from "src/components/NavBar/NavBar";
+import Footer from "src/components/Footer/Footer";
+
+// Componentes de UI
 import { Button } from "src/components/ui/button";
 import {
   Card,
@@ -9,6 +26,9 @@ import {
   CardHeader,
   CardTitle,
 } from "src/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
+
+// Ícones utilizados
 import {
   Users,
   Filter,
@@ -16,21 +36,20 @@ import {
   CheckCircle,
   CircleFadingPlus,
 } from "lucide-react";
-import Footer from "src/components/Footer/Footer";
-import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
 
-// Página para Empresas
 export default function EmpresasPage() {
   return (
     <div className="flex min-h-screen flex-col">
+      {/* Cabeçalho */}
       <NavBar />
 
+      {/* Seção: Banner Inicial */}
       <main className="flex-1">
         {/* Seção: Recrutamento Inteligente para Empresas Inovadoras */}
         <section className="relative overflow-hidden py-24 md:py-32">
-          {/* Fundo (Modo Claro) */}
+          {/* Fundo para modo claro */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50 dark:hidden -z-10"></div>
-          {/* Fundo (Modo Escuro) */}
+          {/* Fundo para modo escuro */}
           <div className="absolute inset-0 hidden dark:block -z-10">
             <div className="absolute inset-0 bg-black opacity-100"></div>
             <div
@@ -66,6 +85,7 @@ export default function EmpresasPage() {
                   >
                     <Link to="/cadastro?tab=empresa">Cadastre Sua Empresa</Link>
                   </Button>
+                  {/* Botão comentado para uso futuro */}
                   {/* <Button
                     className="bg-white hover:bg-gray-100 hover:text-black transition-all duration-300"
                     size="lg"
@@ -189,14 +209,12 @@ export default function EmpresasPage() {
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
                     <Filter className="h-6 w-6 text-purple-600 dark:text-purple-400" />{" "}
-                    {/* Ícone alterado */}
                   </div>
                   <CardTitle className="dark:text-white">
-                    Candidatos Pré-Validados {/* Texto alterado */}
+                    Candidatos Pré-Validados
                   </CardTitle>
                   <CardDescription className="dark:text-stone-200">
                     Acesse candidatos com habilidades verificadas{" "}
-                    {/* Texto alterado */}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -204,7 +222,7 @@ export default function EmpresasPage() {
                     Todos os candidatos em nossa plataforma passaram por
                     avaliações abrangentes para validar suas habilidades,
                     capacidades de resolução de problemas e preferências de
-                    trabalho. {/* Texto alterado */}
+                    trabalho.
                   </p>
                 </CardContent>
               </Card>
@@ -214,14 +232,12 @@ export default function EmpresasPage() {
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900/30">
                     <Users className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />{" "}
-                    {/* Ícone alterado */}
                   </div>
                   <CardTitle className="dark:text-white">
-                    Correspondência de Fit Cultural {/* Texto alterado */}
+                    Correspondência de Fit Cultural
                   </CardTitle>
                   <CardDescription className="dark:text-stone-200">
                     Encontre candidatos alinhados à cultura da sua empresa{" "}
-                    {/* Texto alterado */}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -229,7 +245,6 @@ export default function EmpresasPage() {
                     Nossa plataforma avalia a adequação cultural para garantir
                     que os candidatos prosperem em seu ambiente de trabalho
                     específico, levando a maior retenção e produtividade.{" "}
-                    {/* Texto alterado */}
                   </p>
                 </CardContent>
               </Card>
@@ -239,13 +254,12 @@ export default function EmpresasPage() {
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30">
                     <BarChart3 className="h-6 w-6 text-violet-600 dark:text-violet-400" />{" "}
-                    {/* Ícone alterado */}
                   </div>
                   <CardTitle className="dark:text-white">
-                    Eficiência de Tempo e Custo {/* Texto alterado */}
+                    Eficiência de Tempo e Custo
                   </CardTitle>
                   <CardDescription className="dark:text-stone-200">
-                    Otimize seu processo de recrutamento {/* Texto alterado */}
+                    Otimize seu processo de recrutamento
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -253,7 +267,6 @@ export default function EmpresasPage() {
                     Reduza o tempo de contratação e os custos de recrutamento
                     concentrando-se apenas em candidatos que atendam aos seus
                     requisitos específicos e que foram pré-selecionados.{" "}
-                    {/* Texto alterado */}
                   </p>
                 </CardContent>
               </Card>
@@ -450,53 +463,53 @@ export default function EmpresasPage() {
                 <img
                   src="https://www.siglaseabreviaturas.com/wp-content/uploads/2015/06/logo-espm_alterado.jpg"
                   alt="ESPM"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5mYfN6Pm20YkiZqZxONOSuBlvEb5sEFI1Q&s"
                   alt="Insper"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Logo_FGV_-_Funda%C3%A7%C3%A3o_Getulio_Vargas.png/1200px-Logo_FGV_-_Funda%C3%A7%C3%A3o_Getulio_Vargas.png"
                   alt="FGV"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://www.intersector.com.br/wp-content/uploads/2020/12/logo-belas-artes.png"
                   alt="Belas Artes"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g2Cngsw7OzAXsDdrEXx4WLu1vWXqzC-jJg&s"
                   alt="USP"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 {/* Repetição das logos */}
                 <img
                   src="https://www.siglaseabreviaturas.com/wp-content/uploads/2015/06/logo-espm_alterado.jpg"
                   alt="ESPM"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF5mYfN6Pm20YkiZqZxONOSuBlvEb5sEFI1Q&s"
                   alt="Insper"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Logo_FGV_-_Funda%C3%A7%C3%A3o_Getulio_Vargas.png/1200px-Logo_FGV_-_Funda%C3%A7%C3%A3o_Getulio_Vargas.png"
                   alt="FGV"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://www.intersector.com.br/wp-content/uploads/2020/12/logo-belas-artes.png"
                   alt="Belas Artes"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g2Cngsw7OzAXsDdrEXx4WLu1vWXqzC-jJg&s"
                   alt="USP"
-                  className="h-12 w-auto  hover:grayscale-0 transition-all duration-300 mx-8"
+                  className="h-12 w-auto dark:grayscale hover:grayscale-0 transition-all duration-300 mx-8"
                 />
               </div>
             </div>
@@ -644,7 +657,7 @@ export default function EmpresasPage() {
           </div>
         </section>
       </main>
-
+      {/* Rodapé */}
       <Footer />
     </div>
   );

@@ -86,7 +86,7 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
         {!isMobileView && toggleSidebar && (
           <button
             onClick={toggleSidebar}
-            className="p-1 rounded ml-auto hover:bg-gray-200 dark:hover:bg-gray-700"
+            className="p-1 rounded ml-auto hover:bg-gray-200 dark:hover:bg-gray-800"
             aria-label={isOpen ? "Recolher menu" : "Expandir menu"}
           >
             <PanelRightOpen

@@ -53,11 +53,11 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
   // Função não precisa de alterações, já recebe o booleano isActive
   const menuButtonClass = (isActive = false): string =>
     cn(
-      "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-gray-400 hover:bg-accent hover:text-foreground",
+      "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-zinc-400 hover:bg-accent hover:text-foreground",
       !isOpen ? "justify-center px-2" : "",
       isActive
-        ? "bg-accent text-foreground dark:bg-gray-700 dark:text-white" // Estilo ativo
-        : "hover:dark:bg-gray-800" // Estilo hover não ativo no dark mode (opcional, pode ajustar)
+        ? "bg-accent text-foreground dark:bg-zinc-700 dark:text-white" // Estilo ativo
+        : "hover:dark:bg-zinc-800" // Estilo hover não ativo no dark mode (opcional, pode ajustar)
     );
 
   return (
@@ -65,13 +65,13 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
     // Adicionado w-full para garantir que o componente preencha a largura dada pelo pai (w-16 ou w-64)
     <div
       className={cn(
-        "flex flex-col h-full bg-background dark:bg-gray-900 w-full",
+        "flex flex-col h-full bg-background dark:bg-zinc-900 w-full",
         isMobileView ? "" : ""
       )}
     >
       {/* Cabeçalho da Sidebar */}
       {/* Adicionado 'border-b' apenas se necessário visualmente para separar do conteúdo abaixo */}
-      <SidebarHeader className="flex items-center justify-between p-4 h-16 border-b dark:border-gray-800">
+      <SidebarHeader className="flex items-center justify-between p-4 h-16 border-b dark:border-zinc-800">
         {/* Container da Logo e Nome */}
         <div className="flex items-center gap-2">
           {/* Ícone/Logo */}
@@ -92,7 +92,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
         {!isMobileView && toggleSidebar && (
           <button
             onClick={toggleSidebar}
-            className="p-1 rounded ml-auto hover:bg-gray-200 dark:hover:bg-gray-700"
+            className="p-1 rounded ml-auto hover:bg-zinc-200 dark:hover:bg-zinc-800"
             aria-label={isOpen ? "Recolher menu" : "Expandir menu"}
           >
             <PanelRightOpen
@@ -117,9 +117,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
               {/* Supondo que a página principal do dashboard tenha activePage='dashboard' ou 'overview' */}
               <Link
                 to="/dashboard/candidato"
-                className={menuButtonClass(
-                  activePage === "dashboard" || activePage === "overview"
-                )}
+                className={menuButtonClass(activePage === "dashboard")}
               >
                 <BarChart3 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Painel de Controle</span>}
@@ -212,7 +210,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
               {/* *** ALTERADO: Usa activePage para definir se está ativo *** */}
               <Link
                 to="/dashboard/candidato/vagas-salvas"
-                className={menuButtonClass(activePage === "salvas")}
+                className={menuButtonClass(activePage === "vagas-salvas")}
               >
                 <Heart className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Vagas Salvas</span>}
@@ -251,7 +249,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
       </SidebarContent>
 
       {/* Rodapé da Sidebar */}
-      <SidebarFooter className="p-4 border-t dark:border-gray-700">
+      <SidebarFooter className="p-4 border-t dark:border-zinc-700">
         <div
           className={cn(
             "flex items-center gap-3",
@@ -269,7 +267,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
               <p className="text-sm font-medium dark:text-white truncate">
                 {userName}
               </p>
-              <p className="text-xs text-muted-foreground dark:text-gray-400 truncate">
+              <p className="text-xs text-muted-foreground dark:text-zinc-400 truncate">
                 {userTitle}
               </p>
             </div>

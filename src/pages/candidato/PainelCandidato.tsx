@@ -59,7 +59,7 @@ const CandidatoDashboard: React.FC = () => {
         {/* --- Sidebar Desktop (Fixa/Recolhida) --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-800",
             "bg-background dark:bg-gray-900", // Fundo explícito
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
@@ -72,6 +72,7 @@ const CandidatoDashboard: React.FC = () => {
             userInitials={userData.initials}
             userAvatarSrc={userData.avatarSrc}
             messageCount={userData.messageCount}
+            activePage="dashboard"
           />
         </div>
         {/* --- Sidebar Mobile (Sheet) --- */}
@@ -91,6 +92,7 @@ const CandidatoDashboard: React.FC = () => {
               userInitials={userData.initials}
               userAvatarSrc={userData.avatarSrc}
               messageCount={userData.messageCount}
+              activePage="dashboard"
             />
           </SheetContent>
         </Sheet>
