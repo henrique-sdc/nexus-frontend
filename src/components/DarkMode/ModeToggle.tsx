@@ -10,7 +10,7 @@ const ModeToggle = () => {
       onClick={toggleTheme}
       className="p-2 rounded-md focus:outline-none transition-colors"
     >
-      {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {isDark ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
     </button>
   );
 };

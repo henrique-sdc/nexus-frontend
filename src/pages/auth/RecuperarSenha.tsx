@@ -12,8 +12,6 @@ import {
 import { Input } from "src/components/ui/input";
 import { Label } from "src/components/ui/label";
 import { ArrowLeft } from "lucide-react";
-import NavBar from "src/components/NavBar/NavBar";
-import Footer from "src/components/Footer/Footer";
 
 // Tipagem para os dados do formulário de recuperação de senha
 type ForgotPasswordFormData = {
@@ -34,18 +32,17 @@ export default function ForgotPassword() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <NavBar />
-
       <main className="flex-1 py-12 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-black dark:to-gray-900">
         <div className="container mx-auto px-4">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors dark:text-white dark:hover:text-zinc-400 hover:text-black"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar para Início
           </Link>
 
+          <div className="mt-12"></div>
           <div className="mx-auto max-w-md">
             <Card className="shadow-sm dark:text-white">
               <CardHeader>
@@ -81,7 +78,7 @@ export default function ForgotPassword() {
                   <div className="flex justify-center">
                     <Button
                       type="submit"
-                      className="mx-auto text-white bg-purple-900 hover:bg-black transition-all duration-200"
+                      className="mx-auto bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                     >
                       Continuar
                     </Button>
@@ -103,8 +100,6 @@ export default function ForgotPassword() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

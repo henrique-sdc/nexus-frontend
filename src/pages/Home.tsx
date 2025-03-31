@@ -50,14 +50,14 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button
-                    className="bg-black text-white hover:bg-purple-800 hover:text-white transition-all duration-300"
+                    className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                     size="lg"
                     asChild
                   >
                     <Link to="/cadastro">Comece Agora</Link>
                   </Button>
                   <Button
-                    className="bg-white hover:bg-gray-100 hover:text-black transition-all duration-300"
+                    className="bg-white dark:bg-black dark:border-zinc-900 hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-200"
                     size="lg"
                     variant="outline"
                     asChild
@@ -165,8 +165,8 @@ export default function Home() {
           {/* Overlay preto semitransparente apenas no dark mode */}
           <div className="hidden dark:block absolute inset-0 bg-black opacity-50 -z-10"></div>
           <div className="container mx-auto px-4 relative">
-            <div className="grid gap-10 lg:grid-cols-2 items-center">
-              <div className="space-y-6">
+            <div className="flex justify-center">
+              <div className="space-y-6 max-w-3xl text-center">
                 {/* Rótulo */}
                 <div className="inline-block rounded-lg bg-purple-100 dark:bg-purple-900/30 px-3 py-1 text-sm dark:text-white">
                   Para Candidatos
@@ -186,36 +186,42 @@ export default function Home() {
                   e candidate-se a diversas vagas com facilidade.
                 </p>
                 {/* Lista */}
-                <ul className="space-y-2">
+                <ul className="space-y-2 inline-block text-left">
                   <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-purple-600"></div>
+                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>{" "}
+                    {/* flex-shrink-0 para segurança */}
                     <span className="dark:text-stone-200">
                       Um único perfil para múltiplas candidaturas
                     </span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-purple-600"></div>
+                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>{" "}
+                    {/* flex-shrink-0 para segurança */}
                     <span className="dark:text-stone-200">
                       Avaliação completa de habilidades
                     </span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-purple-600"></div>
+                    <div className="h-2 w-2 rounded-full bg-purple-600 flex-shrink-0"></div>{" "}
+                    {/* flex-shrink-0 para segurança */}
                     <span className="dark:text-stone-200">
                       Correspondência de emprego aprimorada por IA
                     </span>
                   </li>
                 </ul>
                 {/* Botão */}
-                <Button asChild>
-                  <div className="dark:text-white  hover:text-gray-200 dark:hover:text-zinc-400 transition-all duration-100">
-                    <Link
-                      to="/cadastro"
-                      className="inline-flex items-center gap-2"
-                    >
-                      Crie Seu Perfil <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
+                <div className="pt-2"></div>
+                <Button
+                  asChild
+                  className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200 cursor-pointer"
+                  size="lg"
+                >
+                  <Link
+                    to="/cadastro"
+                    className="inline-flex items-center gap-2"
+                  >
+                    Crie Seu Perfil <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -278,16 +284,17 @@ export default function Home() {
                     </span>
                   </li>
                 </ul>
-                <Button asChild>
-                  <div className="dark:text-white hover:text-gray-200 dark:hover:text-zinc-400 transition-all duration-100">
-                    <Link
-                      to="/cadastro?tab=empresa"
-                      className="inline-flex items-center gap-2"
-                    >
-                      Cadastre-se como Empresa{" "}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
+                <Button
+                  asChild
+                  className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200 cursor-pointer"
+                  size="lg"
+                >
+                  <Link
+                    to="/cadastro?tab=empresa"
+                    className="inline-flex items-center gap-2"
+                  >
+                    Cadastre-se como Empresa <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -311,12 +318,12 @@ export default function Home() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-black text-white hover:bg-purple-800 hover:text-white transition-all duration-300"
+                  className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                 >
                   <Link to="/cadastro">Cadastre-se como Candidato</Link>
                 </Button>
                 <Button
-                  className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"
+                  className="bg-white hover:bg-gray-100 dark:hover:bg-zinc-200 dark:text-black transition-all duration-100"
                   size="lg"
                   variant="outline"
                   asChild

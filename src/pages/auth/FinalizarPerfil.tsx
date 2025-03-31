@@ -99,17 +99,6 @@ const ProfileCompletion: React.FC = () => {
     // Container principal: Fundo gradiente escuro (inspirado no Register)
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-black dark:to-gray-900 py-8 dark:text-white">
       <div className="container max-w-5xl mx-auto px-4">
-        {/* Link Voltar: Estilo dark mode similar ao Register */}
-        <div className="mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors dark:text-gray-300 dark:hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Voltar para a Home
-          </Link>
-        </div>
-
         {/* Cabeçalho: Títulos e descrições com cores dark mode */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-2">
@@ -150,16 +139,9 @@ const ProfileCompletion: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
             {/* Container Visual das Abas */}
             {/* w-full em telas pequenas, sm:w-auto para encolher em telas maiores */}
-            <div className="bg-gray-100 dark:bg-gray-800/60 p-1 rounded-lg w-full sm:w-auto">
+            <div className="bg-gray-200/50 dark:bg-gray-800/60 p-1 rounded-lg w-full sm:w-auto">
               {/* Lista de Abas: Usando Flexbox para responsividade */}
               <TabsList className="flex flex-wrap justify-center gap-1 sm:flex-nowrap sm:justify-start dark:bg-transparent">
-                {/*
-      - flex flex-wrap: Permite que os itens quebrem para a próxima linha em telas pequenas.
-      - justify-center: Centraliza os itens em cada linha (incluindo a última linha se houver quebra).
-      - gap-1: Espaço entre os botões.
-      - sm:flex-nowrap: Impede a quebra de linha em telas 'sm' e maiores.
-      - sm:justify-start: Alinha os itens ao início em telas 'sm' e maiores.
-    */}
                 {tabOrder.map((tabValue) => (
                   <TabsTrigger
                     key={tabValue}
@@ -167,7 +149,7 @@ const ProfileCompletion: React.FC = () => {
                     // Estilos Ativo/Inativo (mantidos)
                     className={`flex items-center justify-center gap-1 rounded-md p-1.5 text-xs sm:text-sm transition-colors duration-200 ease-in-out ${
                       isTabActive(tabValue)
-                        ? "bg-white text-gray-900 dark:bg-black dark:text-white shadow-sm" // Estilo ativo
+                        ? "bg-purple-300/40 text-gray-900 dark:bg-purple-900/50 dark:text-white shadow-sm" // Estilo ativo
                         : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-gray-700/50" // Estilo inativo
                     }`}
                   >
@@ -216,7 +198,7 @@ const ProfileCompletion: React.FC = () => {
             <Button
               variant="ghost"
               onClick={handleSkip}
-              className="w-full sm:w-auto dark:hover:bg-gray-700/50"
+              className="w-full sm:w-auto hover:bg-gray-200/50 dark:hover:bg-gray-700/50"
             >
               Pular por enquanto
             </Button>
@@ -225,7 +207,7 @@ const ProfileCompletion: React.FC = () => {
           {/* --- Conteúdo da Aba: Informações Básicas --- */}
           <TabsContent value="basic">
             {/* Card: Fundo escuro sutil, borda temática */}
-            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm dark:bg-gray-800/40">
+            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm bg-white dark:bg-gray-800/40">
               <CardHeader>
                 <CardTitle>Informações Básicas</CardTitle>
                 <CardDescription className="dark:text-gray-300">
@@ -235,24 +217,21 @@ const ProfileCompletion: React.FC = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Labels: Cor clara no dark mode */}
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="first-name"
-                        className="dark:text-gray-300"
-                      >
-                        Nome
-                      </Label>
-                      {/* Inputs: ShadCN deve tratar, mas adicionamos placeholder escuro */}
-                      <Input
-                        id="first-name"
-                        placeholder="Digite seu nome"
-                        defaultValue="Jane"
-                        className="dark:placeholder-gray-500"
-                      />
-                    </div>
-                    <div className="space-y-2">
+                  {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> */}
+                  {/* Labels: Cor clara no dark mode */}
+                  <div className="space-y-2">
+                    <Label htmlFor="first-name" className="dark:text-gray-300">
+                      Nome Completo
+                    </Label>
+                    <Input
+                      id="first-name"
+                      placeholder="Digite seu nome"
+                      defaultValue="Jane Santos da Silva"
+                      readOnly
+                      className="bg-gray-100 text-gray-500 border-gray-300 placeholder-gray-400 cursor-not-allowed dark:bg-gray-700/50 dark:text-gray-400 dark:border-gray-600 dark:placeholder-gray-500"
+                    />
+                  </div>
+                  {/* <div className="space-y-2">
                       <Label htmlFor="last-name" className="dark:text-gray-300">
                         Sobrenome
                       </Label>
@@ -262,8 +241,8 @@ const ProfileCompletion: React.FC = () => {
                         defaultValue="Doe"
                         className="dark:placeholder-gray-500"
                       />
-                    </div>
-                  </div>
+                    </div> */}
+                  {/* </div> */}
                   <div className="space-y-2">
                     <Label htmlFor="email" className="dark:text-gray-300">
                       Email
@@ -274,8 +253,19 @@ const ProfileCompletion: React.FC = () => {
                       placeholder="Digite seu endereço de email"
                       defaultValue="jane.doe@example.com"
                       readOnly
-                      // Estilo específico para readOnly dark
-                      className="dark:bg-gray-700/50 dark:text-gray-400 cursor-not-allowed dark:border-gray-600 dark:placeholder-gray-500"
+                      className="bg-gray-100 text-gray-500 border-gray-300 placeholder-gray-400 cursor-not-allowed dark:bg-gray-700/50 dark:text-gray-400 dark:border-gray-600 dark:placeholder-gray-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="cpf" className="dark:text-gray-300">
+                      CPF
+                    </Label>
+                    <Input
+                      id="cpf"
+                      placeholder="Digite seu CPF"
+                      defaultValue="385.089.123-45"
+                      readOnly
+                      className="bg-gray-100 text-gray-500 border-gray-300 placeholder-gray-400 cursor-not-allowed dark:bg-gray-700/50 dark:text-gray-400 dark:border-gray-600 dark:placeholder-gray-500"
                     />
                   </div>
                   <div className="space-y-2">
@@ -353,7 +343,7 @@ const ProfileCompletion: React.FC = () => {
 
           {/* --- Conteúdo da Aba: Upload de Currículo --- */}
           <TabsContent value="resume">
-            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm dark:bg-gray-800/40">
+            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm bg-white dark:bg-gray-800/40">
               <CardHeader>
                 <CardTitle>Upload de Currículo/CV</CardTitle>
                 <CardDescription className="dark:text-gray-300">
@@ -433,7 +423,7 @@ const ProfileCompletion: React.FC = () => {
 
           {/* --- Conteúdo da Aba: Experiência Profissional --- */}
           <TabsContent value="experience">
-            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm dark:bg-gray-800/40">
+            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm bg-white dark:bg-gray-800/40">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle>Experiência Profissional</CardTitle>
@@ -465,9 +455,11 @@ const ProfileCompletion: React.FC = () => {
                         </p>
                       </div>
                       {/* Badge: Estilo padrão ShadCN */}
-                      <Badge className="whitespace-nowrap">Atual</Badge>
+                      <div className="text-white bg-purple-600 rounded-full pb-0.5">
+                        <Badge className="whitespace-nowrap">Atual</Badge>
+                      </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-x-2 gap-y-1 mb-3 text-sm text-muted-foreground dark:text-gray-400">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-x-2 gap-y-1 mb-3 text-sm text-muted-foreground dark:text-white">
                       <span>Jan 2022 - Presente</span>
                       <span className="hidden sm:inline text-xs">•</span>
                       <span>São Francisco, CA (Remoto)</span>
@@ -579,7 +571,7 @@ const ProfileCompletion: React.FC = () => {
 
           {/* --- Conteúdo da Aba: Educação --- */}
           <TabsContent value="education">
-            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm dark:bg-gray-800/40">
+            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm bg-white dark:bg-gray-800/40">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle>Educação</CardTitle>
@@ -610,7 +602,7 @@ const ProfileCompletion: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-x-2 gap-y-1 mb-3 text-sm text-muted-foreground dark:text-gray-400">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-x-2 gap-y-1 mb-3 text-sm text-muted-foreground dark:text-white">
                       <span>2017 - 2019</span>
                       <span className="hidden sm:inline text-xs">•</span>
                       <span>Média: 3.8/4.0</span>
@@ -668,7 +660,7 @@ const ProfileCompletion: React.FC = () => {
 
           {/* --- Conteúdo da Aba: Habilidades e Preferências --- */}
           <TabsContent value="skills">
-            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm dark:bg-gray-800/40">
+            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm bg-white dark:bg-gray-800/40">
               <CardHeader>
                 <CardTitle>Habilidades & Preferências</CardTitle>
                 <CardDescription className="dark:text-gray-300">
@@ -684,8 +676,12 @@ const ProfileCompletion: React.FC = () => {
                     </Label>
                     <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-white dark:bg-gray-700/60 dark:border-gray-600/80">
                       {/* Badges Primários: Estilo padrão ShadCN */}
-                      <Badge className="px-3 py-1 h-7">React</Badge>
-                      <Badge className="px-3 py-1 h-7">TypeScript</Badge>
+                      <Badge className="px-3 py-1 h-7 text-white bg-purple-600 rounded-full">
+                        React
+                      </Badge>
+                      <Badge className="px-3 py-1 h-7 text-white bg-purple-600 rounded-full">
+                        TypeScript
+                      </Badge>
                       {/* ... outros badges ... */}
                       {/* Botão Add Skill: Outline dark */}
                       <Button
@@ -703,7 +699,9 @@ const ProfileCompletion: React.FC = () => {
                       Habilidades Interpessoais (Soft Skills)
                     </Label>
                     <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-white dark:bg-gray-700/60 dark:border-gray-600/80">
-                      <Badge className="px-3 py-1 h-7">Comunicação</Badge>
+                      <Badge className="px-3 py-1 h-7 text-white bg-purple-600 rounded-full">
+                        Comunicação
+                      </Badge>
                       {/* ... outros badges ... */}
                       <Button
                         variant="outline"
@@ -722,14 +720,12 @@ const ProfileCompletion: React.FC = () => {
                         Tipo de Vaga Preferido
                       </Label>
                       <Select defaultValue="full-time">
-                        {/* Trigger: Ajustar cores dark se necessário */}
                         <SelectTrigger
                           id="job-type"
-                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600"
+                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600 w-full"
                         >
                           <SelectValue placeholder="Selecione o tipo de vaga" />
                         </SelectTrigger>
-                        {/* Content: Ajustar cores dark se necessário */}
                         <SelectContent className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                           <SelectItem
                             value="full-time"
@@ -751,7 +747,7 @@ const ProfileCompletion: React.FC = () => {
                       <Select defaultValue="remote">
                         <SelectTrigger
                           id="work-model"
-                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600"
+                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600 w-full"
                         >
                           <SelectValue placeholder="Selecione o modelo" />
                         </SelectTrigger>
@@ -779,7 +775,7 @@ const ProfileCompletion: React.FC = () => {
                       <Select defaultValue="mid-level">
                         <SelectTrigger
                           id="experience-level"
-                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600"
+                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600 w-full"
                         >
                           <SelectValue placeholder="Selecione o nível" />
                         </SelectTrigger>
@@ -815,7 +811,7 @@ const ProfileCompletion: React.FC = () => {
                       <Select defaultValue="8k-12k">
                         <SelectTrigger
                           id="salary-expectation"
-                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600"
+                          className="bg-white dark:bg-gray-700/60 dark:border-gray-600 w-full"
                         >
                           <SelectValue placeholder="Selecione a faixa salarial" />
                         </SelectTrigger>
@@ -850,7 +846,9 @@ const ProfileCompletion: React.FC = () => {
                       Indústrias Preferidas
                     </Label>
                     <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-white dark:bg-gray-700/60 dark:border-gray-600/80">
-                      <Badge className="px-3 py-1 h-7">Tecnologia</Badge>
+                      <Badge className="px-3 py-1 h-7 text-white bg-purple-600 rounded-full">
+                        Tecnologia
+                      </Badge>
                       {/* ... outros badges ... */}
                       <Button
                         variant="outline"

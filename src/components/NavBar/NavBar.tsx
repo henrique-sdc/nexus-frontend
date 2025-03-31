@@ -70,13 +70,13 @@ const NavBar = () => {
         {/* Seção direita: Botão de troca de modo e links de autenticação */}
         <div className="flex items-center gap-4 dark:text-white">
           {/* Botão para alternar o modo (claro/escuro) */}
-          <div className="hover:text-gray-200 dark:hover:text-zinc-900 transition-all duration-100">
+          <div className="rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">
             <ModeToggle />
           </div>
           {/* Botões de "Entrar" e "Cadastre-se" para desktop */}
           <div className="hidden md:flex gap-2">
             <Button
-              className="hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-black transition-all duration-300"
+              className="hover:bg-gray-100 dark:hover:bg-zinc-800 bg-white dark:bg-black dark:border-zinc-800 transition-all duration-100"
               variant="outline"
               asChild
             >
@@ -84,13 +84,11 @@ const NavBar = () => {
                 Entrar
               </NavLink>
             </Button>
-            <Button className="bg-black dark:bg-white" asChild>
-              <NavLink
-                className="text-white dark:text-black hover:bg-purple-800 hover:text-white dark:hover:bg-purple-800 dark:hover:text-white transition-all duration-300"
-                to="/cadastro"
-              >
-                Cadastre-se
-              </NavLink>
+            <Button
+              className="bg-purple-600 hover:bg-purple-500 text-white transition-all duration-100"
+              asChild
+            >
+              <NavLink to="/cadastro">Cadastre-se</NavLink>
             </Button>
           </div>
           {/* Botão de menu mobile */}

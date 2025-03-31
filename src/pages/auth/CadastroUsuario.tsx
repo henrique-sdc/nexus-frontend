@@ -102,7 +102,7 @@ export default function Register() {
         {/* Link para voltar à página inicial */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors dark:text-white dark:hover:text-zinc-400 hover:text-black"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
         >
           <ArrowLeft className="h-4 w-4" />
           Voltar para Início
@@ -246,9 +246,12 @@ export default function Register() {
                     <div className="flex justify-center">
                       <Button
                         type="submit"
-                        className="text-white bg-purple-900 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
+                        className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                       >
-                        Criar Conta e Continuar
+                        {/* Link Temporário */}
+                        <Link to="/completar-perfil">
+                          Criar Conta e Continuar
+                        </Link>
                       </Button>
                     </div>
                   </form>
@@ -380,7 +383,7 @@ export default function Register() {
                     <div className="flex justify-center">
                       <Button
                         type="submit"
-                        className="text-white bg-purple-900 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
+                        className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                       >
                         Criar Conta da Empresa
                       </Button>

@@ -133,7 +133,7 @@ export default function AboutPage() {
             {/* Grid com os cards (agora em uma div separada) */}
             <div className="grid gap-8 md:grid-cols-3">
               {/* Card 1: Inovação */}
-              <Card className="bg-background/80 backdrop-blur-sm border-purple-200/50 dark:border-purple-800/50">
+              <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-purple-200/50 dark:border-purple-800/50">
                 {" "}
                 {/* Mantive as classes */}
                 <CardHeader>
@@ -165,7 +165,7 @@ export default function AboutPage() {
               </Card>
 
               {/* Card 2: Equidade */}
-              <Card className="bg-background/80 backdrop-blur-sm border-indigo-200/50 dark:border-indigo-800/50">
+              <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-indigo-200/50 dark:border-indigo-800/50">
                 {" "}
                 {/* Mantive as classes */}
                 <CardHeader>
@@ -197,7 +197,7 @@ export default function AboutPage() {
               </Card>
 
               {/* Card 3: Confiança */}
-              <Card className="bg-background/80 backdrop-blur-sm border-violet-200/50 dark:border-violet-800/50">
+              <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-violet-200/50 dark:border-violet-800/50">
                 {" "}
                 {/* Mantive as classes */}
                 <CardHeader>
@@ -475,7 +475,7 @@ export default function AboutPage() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-purple-900 text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300"
+                  className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                 >
                   <Link to="/cadastro">Crie Seu Perfil</Link>
                 </Button>

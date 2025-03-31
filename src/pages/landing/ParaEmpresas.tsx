@@ -60,7 +60,7 @@ export default function EmpresasPage() {
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
                   <Button
-                    className="bg-white hover:bg-gray-100 hover:text-black transition-all duration-300"
+                    className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                     size="lg"
                     asChild
                   >
@@ -185,7 +185,7 @@ export default function EmpresasPage() {
             </div>
             <div className="grid gap-8 md:grid-cols-3">
               {/* Card 1: Candidatos Pré-Validados */}
-              <Card className="bg-background/80 backdrop-blur-sm border-purple-200/50 dark:border-purple-800/50">
+              <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-purple-200/50 dark:border-purple-800/50">
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
                     <Filter className="h-6 w-6 text-purple-600 dark:text-purple-400" />{" "}
@@ -210,7 +210,7 @@ export default function EmpresasPage() {
               </Card>
 
               {/* Card 2:  Correspondência de Fit Cultural */}
-              <Card className="bg-background/80 backdrop-blur-sm border-indigo-200/50 dark:border-indigo-800/50">
+              <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-indigo-200/50 dark:border-indigo-800/50">
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900/30">
                     <Users className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />{" "}
@@ -235,7 +235,7 @@ export default function EmpresasPage() {
               </Card>
 
               {/* Card 3: Eficiência de Tempo e Custo */}
-              <Card className="bg-background/80 backdrop-blur-sm border-violet-200/50 dark:border-violet-800/50">
+              <Card className="bg-background/80 backdrop-blur-sm bg-white dark:bg-black border-violet-200/50 dark:border-violet-800/50">
                 <CardHeader>
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30">
                     <BarChart3 className="h-6 w-6 text-violet-600 dark:text-violet-400" />{" "}
@@ -313,7 +313,7 @@ export default function EmpresasPage() {
                     </li>
                   </ul>
                   <Button
-                    className="mt-6 w-full dark:text-white hover:bg-slate-50 dark:hover:bg-zinc-800"
+                    className="mt-6 w-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all duration-100"
                     size="lg"
                     variant="outline"
                     asChild
@@ -418,7 +418,7 @@ export default function EmpresasPage() {
                     </li>
                   </ul>
                   <Button
-                    className="mt-6 w-full dark:text-white hover:bg-slate-50 dark:hover:bg-zinc-800"
+                    className="mt-6 w-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all duration-100"
                     size="lg"
                     variant="outline"
                     asChild
@@ -625,14 +625,14 @@ export default function EmpresasPage() {
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
                 <Button
-                  className="bg-black text-white hover:bg-purple-800 hover:text-white transition-all duration-300"
+                  className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                   size="lg"
                   asChild
                 >
                   <Link to="/cadastro?tab=empresa">Cadastre Sua Empresa</Link>
                 </Button>
                 <Button
-                  className="bg-white hover:bg-gray-200 dark:hover:bg-zinc-400 dark:text-black hover:text-black transition-all duration-100"
+                  className="bg-white hover:bg-gray-100 dark:hover:bg-zinc-200 dark:text-black transition-all duration-100"
                   size="lg"
                   variant="outline"
                   asChild
