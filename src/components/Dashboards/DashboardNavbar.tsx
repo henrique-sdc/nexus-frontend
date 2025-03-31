@@ -36,9 +36,8 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       <div className="lg:hidden">
         {/* O botão agora apenas chama a função passada por props para abrir o Sheet */}
         <Button
-          variant="outline"
           size="icon"
-          className="shrink-0 lg:hidden"
+          className="hover:bg-zinc-200 dark:hover:bg-zinc-800 shrink-0 lg:hidden"
           onClick={onMobileMenuClick} // Chama a função para abrir o Sheet no componente pai (DashboardCandidato)
         >
           <Menu className="h-5 w-5" />
@@ -78,7 +77,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       <div className="flex items-center gap-3 md:gap-4 ml-auto">
         {" "}
         {/* Botao de troca de modo */}
-        <div className="rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800">
+        <div className="rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800">
           <ModeToggle />
         </div>
         {/* ml-auto empurra para a direita */}

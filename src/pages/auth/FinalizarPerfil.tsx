@@ -125,7 +125,7 @@ const ProfileCompletion: React.FC = () => {
           {/* Progress: Estilo padrão ShadCN deve funcionar bem com dark mode */}
           <Progress
             value={progressPercentage}
-            className="h-2 [&>*]:bg-purple-600 dark:[&>*]:bg-purple-500"
+            className="h-2 bg-zinc-200 dark:bg-zinc-800 [&>*]:bg-purple-600 dark:[&>*]:bg-purple-500"
           />
         </div>
 

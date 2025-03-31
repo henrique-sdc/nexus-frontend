@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  BookOpen,
   Brain,
   Building2,
   CheckCircle2,
@@ -40,7 +39,7 @@ const CandidatoDashboard: React.FC = () => {
 
   // --- Dados de Exemplo ---
   const userData = {
-    name: "Jane Doe",
+    name: "Ana Silva",
     title: "Engenheira de Software",
     initials: "JD",
     avatarSrc: "https://github.com/shadcn.png",
@@ -110,7 +109,7 @@ const CandidatoDashboard: React.FC = () => {
 
           {/* Conteúdo Principal (Main) */}
           {/* Adicionado overflow-x-hidden para evitar scroll horizontal indesejado no <main> se algo vazar */}
-          <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-black overflow-x-hidden">
             {/* Cabeçalho do Conteúdo */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
@@ -125,12 +124,15 @@ const CandidatoDashboard: React.FC = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8 gap-1 dark:text-white"
+                  className="h-8 gap-1 hover:bg-zinc-100 dark:text-white dark:hover:bg-zinc-800"
                 >
                   <Edit className="h-3.5 w-3.5" />
                   <span>Editar Perfil</span>
                 </Button>
-                <Button size="sm" className="h-8">
+                <Button
+                  size="sm"
+                  className="h-8 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
+                >
                   <Search className="h-3.5 w-3.5 mr-1" />
                   Encontrar Vagas
                 </Button>
@@ -138,7 +140,7 @@ const CandidatoDashboard: React.FC = () => {
             </div>
 
             {/* Card: Progresso do Perfil */}
-            <Card className="border-purple-200/50 dark:border-purple-800/50 shadow-sm dark:shadow-none">
+            <Card className="dark:bg-zinc-900 dark:border-zinc-700 shadow-sm dark:shadow-none">
               <CardHeader className="pb-2">
                 <CardTitle className="dark:text-white">
                   {" "}
@@ -161,7 +163,10 @@ const CandidatoDashboard: React.FC = () => {
                       75%{" "}
                     </span>
                   </div>
-                  <Progress value={75} className="h-2" />
+                  <Progress
+                    value={75}
+                    className="h-2 bg-zinc-200 dark:bg-zinc-800 [&>*]:bg-purple-600 dark:[&>*]:bg-purple-500"
+                  />
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
                     {" "}
                     {/* Ajuste para empilhar em telas muito pequenas */}
@@ -221,7 +226,11 @@ const CandidatoDashboard: React.FC = () => {
               </CardContent>
               <CardFooter>
                 {" "}
-                <Button variant="outline" size="sm" className="w-full">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full dark:bg-black hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                >
                   {" "}
                   Completar Seu Perfil{" "}
                 </Button>{" "}
@@ -232,7 +241,7 @@ const CandidatoDashboard: React.FC = () => {
             {/* Alterado para grid-cols-1 em telas pequenas e md:grid-cols-2 para melhor responsividade */}
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
               {/* Card: Status das Avaliações */}
-              <Card className="border-indigo-200/50 dark:border-indigo-800/50 shadow-sm dark:shadow-none">
+              <Card className="dark:bg-zinc-900 dark:border-zinc-700 shadow-sm dark:shadow-none">
                 <CardHeader>
                   <CardTitle className="dark:text-white">
                     {" "}
@@ -279,14 +288,14 @@ const CandidatoDashboard: React.FC = () => {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="h-7 text-xs flex-shrink-0"
+                        className="h-7 bg-white dark:bg-zinc-900 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs flex-shrink-0"
                       >
                         {" "}
                         Continuar{" "}
                       </Button>
                     </div>
                     {/* Avaliação 3 */}
-                    <div className="flex items-center p-3 bg-background rounded-md border dark:border-gray-700 gap-3">
+                    <div className="flex items-center p-3 bg-background rounded-md border dark:border-zinc-700 gap-3">
                       <Brain className="h-5 w-5 text-muted-foreground dark:text-gray-400 flex-shrink-0" />
                       <div className="flex-1">
                         <h3 className="text-sm font-medium dark:text-white">
@@ -298,7 +307,11 @@ const CandidatoDashboard: React.FC = () => {
                           Não iniciado{" "}
                         </p>
                       </div>
-                      <Button size="sm" className="h-7 text-xs flex-shrink-0">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-7 bg-purple-800 text-white hover:bg-purple-900 text-xs flex-shrink-0"
+                      >
                         {" "}
                         Começar{" "}
                       </Button>
@@ -318,7 +331,7 @@ const CandidatoDashboard: React.FC = () => {
               </Card>
 
               {/* Card: Vagas Compatíveis */}
-              <Card className="border-violet-200/50 dark:border-violet-800/50 shadow-sm dark:shadow-none">
+              <Card className="dark:bg-zinc-900 dark:border-zinc-700 shadow-sm dark:shadow-none">
                 <CardHeader>
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                     {" "}
@@ -342,7 +355,7 @@ const CandidatoDashboard: React.FC = () => {
                 <CardContent>
                   <div className="space-y-4">
                     {/* Vaga 1 */}
-                    <div className="flex items-start p-3 bg-background rounded-md border hover:border-purple-300 dark:hover:border-purple-700 transition-colors cursor-pointer dark:border-gray-700 gap-3">
+                    <div className="flex items-start p-3 bg-background rounded-md border hover:border-purple-300 dark:hover:border-purple-700 transition-colors cursor-pointer dark:border-zinc-700 gap-3">
                       <Avatar className="h-8 w-8 flex-shrink-0 mt-1">
                         {" "}
                         <AvatarImage
@@ -396,7 +409,7 @@ const CandidatoDashboard: React.FC = () => {
                       </div>
                     </div>
                     {/* Vaga 2 */}
-                    <div className="flex items-start p-3 bg-background rounded-md border hover:border-purple-300 dark:hover:border-purple-700 transition-colors cursor-pointer dark:border-gray-700 gap-3">
+                    <div className="flex items-start p-3 bg-background rounded-md border hover:border-purple-300 dark:hover:border-purple-700 transition-colors cursor-pointer dark:border-zinc-700 gap-3">
                       <Avatar className="h-8 w-8 flex-shrink-0 mt-1">
                         {" "}
                         <AvatarImage
@@ -446,7 +459,7 @@ const CandidatoDashboard: React.FC = () => {
                       </div>
                     </div>
                     {/* Vaga 3 */}
-                    <div className="flex items-start p-3 bg-background rounded-md border hover:border-purple-300 dark:hover:border-purple-700 transition-colors cursor-pointer dark:border-gray-700 gap-3">
+                    <div className="flex items-start p-3 bg-background rounded-md border hover:border-purple-300 dark:hover:border-purple-700 transition-colors cursor-pointer dark:border-zinc-700 gap-3">
                       <Avatar className="h-8 w-8 flex-shrink-0 mt-1">
                         {" "}
                         <AvatarImage
@@ -507,7 +520,10 @@ const CandidatoDashboard: React.FC = () => {
                     {" "}
                     Ver todas as combinações{" "}
                   </Link>
-                  <Button size="sm" className="w-full sm:w-auto">
+                  <Button
+                    size="sm"
+                    className="w-full bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200 sm:w-auto"
+                  >
                     {" "}
                     Candidate-se Agora{" "}
                   </Button>
@@ -515,280 +531,121 @@ const CandidatoDashboard: React.FC = () => {
               </Card>
             </div>
 
-            {/* Grid para Atividade e Próximos */}
-            {/* Alterado para grid-cols-1 em telas pequenas e md:grid-cols-2 */}
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
-              {/* Card: Atividade Recente */}
-              <Card className="shadow-sm dark:shadow-none">
-                <CardHeader>
+            {/* Card: Atividade Recente */}
+            <Card className="dark:bg-zinc-900 dark:border-zinc-700 shadow-sm dark:shadow-none">
+              <CardHeader>
+                {" "}
+                <CardTitle className="dark:text-white">
                   {" "}
-                  <CardTitle className="dark:text-white">
-                    {" "}
-                    Atividade Recente{" "}
-                  </CardTitle>{" "}
-                  <CardDescription className="dark:text-gray-300">
-                    {" "}
-                    Suas últimas interações e atualizações{" "}
-                  </CardDescription>{" "}
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {/* Item 1 */}
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 h-7 w-7 rounded-full bg-purple-100 flex items-center justify-center dark:bg-purple-900/30 flex-shrink-0">
-                        {" "}
-                        <Building2 className="h-4 w-4 text-purple-600 dark:text-purple-400" />{" "}
-                      </div>
-                      <div className="min-w-0">
-                        {" "}
-                        <p className="text-sm dark:text-white truncate">
-                          {" "}
-                          <span className="font-medium">
-                            TechCorp Inc.
-                          </span>{" "}
-                          visualizou seu perfil{" "}
-                        </p>{" "}
-                        <p className="text-xs text-muted-foreground dark:text-gray-400">
-                          {" "}
-                          2 horas atrás{" "}
-                        </p>{" "}
-                      </div>
+                  Atividade Recente{" "}
+                </CardTitle>{" "}
+                <CardDescription className="dark:text-gray-300">
+                  {" "}
+                  Suas últimas interações e atualizações{" "}
+                </CardDescription>{" "}
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {/* Item 1 */}
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 h-7 w-7 rounded-full bg-purple-100 flex items-center justify-center dark:bg-purple-900/30 flex-shrink-0">
+                      {" "}
+                      <Building2 className="h-4 w-4 text-purple-600 dark:text-purple-400" />{" "}
                     </div>
-                    {/* Item 2 */}
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 h-7 w-7 rounded-full bg-indigo-100 flex items-center justify-center dark:bg-indigo-900/30 flex-shrink-0">
+                    <div className="min-w-0">
+                      {" "}
+                      <p className="text-sm dark:text-white truncate">
                         {" "}
-                        <MessageSquare className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />{" "}
-                      </div>
-                      <div className="min-w-0">
+                        <span className="font-medium">TechCorp Inc.</span>{" "}
+                        visualizou seu perfil{" "}
+                      </p>{" "}
+                      <p className="text-xs text-muted-foreground dark:text-gray-400">
                         {" "}
-                        <p className="text-sm dark:text-white truncate">
-                          {" "}
-                          <span className="font-medium">
-                            {" "}
-                            Sarah da InnovateLabs{" "}
-                          </span>{" "}
-                          enviou uma mensagem{" "}
-                        </p>{" "}
-                        <p className="text-xs text-muted-foreground dark:text-gray-400">
-                          {" "}
-                          Ontem às 15:45{" "}
-                        </p>{" "}
-                      </div>
-                    </div>
-                    {/* Item 3 */}
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 h-7 w-7 rounded-full bg-green-100 flex items-center justify-center dark:bg-green-900/30 flex-shrink-0">
-                        {" "}
-                        <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />{" "}
-                      </div>
-                      <div className="min-w-0">
-                        {" "}
-                        <p className="text-sm dark:text-white truncate">
-                          {" "}
-                          Você completou a{" "}
-                          <span className="font-medium">
-                            Avaliação de Lógica
-                          </span>{" "}
-                        </p>{" "}
-                        <p className="text-xs text-muted-foreground dark:text-gray-400">
-                          {" "}
-                          15 de Março de 2025{" "}
-                        </p>{" "}
-                      </div>
-                    </div>
-                    {/* Item 4 */}
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 h-7 w-7 rounded-full bg-violet-100 flex items-center justify-center dark:bg-violet-900/30 flex-shrink-0">
-                        {" "}
-                        <Star className="h-4 w-4 text-violet-600 dark:text-violet-400" />{" "}
-                      </div>
-                      <div className="min-w-0">
-                        {" "}
-                        <p className="text-sm dark:text-white truncate">
-                          {" "}
-                          Você salvou{" "}
-                          <span className="font-medium">
-                            {" "}
-                            Dev Frontend na CloudTech{" "}
-                          </span>{" "}
-                        </p>{" "}
-                        <p className="text-xs text-muted-foreground dark:text-gray-400">
-                          {" "}
-                          14 de Março de 2025{" "}
-                        </p>{" "}
-                      </div>
+                        2 horas atrás{" "}
+                      </p>{" "}
                     </div>
                   </div>
-                </CardContent>
-                <CardFooter>
-                  {" "}
-                  <Link
-                    to="#"
-                    className="text-sm text-purple-600 dark:text-purple-400 hover:underline"
-                  >
-                    {" "}
-                    Ver toda a atividade{" "}
-                  </Link>{" "}
-                </CardFooter>
-              </Card>
-
-              {/* Card: Próximos Eventos */}
-              <Card className="shadow-sm dark:shadow-none">
-                <CardHeader>
-                  {" "}
-                  <CardTitle className="dark:text-white">
-                    Próximos
-                  </CardTitle>{" "}
-                  <CardDescription className="dark:text-gray-300">
-                    {" "}
-                    Entrevistas e eventos agendados{" "}
-                  </CardDescription>{" "}
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {/* Evento 1 */}
-                    <div className="flex items-start p-3 bg-purple-50 dark:bg-purple-900/10 rounded-md gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        {" "}
-                        <div className="h-10 w-10 rounded-md bg-purple-100 dark:bg-purple-900/30 flex flex-col items-center justify-center">
-                          {" "}
-                          <span className="text-xs font-bold text-purple-600 dark:text-purple-400">
-                            {" "}
-                            MAR{" "}
-                          </span>{" "}
-                          <span className="text-sm font-bold text-purple-600 dark:text-purple-400">
-                            {" "}
-                            25{" "}
-                          </span>{" "}
-                        </div>{" "}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-medium dark:text-white truncate">
-                          {" "}
-                          Entrevista Técnica{" "}
-                        </h3>
-                        <p className="text-xs text-muted-foreground dark:text-gray-400 truncate">
-                          {" "}
-                          TechCorp Inc. • 14:00 - 15:00{" "}
-                        </p>
-                        <div className="flex items-center gap-1 mt-1">
-                          {" "}
-                          <Clock className="h-3 w-3 text-muted-foreground dark:text-gray-400" />{" "}
-                          <span className="text-xs text-muted-foreground dark:text-gray-400">
-                            {" "}
-                            Vídeo Chamada{" "}
-                          </span>{" "}
-                        </div>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="h-7 text-xs flex-shrink-0"
-                      >
-                        {" "}
-                        Preparar{" "}
-                      </Button>
+                  {/* Item 2 */}
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 h-7 w-7 rounded-full bg-indigo-100 flex items-center justify-center dark:bg-indigo-900/30 flex-shrink-0">
+                      {" "}
+                      <MessageSquare className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />{" "}
                     </div>
-                    {/* Evento 2 */}
-                    <div className="flex items-start p-3 bg-background rounded-md border dark:border-gray-700 gap-3">
-                      <div className="mt-1 flex-shrink-0">
+                    <div className="min-w-0">
+                      {" "}
+                      <p className="text-sm dark:text-white truncate">
                         {" "}
-                        <div className="h-10 w-10 rounded-md bg-indigo-100 dark:bg-indigo-900/30 flex flex-col items-center justify-center">
+                        <span className="font-medium">
                           {" "}
-                          <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
-                            {" "}
-                            MAR{" "}
-                          </span>{" "}
-                          <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
-                            {" "}
-                            28{" "}
-                          </span>{" "}
-                        </div>{" "}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-medium dark:text-white truncate">
-                          {" "}
-                          Prazo Desafio Código{" "}
-                        </h3>
-                        <p className="text-xs text-muted-foreground dark:text-gray-400 truncate">
-                          {" "}
-                          InnovateLabs • Até 23:59{" "}
-                        </p>
-                        <div className="flex items-center gap-1 mt-1">
-                          {" "}
-                          <BookOpen className="h-3 w-3 text-muted-foreground dark:text-gray-400" />{" "}
-                          <span className="text-xs text-muted-foreground dark:text-gray-400">
-                            {" "}
-                            Take-Home{" "}
-                          </span>{" "}
-                        </div>
-                      </div>
-                      <Button size="sm" className="h-7 text-xs flex-shrink-0">
+                          Sarah da InnovateLabs{" "}
+                        </span>{" "}
+                        enviou uma mensagem{" "}
+                      </p>{" "}
+                      <p className="text-xs text-muted-foreground dark:text-gray-400">
                         {" "}
-                        Começar{" "}
-                      </Button>
-                    </div>
-                    {/* Evento 3 */}
-                    <div className="flex items-start p-3 bg-background rounded-md border dark:border-gray-700 gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        {" "}
-                        <div className="h-10 w-10 rounded-md bg-violet-100 dark:bg-violet-900/30 flex flex-col items-center justify-center">
-                          {" "}
-                          <span className="text-xs font-bold text-violet-600 dark:text-violet-400">
-                            {" "}
-                            ABR{" "}
-                          </span>{" "}
-                          <span className="text-sm font-bold text-violet-600 dark:text-violet-400">
-                            {" "}
-                            02{" "}
-                          </span>{" "}
-                        </div>{" "}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-medium dark:text-white truncate">
-                          {" "}
-                          Feira Carreiras Virtual{" "}
-                        </h3>
-                        <p className="text-xs text-muted-foreground dark:text-gray-400 truncate">
-                          {" "}
-                          Plataforma Nexus • 10:00 - 14:00{" "}
-                        </p>
-                        <div className="flex items-center gap-1 mt-1">
-                          {" "}
-                          <Users className="h-3 w-3 text-muted-foreground dark:text-gray-400" />{" "}
-                          <span className="text-xs text-muted-foreground dark:text-gray-400">
-                            {" "}
-                            Foco Tech{" "}
-                          </span>{" "}
-                        </div>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="h-7 text-xs flex-shrink-0"
-                      >
-                        {" "}
-                        RSVP{" "}
-                      </Button>
+                        Ontem às 15:45{" "}
+                      </p>{" "}
                     </div>
                   </div>
-                </CardContent>
-                <CardFooter>
+                  {/* Item 3 */}
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 h-7 w-7 rounded-full bg-green-100 flex items-center justify-center dark:bg-green-900/30 flex-shrink-0">
+                      {" "}
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />{" "}
+                    </div>
+                    <div className="min-w-0">
+                      {" "}
+                      <p className="text-sm dark:text-white truncate">
+                        {" "}
+                        Você completou a{" "}
+                        <span className="font-medium">
+                          Avaliação de Lógica
+                        </span>{" "}
+                      </p>{" "}
+                      <p className="text-xs text-muted-foreground dark:text-gray-400">
+                        {" "}
+                        15 de Março de 2025{" "}
+                      </p>{" "}
+                    </div>
+                  </div>
+                  {/* Item 4 */}
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 h-7 w-7 rounded-full bg-violet-100 flex items-center justify-center dark:bg-violet-900/30 flex-shrink-0">
+                      {" "}
+                      <Star className="h-4 w-4 text-violet-600 dark:text-violet-400" />{" "}
+                    </div>
+                    <div className="min-w-0">
+                      {" "}
+                      <p className="text-sm dark:text-white truncate">
+                        {" "}
+                        Você salvou{" "}
+                        <span className="font-medium">
+                          {" "}
+                          Dev Frontend na CloudTech{" "}
+                        </span>{" "}
+                      </p>{" "}
+                      <p className="text-xs text-muted-foreground dark:text-gray-400">
+                        {" "}
+                        14 de Março de 2025{" "}
+                      </p>{" "}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                {" "}
+                <Link
+                  to="#"
+                  className="text-sm text-purple-600 dark:text-purple-400 hover:underline"
+                >
                   {" "}
-                  <Link
-                    to="#"
-                    className="text-sm text-purple-600 dark:text-purple-400 hover:underline"
-                  >
-                    {" "}
-                    Ver calendário{" "}
-                  </Link>{" "}
-                </CardFooter>
-              </Card>
-            </div>
+                  Ver toda a atividade{" "}
+                </Link>{" "}
+              </CardFooter>
+            </Card>
 
             {/* Card: Recursos Recomendados */}
-            <Card className="shadow-sm dark:shadow-none">
+            <Card className="dark:bg-zinc-900 dark:border-zinc-700 shadow-sm dark:shadow-none">
               <CardHeader>
                 {" "}
                 <CardTitle className="dark:text-white">
@@ -804,7 +661,7 @@ const CandidatoDashboard: React.FC = () => {
                 {/* Alterado para grid-cols-1 em telas pequenas e md:grid-cols-2 lg:grid-cols-3 */}
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                   {/* Recurso 1 */}
-                  <div className="group relative overflow-hidden rounded-lg border bg-background hover:shadow-md transition-all dark:border-gray-700 dark:hover:border-purple-700/50">
+                  <div className="group relative overflow-hidden rounded-lg border bg-background hover:shadow-md transition-all dark:border-zinc-700 dark:hover:border-purple-700/50 cursor-pointer">
                     <div className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all dark:bg-purple-800/20 dark:group-hover:bg-purple-800/40"></div>
                     <div className="p-5 relative z-10">
                       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30 flex-shrink-0">
@@ -835,7 +692,7 @@ const CandidatoDashboard: React.FC = () => {
                     </div>
                   </div>
                   {/* Recurso 2 */}
-                  <div className="group relative overflow-hidden rounded-lg border bg-background hover:shadow-md transition-all dark:border-gray-700 dark:hover:border-indigo-700/50">
+                  <div className="group relative overflow-hidden rounded-lg border bg-background hover:shadow-md transition-all dark:border-zinc-700 dark:hover:border-indigo-700/50 cursor-pointer">
                     <div className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all dark:bg-indigo-800/20 dark:group-hover:bg-indigo-800/40"></div>
                     <div className="p-5 relative z-10">
                       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex-shrink-0">
@@ -865,7 +722,7 @@ const CandidatoDashboard: React.FC = () => {
                     </div>
                   </div>
                   {/* Recurso 3 */}
-                  <div className="group relative overflow-hidden rounded-lg border bg-background hover:shadow-md transition-all dark:border-gray-700 dark:hover:border-violet-700/50">
+                  <div className="group relative overflow-hidden rounded-lg border bg-background hover:shadow-md transition-all dark:border-zinc-700 dark:hover:border-violet-700/50 cursor-pointer">
                     <div className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-all dark:bg-violet-800/20 dark:group-hover:bg-violet-800/40"></div>
                     <div className="p-5 relative z-10">
                       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30 flex-shrink-0">
@@ -904,7 +761,11 @@ const CandidatoDashboard: React.FC = () => {
                   {" "}
                   Ver todos os recursos{" "}
                 </Link>
-                <Button variant="outline" size="sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                >
                   {" "}
                   Avaliação de Habilidade{" "}
                 </Button>
