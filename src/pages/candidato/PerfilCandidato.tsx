@@ -392,7 +392,7 @@ const ProfilePageCandidate: React.FC = () => {
                 {userData.experiences.map((exp) => (
                   <div
                     key={exp.id}
-                    className="border rounded-lg p-4 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 transition-shadow hover:shadow-md dark:hover:border-zinc-500"
+                    className="border rounded-lg p-4 bg-gray-50 dark:bg-zinc-900 dark:border-zinc-600 transition-shadow hover:shadow-md dark:hover:border-zinc-500"
                   >
                     {/* Conteúdo do item de experiência */}
                     <div className="flex flex-col sm:flex-row justify-between items-start mb-3 gap-2">
@@ -490,7 +490,7 @@ const ProfilePageCandidate: React.FC = () => {
                 {userData.education.map((edu) => (
                   <div
                     key={edu.id}
-                    className="border rounded-lg p-4 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 transition-shadow hover:shadow-md dark:hover:border-zinc-500"
+                    className="border rounded-lg p-4 bg-gray-50 dark:bg-zinc-900 dark:border-zinc-600 transition-shadow hover:shadow-md dark:hover:border-zinc-500"
                   >
                     <div className="flex flex-col sm:flex-row justify-between items-start mb-3 gap-2">
                       <div>
@@ -571,7 +571,7 @@ const ProfilePageCandidate: React.FC = () => {
                     <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Habilidades Técnicas
                     </Label>
-                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600">
+                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-zinc-900 dark:border-zinc-600">
                       {userData.technicalSkills.map((skill) => (
                         <Badge
                           key={skill}
@@ -587,7 +587,7 @@ const ProfilePageCandidate: React.FC = () => {
                     <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Competências Comportamentais
                     </Label>
-                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600">
+                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-zinc-900 dark:border-zinc-600">
                       {userData.softSkills.map((skill) => (
                         <Badge
                           key={skill}
@@ -614,7 +614,7 @@ const ProfilePageCandidate: React.FC = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="border rounded-md p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600">
+                <div className="border rounded-md p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50 dark:bg-zinc-900 dark:border-zinc-600">
                   <div className="flex items-center gap-3 w-full sm:w-auto">
                     <div className="h-10 w-10 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center justify-center flex-shrink-0">
                       <User className="h-6 w-6 text-gray-600 dark:text-gray-400" />

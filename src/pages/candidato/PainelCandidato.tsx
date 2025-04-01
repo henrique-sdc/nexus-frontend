@@ -229,7 +229,7 @@ const CandidatoDashboard: React.FC = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full dark:bg-black hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                  className="w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                 >
                   {" "}
                   Completar Seu Perfil{" "}

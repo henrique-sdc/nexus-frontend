@@ -1113,7 +1113,7 @@ export default function Configuracoes() {
                     </CardHeader>
                     <CardContent className="space-y-6">
                       {/* Detalhes do Plano Atual (Exemplo: Gratuito) - COR INNER CARD PADRONIZADA */}
-                      <div className="rounded-lg border dark:border-zinc-700 p-4 bg-gray-50 dark:bg-zinc-800/50">
+                      <div className="rounded-lg border dark:border-zinc-700 p-4 bg-gray-50 dark:dark:bg-zinc-800/50">
                         {" "}
                         {/* COR PADRONIZADA (Inner Card BG/Borda) */}
                         <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
