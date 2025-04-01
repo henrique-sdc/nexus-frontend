@@ -111,13 +111,15 @@ export default function AnalisesEmpresa() {
 
   return (
     <SidebarProvider>
-      {/* Container principal Flex (Estrutura padrão) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950">
-        {/* --- Sidebar Desktop (EmpresaSidebar) --- */}
+      {/* Container principal Flex - COR EXTERNA PADRONIZADA */}
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black">
+        {" "}
+        {/* COR PADRONIZADA: dark:bg-black */}
+        {/* --- Sidebar Desktop - COR BORDA PADRONIZADA --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
-            "bg-background dark:bg-gray-900",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+            "bg-background dark:bg-gray-900", // Fundo Sidebar Mantido
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
         >
@@ -130,17 +132,16 @@ export default function AnalisesEmpresa() {
             empresaAvatarSrc={empresaData.logoSrc}
             messageCount={empresaData.messageCount}
             onNavigate={navigateTo}
-            activePage="analises" // **IMPORTANTE**
+            activePage="analises"
           />
         </div>
-
-        {/* --- Sidebar Mobile (Sheet - EmpresaSidebar) --- */}
+        {/* --- Sidebar Mobile (Sheet) - COR BORDA PADRONIZADA --- */}
         <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetContent
             side="left"
             className={cn(
-              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
-              "bg-white dark:bg-gray-900"
+              "p-0 w-64 lg:hidden border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+              "bg-white dark:bg-gray-900" // Fundo Sidebar Mantido
             )}
           >
             <EmpresaSidebar
@@ -152,14 +153,13 @@ export default function AnalisesEmpresa() {
               empresaAvatarSrc={empresaData.logoSrc}
               messageCount={empresaData.messageCount}
               onNavigate={navigateTo}
-              activePage="analises" // **IMPORTANTE**
+              activePage="analises"
             />
           </SheetContent>
         </Sheet>
-
-        {/* --- Área de Conteúdo Principal (Estrutura padrão) --- */}
+        {/* --- Área de Conteúdo Principal --- */}
         <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Estrutura padrão) */}
+          {/* Navbar Superior */}
           <DashboardNavbar
             onMobileMenuClick={openMobileSheet}
             userName={empresaData.name}
@@ -168,19 +168,25 @@ export default function AnalisesEmpresa() {
             notificationCount={empresaData.notificationCount}
           />
 
-          {/* Conteúdo Principal (Main) - Layout padrão */}
-          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          {/* Conteúdo Principal (Main) - COR FUNDO MAIN PADRONIZADA */}
+          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
+            {" "}
+            {/* COR PADRONIZADA: dark:bg-zinc-900/60 */}
             {/* ================================================================== */}
             {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA DE ANÁLISES               */}
             {/* ================================================================== */}
             <div className="space-y-6">
-              {/* Cabeçalho da Página */}
+              {/* Cabeçalho da Página - CORES TEXTO/BOTÃO PADRÃO */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {" "}
+                    {/* COR TEXTO PADRÃO */}
                     Análises
                   </h1>
                   <p className="text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
                     Acompanhe suas métricas e performance de recrutamento
                   </p>
                 </div>
@@ -189,16 +195,15 @@ export default function AnalisesEmpresa() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    className="gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                   >
                     <Calendar className="h-4 w-4" />
-                    <span>Últimos 30 dias</span>{" "}
-                    {/* Exemplo, idealmente viria de um estado/filtro */}
+                    <span>Últimos 30 dias</span>
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    className="gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                   >
                     <Download className="h-4 w-4" />
                     <span>Exportar</span>
@@ -206,72 +211,103 @@ export default function AnalisesEmpresa() {
                 </div>
               </div>
 
-              {/* Cards de Estatísticas Principais */}
+              {/* Cards de Estatísticas Principais - COR CARD PADRONIZADA */}
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {/* Card Total Candidaturas */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Total de Candidaturas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.totalCandidaturas}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400 flex items-center gap-1">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {renderVariation(stats.variacaoCandidaturas)} vs período
                       anterior
                     </p>
                   </CardContent>
                 </Card>
                 {/* Card Entrevistas Realizadas */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Entrevistas Realizadas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.entrevistasRealizadas}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400 flex items-center gap-1">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {renderVariation(stats.variacaoEntrevistas)} vs período
                       anterior
                     </p>
                   </CardContent>
                 </Card>
                 {/* Card Ofertas Enviadas */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Ofertas Enviadas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.ofertasEnviadas}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400 flex items-center gap-1">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {renderVariation(stats.variacaoOfertas)} vs período
                       anterior
                     </p>
                   </CardContent>
                 </Card>
                 {/* Card Tempo Médio Contratação */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Tempo para Contratar (Médio)
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.tempoMedioContratacao}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400 flex items-center gap-1">
-                      {/* Para tempo, menor é melhor */}
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {renderVariation(
                         stats.variacaoTempoContratacao,
                         " dias",
@@ -283,148 +319,198 @@ export default function AnalisesEmpresa() {
                 </Card>
               </div>
 
-              {/* Abas para Gráficos Detalhados */}
+              {/* Abas para Gráficos Detalhados - COR TABS PADRONIZADA */}
               <Tabs defaultValue="candidaturas" className="w-full">
-                <TabsList className="bg-gray-100 dark:bg-gray-800">
+                <TabsList className="bg-gray-100 dark:bg-zinc-800">
+                  {" "}
+                  {/* COR PADRONIZADA: TabsList BG */}
                   <TabsTrigger
                     value="candidaturas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 dark:data-[state=inactive]:hover:bg-zinc-700" // COR PADRONIZADA: TabsTrigger
                   >
                     Candidaturas
                   </TabsTrigger>
                   <TabsTrigger
                     value="fontes"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 dark:data-[state=inactive]:hover:bg-zinc-700" // COR PADRONIZADA: TabsTrigger
                   >
                     Fontes
                   </TabsTrigger>
                   <TabsTrigger
                     value="vagas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 dark:data-[state=inactive]:hover:bg-zinc-700" // COR PADRONIZADA: TabsTrigger
                   >
                     Vagas
                   </TabsTrigger>
                 </TabsList>
 
-                {/* Conteúdo Aba: Candidaturas */}
+                {/* Conteúdo Aba: Candidaturas - COR CARD PADRONIZADA */}
                 <TabsContent value="candidaturas" className="mt-4">
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Tendências de Candidaturas
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Acompanhe o volume de candidaturas ao longo do tempo
                       </CardDescription>
                     </CardHeader>
                     {/* Placeholder do Gráfico */}
                     <CardContent className="h-[400px] flex flex-col items-center justify-center text-center p-6">
                       <div className="rounded-full bg-purple-100 p-3 dark:bg-purple-900/20 mb-4">
-                        <LineChart className="h-10 w-10 text-purple-600 dark:text-purple-400" />
+                        {" "}
+                        {/* Cor Ícone Mantida */}
+                        <LineChart className="h-10 w-10 text-purple-600 dark:text-purple-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <p className="text-muted-foreground dark:text-gray-500 max-w-md">
+                        {" "}
+                        {/* COR PLACEHOLDER PADRÃO */}
                         Visualização de gráfico apareceria aqui mostrando
                         tendências de candidaturas ao longo do tempo.
                       </p>
-                      {/* Aqui você renderizaria o componente do gráfico real */}
-                      {/* <SeuComponenteDeGraficoDeLinha dados={dadosCandidaturas} /> */}
                     </CardContent>
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Fontes */}
+                {/* Conteúdo Aba: Fontes - COR CARD PADRONIZADA */}
                 <TabsContent value="fontes" className="mt-4">
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Fontes de Candidatura
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         De onde seus candidatos estão vindo
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="h-[400px] flex flex-col items-center justify-center text-center p-6">
                       <div className="rounded-full bg-indigo-100 p-3 dark:bg-indigo-900/20 mb-4">
-                        <PieChart className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />
+                        {" "}
+                        {/* Cor Ícone Mantida */}
+                        <PieChart className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <p className="text-muted-foreground dark:text-gray-500 max-w-md">
+                        {" "}
+                        {/* COR PLACEHOLDER PADRÃO */}
                         Visualização de gráfico apareceria aqui mostrando as
                         fontes de candidatura.
                       </p>
-                      {/* <SeuComponenteDeGraficoDePizza dados={dadosFontes} /> */}
                     </CardContent>
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Vagas */}
+                {/* Conteúdo Aba: Vagas - COR CARD PADRONIZADA */}
                 <TabsContent value="vagas" className="mt-4">
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Candidaturas por Vaga
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Distribuição de candidaturas entre as vagas
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="h-[400px] flex flex-col items-center justify-center text-center p-6">
                       <div className="rounded-full bg-violet-100 p-3 dark:bg-violet-900/20 mb-4">
-                        <BarChart3 className="h-10 w-10 text-violet-600 dark:text-violet-400" />
+                        {" "}
+                        {/* Cor Ícone Mantida */}
+                        <BarChart3 className="h-10 w-10 text-violet-600 dark:text-violet-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <p className="text-muted-foreground dark:text-gray-500 max-w-md">
+                        {" "}
+                        {/* COR PLACEHOLDER PADRÃO */}
                         Visualização de gráfico apareceria aqui mostrando
                         candidaturas por vaga.
                       </p>
-                      {/* <SeuComponenteDeGraficoDeBarras dados={dadosVagas} /> */}
                     </CardContent>
                   </Card>
                 </TabsContent>
               </Tabs>
 
-              {/* Grid para Gráficos Adicionais */}
+              {/* Grid para Gráficos Adicionais - COR CARD PADRONIZADA */}
               <div className="grid gap-4 md:grid-cols-2">
                 {/* Card: Demografia dos Candidatos */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader>
                     <CardTitle className="text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       Demografia dos Candidatos
                     </CardTitle>
                     <CardDescription className="dark:text-gray-400">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       Métricas de diversidade do seu pool de candidatos
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="h-[300px] flex flex-col items-center justify-center text-center p-6">
                     <div className="rounded-full bg-purple-100 p-3 dark:bg-purple-900/20 mb-4">
-                      <Users className="h-10 w-10 text-purple-600 dark:text-purple-400" />
+                      {" "}
+                      {/* Cor Ícone Mantida */}
+                      <Users className="h-10 w-10 text-purple-600 dark:text-purple-400" />{" "}
+                      {/* Cor Ícone Mantida */}
                     </div>
                     <p className="text-muted-foreground dark:text-gray-500 max-w-md">
+                      {" "}
+                      {/* COR PLACEHOLDER PADRÃO */}
                       Visualização de gráfico apareceria aqui mostrando a
                       demografia dos candidatos.
                     </p>
-                    {/* <SeuComponenteDeGraficoDemografico dados={dadosDemografia} /> */}
                   </CardContent>
                 </Card>
 
                 {/* Card: Funil de Recrutamento */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader>
                     <CardTitle className="text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       Funil de Recrutamento
                     </CardTitle>
                     <CardDescription className="dark:text-gray-400">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       Taxas de conversão em cada etapa
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="h-[300px] flex flex-col items-center justify-center text-center p-6">
                     <div className="rounded-full bg-indigo-100 p-3 dark:bg-indigo-900/20 mb-4">
+                      {" "}
+                      {/* Cor Ícone Mantida */}
                       <BarChart3 className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />{" "}
-                      {/* Ou ícone específico de funil */}
+                      {/* Cor Ícone Mantida */}
                     </div>
                     <p className="text-muted-foreground dark:text-gray-500 max-w-md">
+                      {" "}
+                      {/* COR PLACEHOLDER PADRÃO */}
                       Visualização de gráfico apareceria aqui mostrando o funil
                       de recrutamento.
                     </p>
-                    {/* <SeuComponenteDeGraficoDeFunil dados={dadosFunil} /> */}
                   </CardContent>
                 </Card>
               </div>

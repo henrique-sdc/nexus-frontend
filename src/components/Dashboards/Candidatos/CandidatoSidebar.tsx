@@ -106,7 +106,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
       </SidebarHeader>
 
       {/* Conteúdo Principal da Sidebar (Menu) */}
-      <SidebarContent className="flex-1 py-4 pt-8 dark:pt-12 overflow-y-auto">
+      <SidebarContent className="flex-1 py-4 pt-12 overflow-y-auto">
         {" "}
         {/* Ajuste pt se necessário */}
         <SidebarMenu className="space-y-1 px-2">

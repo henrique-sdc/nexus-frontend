@@ -52,20 +52,22 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
       "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-gray-400 hover:bg-accent hover:text-foreground w-full text-left", // Garantir alinhamento e largura
       !isOpen ? "justify-center px-2" : "",
       isActive
-        ? "bg-accent text-foreground dark:bg-gray-700 dark:text-white" // Estilo ativo
-        : "hover:dark:bg-gray-800" // Estilo hover não ativo no dark mode (opcional)
+        ? "bg-accent text-foreground bg-zinc-200/70 dark:bg-zinc-700 dark:text-white" // Estilo ativo
+        : "hover:bg-zinc-200/40 hover:dark:bg-zinc-800" // Estilo hover não ativo no dark mode (opcional)
     );
 
   return (
-    // Container principal da Sidebar
+    // Container principal da Sidebar - COR PADRONIZADA
     <div
       className={cn(
-        "flex flex-col h-full bg-background dark:bg-gray-900 w-full",
+        "flex flex-col h-full bg-background dark:bg-zinc-900 w-full", // COR PADRONIZADA: dark:bg-zinc-900
         isMobileView ? "" : ""
       )}
     >
-      {/* Cabeçalho da Sidebar */}
-      <SidebarHeader className="flex items-center justify-between p-4 h-16 border-b dark:border-gray-800">
+      {/* Cabeçalho da Sidebar - COR PADRONIZADA */}
+      <SidebarHeader className="flex items-center justify-between p-4 h-16 border-b dark:border-zinc-800">
+        {" "}
+        {/* COR PADRONIZADA: dark:border-zinc-800 */}
         {/* Container da Logo e Nome */}
         <div className="flex items-center gap-2">
           {/* Ícone/Logo Nexus */}
@@ -77,21 +79,23 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
           {/* Nome "Nexus" somente se aberto */}
           {isOpen && (
             <span className="text-xl font-bold dark:text-white whitespace-nowrap">
+              {" "}
+              {/* COR TEXTO PADRÃO */}
               Nexus
             </span>
           )}
         </div>
-        {/* Botão para Minimizar/Expandir (apenas Desktop) */}
+        {/* Botão para Minimizar/Expandir (apenas Desktop) - COR PADRONIZADA */}
         <div className="pt-2"></div>
         {!isMobileView && toggleSidebar && (
           <button
             onClick={toggleSidebar}
-            className="p-1 rounded ml-auto hover:bg-gray-200 dark:hover:bg-gray-800"
+            className="p-1 rounded ml-auto hover:bg-zinc-200 dark:hover:bg-zinc-800" // COR PADRONIZADA: hover:bg-zinc-800 (light hover adicionado para consistência)
             aria-label={isOpen ? "Recolher menu" : "Expandir menu"}
           >
             <PanelRightOpen
               className={cn(
-                "h-6 w-6 transform transition-transform duration-300 dark:text-white",
+                "h-6 w-6 transform transition-transform duration-200 dark:text-white", // COR TEXTO PADRÃO
                 !isOpen ? "rotate-180" : ""
               )}
             />
@@ -100,15 +104,16 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
       </SidebarHeader>
 
       {/* Conteúdo Principal da Sidebar (Menu) */}
-      <SidebarContent className="flex-1 py-4 pt-8 dark:pt-12 overflow-y-auto">
+      <SidebarContent className="flex-1 py-4 pt-12 overflow-y-auto">
         <SidebarMenu className="space-y-1 px-2">
           {/* Item: Candidatos */}
           <SidebarMenuItem>
-            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
               <Link
-                to="/dashboard/empresa"
-                className={menuButtonClass(activePage === "candidatos")} // Verifica se é a página ativa
+                to="/dashboard/empresa" // Assume que esta é a rota correta para "Candidatos" ou o dashboard principal
+                className={menuButtonClass(
+                  activePage === "dashboard" || activePage === "candidatos"
+                )} // COR PADRONIZADA (via função)
               >
                 <Users className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Candidatos</span>}
@@ -118,11 +123,10 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Vagas */}
           <SidebarMenuItem>
-            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
               <Link
-                to="/dashboard/empresa/gerenciar-vagas" // Rota para gerenciar vagas
-                className={menuButtonClass(activePage === "gerenciar-vagas")}
+                to="/dashboard/empresa/gerenciar-vagas"
+                className={menuButtonClass(activePage === "gerenciar-vagas")} // COR PADRONIZADA (via função)
               >
                 <Building2 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Vagas</span>}
@@ -130,16 +134,17 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
             </SidebarMenuButton>
           </SidebarMenuItem>
 
-          {/* Item: Mensagens */}
+          {/* Item: Mensagens - COR PADRONIZADA BADGE RING */}
           <SidebarMenuItem>
-            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
               <Link
-                to="/dashboard/empresa/mensagens" // Rota para mensagens
-                className={menuButtonClass(activePage === "mensagens")}
+                to="/dashboard/empresa/mensagens"
+                className={menuButtonClass(activePage === "mensagens")} // COR PADRONIZADA (via função)
               >
                 {/* Div interna para layout do badge */}
                 <div className="flex items-center gap-3">
+                  {" "}
+                  {/* Adicionado w-full aqui */}
                   <MessageSquare className="h-5 w-5 flex-shrink-0" />
                   {isOpen && (
                     <div className="flex flex-1 justify-between items-center">
@@ -147,6 +152,8 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
                       <div className="ml-20"></div>
                       {messageCount > 0 && (
                         <Badge className="ml-auto h-5 px-1.5 text-xs bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">
+                          {" "}
+                          {/* Cores específicas mantidas */}
                           {messageCount}
                         </Badge>
                       )}
@@ -155,9 +162,10 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
                 </div>
                 {/* Badge indicador no modo recolhido */}
                 {!isOpen && messageCount > 0 && (
-                  <span className="absolute right-1/4 top-1 block h-2 w-2 rounded-full bg-purple-600 ring-background dark:ring-gray-9000">
+                  // CORREÇÃO: Posição ajustada (right-1.5 top-1) e ring-zinc-900
+                  <span className="absolute right-1/4 top-1 block h-2 w-2 rounded-full bg-purple-600 ring-background dark:ring-zinc-900">
                     {" "}
-                    {/* Ajustado ring e right */}
+                    {/* COR PADRONIZADA: dark:ring-zinc-900 */}
                     <span className="sr-only">
                       {messageCount} mensagens não lidas
                     </span>
@@ -169,11 +177,10 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Análises */}
           <SidebarMenuItem>
-            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
               <Link
-                to="/dashboard/empresa/analises" // Rota para análises
-                className={menuButtonClass(activePage === "analises")}
+                to="/dashboard/empresa/analises"
+                className={menuButtonClass(activePage === "analises")} // COR PADRONIZADA (via função)
               >
                 <BarChart3 className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Análises</span>}
@@ -183,11 +190,10 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
 
           {/* Item: Configurações */}
           <SidebarMenuItem>
-            {/* *** VOLTOU A USAR 'asChild' e <Link> *** */}
             <SidebarMenuButton asChild>
               <Link
-                to="/dashboard/empresa/configuracoes" // Rota para configurações
-                className={menuButtonClass(activePage === "configuracoes")}
+                to="/dashboard/empresa/configuracoes"
+                className={menuButtonClass(activePage === "configuracoes")} // COR PADRONIZADA (via função)
               >
                 <Settings className="h-5 w-5 flex-shrink-0" />
                 {isOpen && <span>Configurações</span>}
@@ -197,8 +203,10 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
         </SidebarMenu>
       </SidebarContent>
 
-      {/* Rodapé da Sidebar */}
-      <SidebarFooter className="p-4 border-t dark:border-gray-700">
+      {/* Rodapé da Sidebar - COR PADRONIZADA */}
+      <SidebarFooter className="p-4 border-t dark:border-zinc-700">
+        {" "}
+        {/* COR PADRONIZADA: dark:border-zinc-700 */}
         <div
           className={cn(
             "flex items-center gap-3",
@@ -214,9 +222,13 @@ export const EmpresaSidebar: React.FC<EmpresaSidebarProps> = ({
           {isOpen && (
             <div className="overflow-hidden">
               <p className="text-sm font-medium dark:text-white truncate">
+                {" "}
+                {/* COR TEXTO PADRÃO */}
                 {empresaName}
               </p>
-              <p className="text-xs text-muted-foreground dark:text-gray-400 truncate">
+              <p className="text-xs text-muted-foreground dark:text-zinc-400 truncate">
+                {" "}
+                {/* COR PADRONIZADA: dark:text-zinc-400 */}
                 {empresaAccountType}
               </p>
             </div>

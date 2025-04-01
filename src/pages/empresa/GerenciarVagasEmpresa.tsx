@@ -120,41 +120,41 @@ export default function GerenciarVagas() {
 
   return (
     <SidebarProvider>
-      {/* Container principal Flex (Estrutura padrão) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950">
-        {/* --- Sidebar Desktop (Com props CORRETAS para EmpresaSidebar) --- */}
+      {/* Container principal Flex - COR EXTERNA PADRONIZADA */}
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black">
+        {" "}
+        {/* COR PADRONIZADA: dark:bg-black */}
+        {/* --- Sidebar Desktop - COR BORDA PADRONIZADA --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
-            "bg-background dark:bg-gray-900",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+            "bg-background dark:bg-gray-900", // Fundo Sidebar mantido gray-900 (igual referência do CandidatoSidebar)
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
         >
           <EmpresaSidebar
             isOpen={isDesktopSidebarOpen}
-            toggleSidebar={toggleDesktopSidebar} // Assumindo que o handler é necessário
+            toggleSidebar={toggleDesktopSidebar}
             empresaName={empresaData.name}
             empresaAccountType={empresaData.accountType}
             empresaInitials={empresaData.initials}
             empresaAvatarSrc={empresaData.logoSrc}
             messageCount={empresaData.messageCount}
             onNavigate={navigateTo}
-            activePage="gerenciar-vagas" // **IMPORTANTE**
-            // isMobileView não é necessário aqui
+            activePage="gerenciar-vagas"
           />
         </div>
-
-        {/* --- Sidebar Mobile (Sheet - Com props CORRETAS para EmpresaSidebar) --- */}
+        {/* --- Sidebar Mobile (Sheet) - COR BORDA PADRONIZADA --- */}
         <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetContent
             side="left"
             className={cn(
-              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
-              "bg-white dark:bg-gray-900"
+              "p-0 w-64 lg:hidden border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+              "bg-white dark:bg-gray-900" // Fundo Sidebar mantido gray-900
             )}
           >
             <EmpresaSidebar
-              isOpen={true} // Sempre aberto no Sheet
+              isOpen={true}
               isMobileView={true}
               empresaName={empresaData.name}
               empresaAccountType={empresaData.accountType}
@@ -162,153 +162,195 @@ export default function GerenciarVagas() {
               empresaAvatarSrc={empresaData.logoSrc}
               messageCount={empresaData.messageCount}
               onNavigate={navigateTo}
-              activePage="gerenciar-vagas" // **IMPORTANTE**
-              // toggleSidebar não é necessário aqui
+              activePage="gerenciar-vagas"
             />
           </SheetContent>
         </Sheet>
-
-        {/* --- Área de Conteúdo Principal (Estrutura padrão) --- */}
+        {/* --- Área de Conteúdo Principal --- */}
         <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Usando dados de empresaData) */}
+          {/* Navbar Superior */}
           <DashboardNavbar
             onMobileMenuClick={openMobileSheet}
-            userName={empresaData.name} // Mostrando nome da empresa na Navbar
+            userName={empresaData.name}
             userInitials={empresaData.initials}
             userAvatarSrc={empresaData.logoSrc}
             notificationCount={empresaData.notificationCount}
           />
 
-          {/* Conteúdo Principal (Main) - Layout padrão */}
-          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          {/* Conteúdo Principal (Main) - COR FUNDO MAIN PADRONIZADA */}
+          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
+            {" "}
+            {/* COR PADRONIZADA: dark:bg-zinc-900/60 */}
             {/* ================================================================== */}
             {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA GERENCIAR VAGAS           */}
-            {/* (O conteúdo interno permanece o mesmo da versão anterior)        */}
             {/* ================================================================== */}
             <div className="space-y-6">
-              {/* Cabeçalho da Página */}
+              {/* Cabeçalho da Página - CORES TEXTO/BOTÃO PADRÃO */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {" "}
+                    {/* COR TEXTO PADRÃO */}
                     Gerenciar Vagas
                   </h1>
                   <p className="text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
                     Gerencie as publicações de vagas da sua empresa
                   </p>
                 </div>
-                <Button className="gap-1 dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                {/* Mantendo botão azul como primário aqui */}
+                <Button className="gap-1 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                   <Plus className="h-4 w-4" />
                   <span>Criar Nova Vaga</span>
                 </Button>
               </div>
 
-              {/* Cards de Estatísticas */}
+              {/* Cards de Estatísticas - COR CARD PADRONIZADA */}
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Vagas Ativas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.vagasAtivas}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {stats.novasVagasMes} este mês
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Total de Candidaturas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.totalCandidaturas}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {stats.novasCandidaturasSemana} esta semana
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Entrevistas Agendadas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.entrevistasAgendadas}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {stats.novasEntrevistasSemana} esta semana
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* COR PADRONIZADA: Title Muted */}
                       Tempo Médio para Contratar
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {" "}
+                      {/* COR TEXTO PADRÃO */}
                       {stats.tempoMedioContratacao}
                     </div>
                     <p className="text-xs text-muted-foreground dark:text-gray-400">
+                      {" "}
+                      {/* COR TEXTO MUTED PADRÃO */}
                       {stats.variacaoTempoContratacao} desde mês passado
                     </p>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* Abas de Status das Vagas */}
+              {/* Abas de Status das Vagas - COR TABS PADRONIZADA */}
               <Tabs defaultValue="ativas" className="w-full">
-                <TabsList className="bg-gray-100 dark:bg-gray-800">
+                <TabsList className="bg-gray-100 dark:bg-zinc-800 rounded-md p-1 flex gap-1 w-9/12 max-w-full overflow-hidden">
                   <TabsTrigger
                     value="ativas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Ativas
                   </TabsTrigger>
                   <TabsTrigger
                     value="rascunho"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Rascunho
                   </TabsTrigger>
                   <TabsTrigger
                     value="fechadas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Fechadas
                   </TabsTrigger>
                 </TabsList>
 
-                {/* Conteúdo Aba: Ativas */}
+                {/* Conteúdo Aba: Ativas - COR CARD/BADGE PADRONIZADA */}
                 <TabsContent value="ativas" className="mt-4">
                   <div className="grid gap-4">
                     {vagasAtivas.map((vaga) => (
                       <Card
                         key={vaga.id}
-                        className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700"
+                        className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700" // COR PADRONIZADA: Card BG/Borda
                       >
                         <div className="p-4 md:p-6">
                           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                             <div className="space-y-3 flex-1 min-w-0">
                               <div className="flex items-center gap-2 flex-wrap">
                                 <h3 className="font-semibold text-lg text-gray-900 dark:text-white truncate">
+                                  {" "}
+                                  {/* COR TEXTO PADRÃO */}
                                   {vaga.titulo}
                                 </h3>
                                 <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/30 dark:text-green-400 text-xs px-2 py-0.5">
+                                  {" "}
+                                  {/* Cor Badge Status Mantida */}
                                   Ativa
                                 </Badge>
                               </div>
                               <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 <div className="flex items-center gap-1">
                                   <Building2 className="h-4 w-4 flex-shrink-0" />
                                   <span>{vaga.local}</span>
@@ -327,22 +369,25 @@ export default function GerenciarVagas() {
                                   <Badge
                                     key={skill}
                                     variant="outline"
-                                    className="text-xs px-1.5 py-0.5 dark:border-gray-600 dark:text-gray-400"
+                                    className="text-xs px-1.5 py-0.5 dark:border-zinc-500 dark:text-gray-400" // COR PADRONIZADA: Badge Outline
                                   >
                                     {skill}
                                   </Badge>
                                 ))}
                               </div>
                               <p className="text-sm text-muted-foreground dark:text-gray-400 pt-1">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Postada em {vaga.dataPostagem} • Expira em{" "}
                                 {vaga.expiraEm} dias
                               </p>
                             </div>
-                            <div className="flex flex-row sm:flex-col gap-2 mt-2 md:mt-0 md:ml-4 flex-shrink-0">
+                            <div className="flex flex-col gap-2 mt-2 md:mt-0 md:ml-4 flex-shrink-0">
+                              {/* Botões Outline Padronizados */}
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="gap-1 w-full sm:w-auto dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                                className="gap-1 w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                               >
                                 <Eye className="h-4 w-4" />
                                 <span>Ver</span>
@@ -350,15 +395,16 @@ export default function GerenciarVagas() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="gap-1 w-full sm:w-auto dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                                className="gap-1 w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                               >
                                 <Edit className="h-4 w-4" />
                                 <span>Editar</span>
                               </Button>
+                              {/* Botão Destrutivo Padronizado */}
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="gap-1 text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-400 dark:border-gray-600 dark:hover:bg-gray-700 w-full sm:w-auto"
+                                className="gap-1 w-full text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-400 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                               >
                                 <Trash2 className="h-4 w-4" />
                                 <span>Excluir</span>
@@ -369,35 +415,47 @@ export default function GerenciarVagas() {
                       </Card>
                     ))}
                     {vagasAtivas.length === 0 && (
-                      <div className="text-center py-10 text-muted-foreground dark:text-gray-500 col-span-full">
+                      <div className="text-center py-10 text-muted-foreground dark:text-gray-400 col-span-full">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO (ajustado para gray-400) */}
                         Nenhuma vaga ativa no momento.
                       </div>
                     )}
                   </div>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Rascunho */}
+                {/* Conteúdo Aba: Rascunho - COR CARD/BOTÃO PADRONIZADA */}
                 <TabsContent value="rascunho" className="mt-4">
-                  <Card className="p-6 bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="p-6 bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <div className="flex flex-col items-center justify-center py-8 text-center">
                       <div className="rounded-full bg-purple-100 p-3 dark:bg-purple-900/20 mb-4">
-                        <FileText className="h-10 w-10 text-purple-600 dark:text-purple-400" />
+                        {" "}
+                        {/* Cor Ícone Mantida */}
+                        <FileText className="h-10 w-10 text-purple-600 dark:text-purple-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Vagas em Rascunho
                       </h3>
                       <p className="text-muted-foreground dark:text-gray-400 max-w-md mx-auto mb-4">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Você tem 2 vagas salvas como rascunho. Continue
                         editando-as ou crie uma nova vaga.
                       </p>
                       <div className="flex gap-2 flex-wrap justify-center">
                         <Button
                           variant="outline"
-                          className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                          className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                         >
                           Ver Rascunhos
                         </Button>
-                        <Button className="gap-1 dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                        {/* Botão Primário Azul Mantido */}
+                        <Button className="gap-1 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                           <Plus className="h-4 w-4" />
                           <span>Criar Nova Vaga</span>
                         </Button>
@@ -406,23 +464,32 @@ export default function GerenciarVagas() {
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Fechadas */}
+                {/* Conteúdo Aba: Fechadas - COR CARD/BOTÃO PADRONIZADA */}
                 <TabsContent value="fechadas" className="mt-4">
-                  <Card className="p-6 bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="p-6 bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <div className="flex flex-col items-center justify-center py-8 text-center">
                       <div className="rounded-full bg-indigo-100 p-3 dark:bg-indigo-900/20 mb-4">
-                        <Clock className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />
+                        {" "}
+                        {/* Cor Ícone Mantida */}
+                        <Clock className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Vagas Fechadas
                       </h3>
                       <p className="text-muted-foreground dark:text-gray-400 max-w-md mx-auto mb-4">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Você tem 5 vagas fechadas. Você pode visualizá-las ou
                         republicá-las com informações atualizadas.
                       </p>
                       <Button
                         variant="outline"
-                        className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                        className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                       >
                         Ver Vagas Fechadas
                       </Button>
@@ -431,9 +498,13 @@ export default function GerenciarVagas() {
                 </TabsContent>
               </Tabs>
 
-              {/* Paginação (Placeholder) */}
-              <div className="flex items-center justify-between pt-4 border-t dark:border-gray-700">
+              {/* Paginação (Placeholder) - COR BORDA/BOTÃO PADRONIZADA */}
+              <div className="flex items-center justify-between pt-4 border-t dark:border-zinc-700">
+                {" "}
+                {/* COR PADRONIZADA: border-t */}
                 <div className="text-sm text-muted-foreground dark:text-gray-400">
+                  {" "}
+                  {/* COR TEXTO MUTED PADRÃO */}
                   Mostrando{" "}
                   <strong>
                     1-{vagasAtivas.length > 3 ? 3 : vagasAtivas.length}
@@ -445,21 +516,25 @@ export default function GerenciarVagas() {
                     variant="outline"
                     size="sm"
                     disabled
-                    className="dark:text-gray-500 dark:border-gray-600 dark:bg-gray-800"
+                    className="disabled:opacity-50 dark:text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800" // COR PADRONIZADA: Botão Disabled
                   >
                     Anterior
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-8 p-0 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    // Assumindo que este é o botão ativo da paginação
+                    className={cn(
+                      "w-8 p-0 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800",
+                      "bg-zinc-100 dark:bg-zinc-800" // Estilo ativo
+                    )}
                   >
                     1
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                   >
                     Próxima
                   </Button>

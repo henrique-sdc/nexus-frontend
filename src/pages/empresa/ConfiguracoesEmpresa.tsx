@@ -156,13 +156,15 @@ export default function ConfiguracoesEmpresa() {
 
   return (
     <SidebarProvider>
-      {/* Container principal Flex (Estrutura padrão) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950">
-        {/* --- Sidebar Desktop (EmpresaSidebar) --- */}
+      {/* Container principal Flex - COR EXTERNA PADRONIZADA */}
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black">
+        {" "}
+        {/* COR PADRONIZADA: dark:bg-black */}
+        {/* --- Sidebar Desktop - COR BORDA PADRONIZADA --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
-            "bg-background dark:bg-gray-900",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+            "bg-background dark:bg-gray-900", // Fundo Sidebar Mantido
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
         >
@@ -175,17 +177,16 @@ export default function ConfiguracoesEmpresa() {
             empresaAvatarSrc={empresaData.logoSrc}
             messageCount={empresaData.messageCount}
             onNavigate={navigateTo}
-            activePage="configuracoes" // **IMPORTANTE**
+            activePage="configuracoes"
           />
         </div>
-
-        {/* --- Sidebar Mobile (Sheet - EmpresaSidebar) --- */}
+        {/* --- Sidebar Mobile (Sheet) - COR BORDA PADRONIZADA --- */}
         <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetContent
             side="left"
             className={cn(
-              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
-              "bg-white dark:bg-gray-900"
+              "p-0 w-64 lg:hidden border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+              "bg-white dark:bg-gray-900" // Fundo Sidebar Mantido
             )}
           >
             <EmpresaSidebar
@@ -197,14 +198,13 @@ export default function ConfiguracoesEmpresa() {
               empresaAvatarSrc={empresaData.logoSrc}
               messageCount={empresaData.messageCount}
               onNavigate={navigateTo}
-              activePage="configuracoes" // **IMPORTANTE**
+              activePage="configuracoes"
             />
           </SheetContent>
         </Sheet>
-
-        {/* --- Área de Conteúdo Principal (Estrutura padrão) --- */}
+        {/* --- Área de Conteúdo Principal --- */}
         <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Estrutura padrão) */}
+          {/* Navbar Superior */}
           <DashboardNavbar
             onMobileMenuClick={openMobileSheet}
             userName={empresaData.name}
@@ -213,71 +213,98 @@ export default function ConfiguracoesEmpresa() {
             notificationCount={empresaData.notificationCount}
           />
 
-          {/* Conteúdo Principal (Main) - Layout padrão */}
-          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          {/* Conteúdo Principal (Main) - COR FUNDO MAIN PADRONIZADA */}
+          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
+            {" "}
+            {/* COR PADRONIZADA: dark:bg-zinc-900/60 */}
             {/* ================================================================== */}
             {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA CONFIGURAÇÕES (EMPRESA)   */}
             {/* ================================================================== */}
             <div className="space-y-6">
-              {/* Cabeçalho da Página */}
+              {/* Cabeçalho da Página - CORES TEXTO PADRÃO */}
               <div>
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {" "}
+                  {/* COR TEXTO PADRÃO */}
                   Configurações
                 </h1>
                 <p className="text-muted-foreground dark:text-gray-400">
+                  {" "}
+                  {/* COR TEXTO MUTED PADRÃO */}
                   Gerencie o perfil e as preferências da sua empresa
                 </p>
               </div>
 
-              {/* Abas Principais */}
+              {/* Abas Principais - RESPONSIVIDADE E CORES PADRONIZADAS */}
               <Tabs defaultValue="perfil" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5 lg:w-auto bg-gray-100 dark:bg-gray-800">
+                {/* Ajustado para flex e cores zinc */}
+                <TabsList className="flex w-full gap-1 bg-gray-200/50 dark:bg-zinc-800 p-1 rounded-lg">
+                  {" "}
+                  {/* COR PADRONIZADA: dark:bg-zinc-800 */}
                   <TabsTrigger
                     value="perfil"
-                    className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
-                    <User className="h-4 w-4" />
-                    <span className="">Perfil</span>
+                    <User className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">Perfil</span>{" "}
+                    {/* Texto responsivo */}
+                    <span className="sm:hidden">Perfil</span>{" "}
+                    {/* Texto sempre visível em telas muito pequenas se necessário */}
                   </TabsTrigger>
                   <TabsTrigger
                     value="equipe"
-                    className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
-                    <Users className="h-4 w-4" />
-                    <span className="">Equipe</span>
+                    <Users className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">Equipe</span>{" "}
+                    {/* Texto responsivo */}
+                    <span className="sm:hidden">Equipe</span> {/* Fallback */}
                   </TabsTrigger>
                   <TabsTrigger
                     value="cobranca"
-                    className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
-                    <CreditCard className="h-4 w-4" />
-                    <span className="">Cobrança</span>
+                    <CreditCard className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">Cobrança</span>{" "}
+                    {/* Texto responsivo */}
+                    <span className="sm:hidden">Cobrança</span> {/* Fallback */}
                   </TabsTrigger>
                   <TabsTrigger
                     value="notificacoes"
-                    className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
-                    <Bell className="h-4 w-4" />
-                    <span className="">Notificações</span>
+                    <Bell className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">Notificações</span>{" "}
+                    {/* Texto responsivo */}
+                    <span className="sm:hidden">Notif.</span>{" "}
+                    {/* Abreviação fallback */}
                   </TabsTrigger>
                   <TabsTrigger
                     value="seguranca"
-                    className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
-                    <Lock className="h-4 w-4" />
-                    <span className="">Segurança</span>
+                    <Lock className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">Segurança</span>{" "}
+                    {/* Texto responsivo */}
+                    <span className="sm:hidden">Segur.</span>{" "}
+                    {/* Abreviação fallback */}
                   </TabsTrigger>
                 </TabsList>
 
-                {/* Conteúdo Aba: Perfil */}
+                {/* Conteúdo Aba: Perfil - COR CARD/INPUT/BOTÃO PADRONIZADA */}
                 <TabsContent value="perfil" className="mt-6 space-y-6">
-                  {/* Card: Perfil da Empresa */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Perfil da Empresa
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Atualize as informações e o perfil público da sua
                         empresa
                       </CardDescription>
@@ -286,19 +313,23 @@ export default function ConfiguracoesEmpresa() {
                       <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
                         {/* Logo e Upload */}
                         <div className="flex flex-col items-center space-y-2 w-full md:w-auto">
-                          <Avatar className="h-24 w-24 border dark:border-gray-600">
+                          <Avatar className="h-24 w-24 border dark:border-zinc-700">
+                            {" "}
+                            {/* COR PADRONIZADA: Avatar Border */}
                             <AvatarImage
                               src={empresaData.logoSrc}
                               alt="Logo da Empresa"
                             />
                             <AvatarFallback className="text-2xl bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                              {" "}
+                              {/* Fallback Mantido */}
                               {empresaData.initials}
                             </AvatarFallback>
                           </Avatar>
                           <Button
                             variant="outline"
                             size="sm"
-                            className="gap-1 w-full dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                            className="gap-1 w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                           >
                             <Upload className="h-4 w-4" />
                             <span>Alterar Logo</span>
@@ -310,27 +341,27 @@ export default function ConfiguracoesEmpresa() {
                             <div className="space-y-2">
                               <Label
                                 htmlFor="company-name"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Nome da Empresa
                               </Label>
                               <Input
                                 id="company-name"
                                 defaultValue={empresaData.name}
-                                className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                                className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                               />
                             </div>
                             <div className="space-y-2">
                               <Label
                                 htmlFor="industry"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Setor
                               </Label>
                               <Input
                                 id="industry"
                                 defaultValue={empresaData.industry}
-                                className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                                className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                               />
                             </div>
                           </div>
@@ -338,47 +369,49 @@ export default function ConfiguracoesEmpresa() {
                             <div className="space-y-2">
                               <Label
                                 htmlFor="company-size"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Tamanho da Empresa
                               </Label>
                               <Input
                                 id="company-size"
                                 defaultValue={empresaData.size}
-                                className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                                className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                               />
                             </div>
                             <div className="space-y-2">
                               <Label
                                 htmlFor="founded"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Fundada em
                               </Label>
                               <Input
                                 id="founded"
                                 defaultValue={empresaData.founded}
-                                className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                                className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                               />
                             </div>
                           </div>
                           <div className="space-y-2">
                             <Label
                               htmlFor="website-empresa"
-                              className="dark:text-gray-300"
+                              className="dark:text-gray-300" // COR TEXTO PADRÃO
                             >
                               Website
-                            </Label>{" "}
-                            {/* ID ajustado para não conflitar */}
+                            </Label>
                             <div className="flex">
-                              <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-gray-750 dark:border-gray-600">
-                                <Globe className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                              <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-zinc-800 dark:border-zinc-700">
+                                {" "}
+                                {/* COR PADRONIZADA: Addon */}
+                                <Globe className="h-4 w-4 text-muted-foreground dark:text-gray-400" />{" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                               </div>
                               <Input
                                 id="website-empresa"
                                 type="url"
                                 defaultValue={empresaData.website}
-                                className="rounded-l-none bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                                className="rounded-l-none bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                               />
                             </div>
                           </div>
@@ -389,13 +422,13 @@ export default function ConfiguracoesEmpresa() {
                       <div className="space-y-2">
                         <Label
                           htmlFor="company-description"
-                          className="dark:text-gray-300"
+                          className="dark:text-gray-300" // COR TEXTO PADRÃO
                         >
                           Descrição da Empresa
                         </Label>
                         <Textarea
                           id="company-description"
-                          className="min-h-[120px] bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                          className="min-h-[120px] bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Textarea
                           defaultValue={empresaData.description}
                         />
                       </div>
@@ -404,24 +437,27 @@ export default function ConfiguracoesEmpresa() {
                       <div className="space-y-2">
                         <Label
                           htmlFor="company-location"
-                          className="dark:text-gray-300"
+                          className="dark:text-gray-300" // COR TEXTO PADRÃO
                         >
                           Localização da Sede
                         </Label>
                         <Input
                           id="company-location"
                           defaultValue={empresaData.location}
-                          className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                          className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                         />
                       </div>
                     </CardContent>
-                    <CardFooter className="flex justify-end gap-2 border-t dark:border-gray-700 pt-6">
+                    <CardFooter className="flex justify-end gap-2 border-t dark:border-zinc-700 pt-6">
+                      {" "}
+                      {/* COR PADRONIZADA: border-t */}
                       <Button
                         variant="outline"
-                        className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                        className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                       >
                         Cancelar
                       </Button>
+                      {/* Botão Primário Azul Mantido */}
                       <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
                         Salvar Alterações
                       </Button>
@@ -429,12 +465,18 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
 
                   {/* Card: Informações de Contato */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Informações de Contato
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Atualize os detalhes de contato da sua empresa
                       </CardDescription>
                     </CardHeader>
@@ -443,46 +485,51 @@ export default function ConfiguracoesEmpresa() {
                         <div className="space-y-2">
                           <Label
                             htmlFor="contact-email"
-                            className="dark:text-gray-300"
+                            className="dark:text-gray-300" // COR TEXTO PADRÃO
                           >
                             Email de Contato
                           </Label>
                           <div className="flex">
-                            <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-gray-750 dark:border-gray-600">
-                              <Mail className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                            <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-zinc-800 dark:border-zinc-700">
+                              {" "}
+                              {/* COR PADRONIZADA: Addon */}
+                              <Mail className="h-4 w-4 text-muted-foreground dark:text-gray-400" />{" "}
+                              {/* COR TEXTO MUTED PADRÃO */}
                             </div>
                             <Input
                               id="contact-email"
                               type="email"
                               defaultValue={empresaData.contactEmail}
-                              className="rounded-l-none bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                              className="rounded-l-none bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                             />
                           </div>
                         </div>
                         <div className="space-y-2">
                           <Label
                             htmlFor="contact-phone"
-                            className="dark:text-gray-300"
+                            className="dark:text-gray-300" // COR TEXTO PADRÃO
                           >
                             Telefone de Contato
                           </Label>
-                          {/* Idealmente usar InputMask aqui */}
                           <Input
                             id="contact-phone"
                             type="tel"
                             defaultValue={empresaData.contactPhone}
-                            className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                            className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                           />
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="flex justify-end gap-2 border-t dark:border-gray-700 pt-6">
+                    <CardFooter className="flex justify-end gap-2 border-t dark:border-zinc-700 pt-6">
+                      {" "}
+                      {/* COR PADRONIZADA: border-t */}
                       <Button
                         variant="outline"
-                        className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                        className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                       >
                         Cancelar
                       </Button>
+                      {/* Botão Primário Azul Mantido */}
                       <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
                         Salvar Alterações
                       </Button>
@@ -490,60 +537,74 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Equipe */}
+                {/* Conteúdo Aba: Equipe - COR CARD/DIVIDER/BOTÃO PADRONIZADA */}
                 <TabsContent value="equipe" className="mt-6 space-y-6">
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Membros da Equipe
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Gerencie sua equipe e suas permissões
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
                         <div className="flex justify-end">
+                          {/* Botão Primário Azul Mantido */}
                           <Button className="gap-1 dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
                             <Users className="h-4 w-4" />
                             <span>Convidar Membro</span>
                           </Button>
                         </div>
                         {/* Lista de Membros */}
-                        <div className="border rounded-md divide-y dark:border-gray-700 dark:divide-gray-700">
+                        <div className="border rounded-md divide-y dark:border-zinc-700 dark:divide-zinc-700">
+                          {" "}
+                          {/* COR PADRONIZADA: Border/Divide */}
                           {teamMembers.map((member) => (
                             <div
                               key={member.id}
                               className="p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
                             >
                               <div className="flex items-center gap-3 flex-1 min-w-0">
-                                {" "}
-                                {/* Garante que o texto não quebre o layout */}
-                                <Avatar className="h-10 w-10 border dark:border-gray-600">
-                                  {/* <AvatarImage src={member.avatarSrc} alt={member.name} /> */}
+                                <Avatar className="h-10 w-10 border dark:border-zinc-700">
+                                  {" "}
+                                  {/* COR PADRONIZADA: Avatar Border */}
                                   <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                                    {" "}
+                                    {/* Fallback Mantido */}
                                     {member.avatarFallback}
                                   </AvatarFallback>
                                 </Avatar>
                                 <div className="flex-1 min-w-0">
-                                  {" "}
-                                  {/* Permite truncar */}
                                   <h3 className="font-medium text-gray-900 dark:text-white truncate">
+                                    {" "}
+                                    {/* COR TEXTO PADRÃO */}
                                     {member.name}
                                   </h3>
                                   <p className="text-sm text-muted-foreground dark:text-gray-400 truncate">
+                                    {" "}
+                                    {/* COR TEXTO MUTED PADRÃO */}
                                     {member.email}
                                   </p>
                                 </div>
                               </div>
                               <div className="flex items-center gap-2 flex-shrink-0 mt-2 sm:mt-0">
                                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                  {" "}
+                                  {/* COR TEXTO PADRÃO */}
                                   {member.role}
                                 </span>
                                 <Button
                                   variant="outline"
                                   size="sm"
-                                  className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                                  className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                                 >
                                   Gerenciar
                                 </Button>
@@ -552,6 +613,8 @@ export default function ConfiguracoesEmpresa() {
                           ))}
                           {teamMembers.length === 0 && (
                             <div className="p-4 text-center text-sm text-muted-foreground dark:text-gray-500">
+                              {" "}
+                              {/* COR PLACEHOLDER PADRÃO */}
                               Nenhum membro na equipe ainda.
                             </div>
                           )}
@@ -561,45 +624,62 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Cobrança */}
+                {/* Conteúdo Aba: Cobrança - COR CARD/INNER CARD/BOTÃO PADRONIZADA */}
                 <TabsContent value="cobranca" className="mt-6 space-y-6">
-                  {/* Card: Plano de Assinatura */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Plano de Assinatura
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Gerencie sua assinatura e informações de cobrança
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       {/* Detalhes do Plano Atual */}
-                      <div className="p-4 border rounded-md bg-gray-50 dark:bg-gray-750 dark:border-gray-700">
+                      <div className="p-4 border rounded-md bg-gray-50 dark:bg-zinc-800/50 dark:border-zinc-700">
+                        {" "}
+                        {/* COR PADRONIZADA: Inner Card */}
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                           <div>
                             <h3 className="font-medium text-gray-900 dark:text-white">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Plano Enterprise
                             </h3>
                             <p className="text-sm text-muted-foreground dark:text-gray-400">
+                              {" "}
+                              {/* COR TEXTO MUTED PADRÃO */}
                               R$ 299/mês, cobrado anualmente
                             </p>
-                            {/* Lista de Recursos */}
                             <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
+                              {/* ... Lista de Recursos ... */}
                               <li className="flex items-center gap-2">
-                                <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-blue-400 flex-shrink-0"></div>
+                                <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-blue-400 flex-shrink-0"></div>{" "}
+                                {/* Cor Mantida */}
                                 <span>Publicações de vagas ilimitadas</span>
                               </li>
                               <li className="flex items-center gap-2">
-                                <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-blue-400 flex-shrink-0"></div>
+                                <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-blue-400 flex-shrink-0"></div>{" "}
+                                {/* Cor Mantida */}
                                 <span>Filtragem avançada de candidatos</span>
                               </li>
                               <li className="flex items-center gap-2">
-                                <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-blue-400 flex-shrink-0"></div>
+                                <div className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-blue-400 flex-shrink-0"></div>{" "}
+                                {/* Cor Mantida */}
                                 <span>Correspondência por IA</span>
                               </li>
                             </ul>
                           </div>
+                          {/* Botão Primário Azul Mantido */}
                           <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700 w-full md:w-auto">
                             Gerenciar Assinatura
                           </Button>
@@ -609,18 +689,29 @@ export default function ConfiguracoesEmpresa() {
                       {/* Método de Pagamento */}
                       <div>
                         <h3 className="text-lg font-medium mb-2 text-gray-900 dark:text-white">
+                          {" "}
+                          {/* COR TEXTO PADRÃO */}
                           Método de Pagamento
                         </h3>
-                        <div className="p-4 border rounded-md flex items-center justify-between dark:border-gray-700 bg-white dark:bg-gray-750">
+                        <div className="p-4 border rounded-md flex items-center justify-between dark:border-zinc-700 bg-white dark:bg-zinc-800/50">
+                          {" "}
+                          {/* COR PADRONIZADA: Inner Card */}
                           <div className="flex items-center gap-3">
-                            <div className="h-10 w-16 bg-gray-100 dark:bg-gray-700 rounded-md flex items-center justify-center flex-shrink-0">
-                              <CreditCard className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                            <div className="h-10 w-16 bg-gray-100 dark:bg-zinc-700 rounded-md flex items-center justify-center flex-shrink-0">
+                              {" "}
+                              {/* COR PADRONIZADA: Ícone BG */}
+                              <CreditCard className="h-6 w-6 text-gray-600 dark:text-gray-400" />{" "}
+                              {/* COR TEXTO MUTED PADRÃO */}
                             </div>
                             <div>
                               <p className="font-medium text-gray-900 dark:text-white">
+                                {" "}
+                                {/* COR TEXTO PADRÃO */}
                                 •••• •••• •••• 4242
                               </p>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Expira 12/2025
                               </p>
                             </div>
@@ -628,7 +719,7 @@ export default function ConfiguracoesEmpresa() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                            className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                           >
                             Atualizar
                           </Button>
@@ -638,17 +729,25 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
 
                   {/* Card: Histórico de Cobrança */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Histórico de Cobrança
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Veja suas faturas recentes e histórico de pagamento
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="border rounded-md divide-y dark:border-gray-700 dark:divide-gray-700">
+                      <div className="border rounded-md divide-y dark:border-zinc-700 dark:divide-zinc-700">
+                        {" "}
+                        {/* COR PADRONIZADA: Border/Divide */}
                         {billingHistory.map((invoice) => (
                           <div
                             key={invoice.id}
@@ -656,20 +755,26 @@ export default function ConfiguracoesEmpresa() {
                           >
                             <div>
                               <p className="font-medium text-gray-900 dark:text-white">
+                                {" "}
+                                {/* COR TEXTO PADRÃO */}
                                 Fatura {invoice.number}
                               </p>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 {invoice.date}
                               </p>
                             </div>
                             <div className="flex items-center gap-4">
                               <span className="text-sm font-medium text-gray-900 dark:text-white">
+                                {" "}
+                                {/* COR TEXTO PADRÃO */}
                                 {invoice.amount}
                               </span>
                               <Button
                                 variant="outline"
                                 size="sm"
-                                className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                                className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                               >
                                 Download
                               </Button>
@@ -678,6 +783,8 @@ export default function ConfiguracoesEmpresa() {
                         ))}
                         {billingHistory.length === 0 && (
                           <div className="p-4 text-center text-sm text-muted-foreground dark:text-gray-500">
+                            {" "}
+                            {/* COR PLACEHOLDER PADRÃO */}
                             Nenhum histórico de cobrança disponível.
                           </div>
                         )}
@@ -686,33 +793,46 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Notificações */}
+                {/* Conteúdo Aba: Notificações - COR CARD/DIVIDER/BOTÃO PADRONIZADA */}
                 <TabsContent value="notificacoes" className="mt-6 space-y-6">
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Preferências de Notificação
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Gerencie como e quando você recebe notificações
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-6 divide-y dark:divide-gray-700">
+                    <CardContent className="space-y-6 divide-y dark:divide-zinc-700">
+                      {" "}
+                      {/* COR PADRONIZADA: Divide */}
                       {/* Seção: Notificações por Email */}
                       <div className="space-y-4 pt-6 first:pt-0">
                         <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                          {" "}
+                          {/* COR TEXTO PADRÃO */}
                           Notificações por Email
                         </h3>
                         <div className="space-y-3">
+                          {/* ... Switches ... */}
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label
                                 htmlFor="new-applications"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Novas Candidaturas
                               </Label>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Receber notificações quando candidatos se
                                 aplicarem às suas vagas
                               </p>
@@ -729,12 +849,13 @@ export default function ConfiguracoesEmpresa() {
                             <div className="space-y-0.5">
                               <Label
                                 htmlFor="messages-empresa"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Mensagens
-                              </Label>{" "}
-                              {/* ID ajustado */}
+                              </Label>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Receber notificações quando candidatos enviarem
                                 mensagens
                               </p>
@@ -751,12 +872,13 @@ export default function ConfiguracoesEmpresa() {
                             <div className="space-y-0.5">
                               <Label
                                 htmlFor="job-alerts-empresa"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Alertas de Vaga
-                              </Label>{" "}
-                              {/* ID ajustado */}
+                              </Label>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Receber notificações sobre status e expiração de
                                 vagas
                               </p>
@@ -771,22 +893,26 @@ export default function ConfiguracoesEmpresa() {
                           </div>
                         </div>
                       </div>
-
                       {/* Seção: Notificações do Sistema */}
                       <div className="space-y-4 pt-6">
                         <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                          {" "}
+                          {/* COR TEXTO PADRÃO */}
                           Notificações do Sistema
                         </h3>
                         <div className="space-y-3">
+                          {/* ... Switches ... */}
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <Label
                                 htmlFor="billing-updates"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Atualizações de Cobrança
                               </Label>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Receber notificações sobre cobrança e alterações
                                 na assinatura
                               </p>
@@ -803,11 +929,13 @@ export default function ConfiguracoesEmpresa() {
                             <div className="space-y-0.5">
                               <Label
                                 htmlFor="product-updates"
-                                className="dark:text-gray-300"
+                                className="dark:text-gray-300" // COR TEXTO PADRÃO
                               >
                                 Atualizações do Produto
                               </Label>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Receber notificações sobre novos recursos e
                                 melhorias
                               </p>
@@ -823,13 +951,16 @@ export default function ConfiguracoesEmpresa() {
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="flex justify-end gap-2 border-t dark:border-gray-700 pt-6">
+                    <CardFooter className="flex justify-end gap-2 border-t dark:border-zinc-700 pt-6">
+                      {" "}
+                      {/* COR PADRONIZADA: border-t */}
                       <Button
                         variant="outline"
-                        className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                        className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                       >
                         Cancelar
                       </Button>
+                      {/* Botão Primário Azul Mantido */}
                       <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
                         Salvar Alterações
                       </Button>
@@ -837,15 +968,21 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
                 </TabsContent>
 
-                {/* Conteúdo Aba: Segurança */}
+                {/* Conteúdo Aba: Segurança - COR CARD/INPUT/BOTÃO PADRONIZADA */}
                 <TabsContent value="seguranca" className="mt-6 space-y-6">
                   {/* Card: Senha */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Senha
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Atualize a senha da sua conta
                       </CardDescription>
                     </CardHeader>
@@ -853,53 +990,53 @@ export default function ConfiguracoesEmpresa() {
                       <div className="space-y-2">
                         <Label
                           htmlFor="current-password-empresa"
-                          className="dark:text-gray-300"
+                          className="dark:text-gray-300" // COR TEXTO PADRÃO
                         >
                           Senha Atual
-                        </Label>{" "}
-                        {/* ID ajustado */}
+                        </Label>
                         <Input
                           id="current-password-empresa"
                           type="password"
-                          className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                          className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                         />
                       </div>
                       <div className="space-y-2">
                         <Label
                           htmlFor="new-password-empresa"
-                          className="dark:text-gray-300"
+                          className="dark:text-gray-300" // COR TEXTO PADRÃO
                         >
                           Nova Senha
-                        </Label>{" "}
-                        {/* ID ajustado */}
+                        </Label>
                         <Input
                           id="new-password-empresa"
                           type="password"
-                          className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                          className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                         />
                       </div>
                       <div className="space-y-2">
                         <Label
                           htmlFor="confirm-password-empresa"
-                          className="dark:text-gray-300"
+                          className="dark:text-gray-300" // COR TEXTO PADRÃO
                         >
                           Confirmar Nova Senha
-                        </Label>{" "}
-                        {/* ID ajustado */}
+                        </Label>
                         <Input
                           id="confirm-password-empresa"
                           type="password"
-                          className="bg-white dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                          className="bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
                         />
                       </div>
                     </CardContent>
-                    <CardFooter className="flex justify-end gap-2 border-t dark:border-gray-700 pt-6">
+                    <CardFooter className="flex justify-end gap-2 border-t dark:border-zinc-700 pt-6">
+                      {" "}
+                      {/* COR PADRONIZADA: border-t */}
                       <Button
                         variant="outline"
-                        className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                        className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                       >
                         Cancelar
                       </Button>
+                      {/* Botão Primário Azul Mantido */}
                       <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
                         Atualizar Senha
                       </Button>
@@ -907,12 +1044,18 @@ export default function ConfiguracoesEmpresa() {
                   </Card>
 
                   {/* Card: Autenticação de Dois Fatores */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Autenticação de Dois Fatores
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Adicione uma camada extra de segurança à sua conta
                       </CardDescription>
                     </CardHeader>
@@ -920,51 +1063,65 @@ export default function ConfiguracoesEmpresa() {
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
                           <h3 className="font-medium text-gray-900 dark:text-white">
+                            {" "}
+                            {/* COR TEXTO PADRÃO */}
                             Autenticação de Dois Fatores (2FA)
                           </h3>
                           <p className="text-sm text-muted-foreground dark:text-gray-400">
+                            {" "}
+                            {/* COR TEXTO MUTED PADRÃO */}
                             Proteja sua conta com uma camada adicional de
                             segurança
                           </p>
                         </div>
-                        {/* O estado real do 2FA determinaria o texto/ação do botão */}
+                        {/* Botão Primário Azul Mantido */}
                         <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
                           Habilitar
                         </Button>
-                        {/* <Button variant="outline" className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700">Gerenciar</Button> */}
                       </div>
                     </CardContent>
                   </Card>
 
                   {/* Card: Sessões Ativas */}
-                  <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card */}
                     <CardHeader>
                       <CardTitle className="text-gray-900 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Sessões
                       </CardTitle>
                       <CardDescription className="dark:text-gray-400">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Gerencie suas sessões ativas e dispositivos
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      {/* Lista de Sessões */}
-                      <div className="border rounded-md divide-y dark:border-gray-700 dark:divide-gray-700">
+                      <div className="border rounded-md divide-y dark:border-zinc-700 dark:divide-zinc-700">
+                        {" "}
+                        {/* COR PADRONIZADA: Border/Divide */}
                         {/* Sessão Atual */}
                         <div className="p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                           <div>
                             <p className="font-medium text-gray-900 dark:text-white">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Chrome no MacOS
-                            </p>{" "}
-                            {/* Exemplo */}
+                            </p>
                             <p className="text-sm text-muted-foreground dark:text-gray-400">
+                              {" "}
+                              {/* COR TEXTO MUTED PADRÃO */}
                               São Paulo, SP • Sessão atual
                             </p>
                           </div>
+                          {/* Botão Disabled Padronizado */}
                           <Button
                             variant="outline"
                             size="sm"
                             disabled
-                            className="dark:text-gray-500 dark:border-gray-600 dark:bg-gray-700"
+                            className="dark:text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800" // COR PADRONIZADA: Botão Disabled
                           >
                             Atual
                           </Button>
@@ -973,17 +1130,20 @@ export default function ConfiguracoesEmpresa() {
                         <div className="p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                           <div>
                             <p className="font-medium text-gray-900 dark:text-white">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Safari no iPhone
-                            </p>{" "}
-                            {/* Exemplo */}
+                            </p>
                             <p className="text-sm text-muted-foreground dark:text-gray-400">
+                              {" "}
+                              {/* COR TEXTO MUTED PADRÃO */}
                               São Paulo, SP • Última ativa há 2 horas
                             </p>
                           </div>
                           <Button
                             variant="outline"
                             size="sm"
-                            className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                            className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                           >
                             Deslogar
                           </Button>

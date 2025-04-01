@@ -262,19 +262,19 @@ export default function VagasCompativeis() {
                   {/* CORREÇÃO: Fundo dark */}
                   <TabsTrigger
                     value="recomendadas"
-                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:data-[state=inactive]:hover:bg-zinc-700 dark:text-gray-400" // CORREÇÃO: Fundo ativo dark
+                    className="data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // CORREÇÃO: Fundo ativo dark
                   >
                     Recomendadas
                   </TabsTrigger>
                   <TabsTrigger
                     value="aplicadas"
-                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:data-[state=inactive]:hover:bg-zinc-700 dark:text-gray-400" // CORREÇÃO: Fundo ativo dark
+                    className="data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // CORREÇÃO: Fundo ativo dark
                   >
                     Aplicadas
                   </TabsTrigger>
                   <TabsTrigger
                     value="salvas"
-                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:data-[state=inactive]:hover:bg-zinc-700 dark:text-gray-400" // CORREÇÃO: Fundo ativo dark
+                    className="data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // CORREÇÃO: Fundo ativo dark
                   >
                     Salvas
                   </TabsTrigger>

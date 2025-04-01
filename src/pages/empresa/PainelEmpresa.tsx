@@ -21,14 +21,12 @@ import { Brain, FileCheck, Filter, Star, Users } from "lucide-react";
 import { DashboardNavbar } from "src/components/Dashboards/DashboardNavbar";
 import { EmpresaSidebar } from "src/components/Dashboards/Empresas/EmpresaSidebar";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "src/components/ui/pagination";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "src/components/ui/select";
 
 const DashboardEmpresa: React.FC = () => {
   // --- Estado ---
@@ -65,40 +63,42 @@ const DashboardEmpresa: React.FC = () => {
 
   return (
     <SidebarProvider>
-      {/* Container principal flexível */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950 dark:text-white">
-        {/* --- Sidebar Desktop (Fixa/Recolhida) --- */}
+      {/* Container principal flexível - COR EXTERNA PADRONIZADA */}
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black dark:text-white">
+        {" "}
+        {/* COR PADRONIZADA: dark:bg-black */}
+        {/* --- Sidebar Desktop (Fixa/Recolhida) - COR BORDA PADRONIZADA --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
-            "bg-background dark:bg-gray-900", // Fundo explícito
-            isDesktopSidebarOpen ? "w-64" : "w-16" // Largura dinâmica
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+            "bg-background dark:bg-gray-900", // Fundo Sidebar mantido gray-900
+            isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
         >
           {/* Renderiza o Sidebar da Empresa */}
           <EmpresaSidebar
             isOpen={isDesktopSidebarOpen}
-            toggleSidebar={toggleDesktopSidebar} // Passa a função de toggle
+            toggleSidebar={toggleDesktopSidebar}
             empresaName={empresaData.name}
             empresaAccountType={empresaData.accountType}
             empresaInitials={empresaData.initials}
             empresaAvatarSrc={empresaData.logoSrc}
-            messageCount={empresaData.messageCount} // Passa contagem de mensagens
+            messageCount={empresaData.messageCount}
             onNavigate={() => {}}
             activePage="dashboard"
           />
         </div>
-        {/* --- Sidebar Mobile (Sheet) --- */}
+        {/* --- Sidebar Mobile (Sheet) - COR BORDA PADRONIZADA --- */}
         <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetContent
             side="left"
             className={cn(
-              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
-              "bg-white dark:bg-gray-900" // Fundo explícito
+              "p-0 w-64 lg:hidden border-r dark:border-zinc-800", // COR PADRONIZADA: dark:border-zinc-800
+              "bg-white dark:bg-gray-900" // Fundo Sidebar mantido gray-900
             )}
           >
             <EmpresaSidebar
-              isOpen={true} // Sempre aberto no Sheet
+              isOpen={true}
               isMobileView={true}
               empresaName={empresaData.name}
               empresaAccountType={empresaData.accountType}
@@ -111,29 +111,32 @@ const DashboardEmpresa: React.FC = () => {
           </SheetContent>
         </Sheet>
         {/* --- Área de Conteúdo Principal --- */}
-        {/* Adicionado 'min-w-0' para permitir que o container flex encolha corretamente */}
         <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
           {/* Navbar Superior */}
           <DashboardNavbar
-            onMobileMenuClick={openMobileSheet} // Função para abrir o Sheet mobile
-            userName={empresaData.name} // Usar nome da empresa ou do admin
+            onMobileMenuClick={openMobileSheet}
+            userName={empresaData.name}
             userInitials={empresaData.initials}
             userAvatarSrc={empresaData.logoSrc}
             notificationCount={empresaData.notificationCount}
           />
 
-          {/* Conteúdo Principal (Main) */}
-          {/* Adicionado overflow-x-hidden para evitar scroll horizontal indesejado */}
-          <main className="flex-1 flex flex-col p-4 md:p-6 gap-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          {/* Conteúdo Principal (Main) - COR FUNDO MAIN PADRONIZADA */}
+          <main className="flex-1 flex flex-col p-4 md:p-6 gap-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
+            {" "}
+            {/* COR PADRONIZADA: dark:bg-zinc-900/60 */}
             {/* ---- INÍCIO DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}
-
-            {/* Cabeçalho do Conteúdo (Título e Botões) */}
+            {/* Cabeçalho do Conteúdo (Título e Botões) - CORES TEXTO/BOTÃO PADRÃO */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-semibold tracking-tight dark:text-white">
+                  {" "}
+                  {/* COR TEXTO PADRÃO */}
                   Busca de Candidatos
                 </h1>
                 <p className="text-muted-foreground dark:text-gray-400">
+                  {" "}
+                  {/* COR TEXTO MUTED PADRÃO */}
                   Encontre o candidato perfeito para sua equipe.
                 </p>
               </div>
@@ -141,120 +144,155 @@ const DashboardEmpresa: React.FC = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8 gap-1 dark:text-white dark:border-gray-600"
+                  className="h-8 gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
                 >
                   <Filter className="h-3.5 w-3.5" />
                   <span>Filtros</span>
                 </Button>
-                <Button size="sm" className="h-8">
+                <Button
+                  size="sm"
+                  className="h-8 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
+                >
+                  {" "}
+                  {/* Botão Primário Padrão */}
                   Publicar uma Vaga
                 </Button>
               </div>
             </div>
-
-            {/* Cards de Estatísticas */}
+            {/* Cards de Estatísticas - COR CARD PADRONIZADA */}
             <div className="mt-6 mb-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {/* Card 1: Total de Candidatos */}
-              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                {" "}
+                {/* COR PADRONIZADA: Card BG/Borda */}
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR PADRONIZADA: Title Muted */}
                     Total de Candidatos
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold dark:text-white">
-                    1.248 {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO PADRÃO */}
+                    1.248
                   </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +24 esta semana {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
+                    +24 esta semana
                   </p>
                 </CardContent>
               </Card>
               {/* Card 2: Pré-selecionados */}
-              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                {" "}
+                {/* COR PADRONIZADA: Card BG/Borda */}
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR PADRONIZADA: Title Muted */}
                     Pré-selecionados
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold dark:text-white">
-                    36 {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO PADRÃO */}
+                    36
                   </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +5 esta semana {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
+                    +5 esta semana
                   </p>
                 </CardContent>
               </Card>
               {/* Card 3: Entrevistas Agendadas */}
-              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                {" "}
+                {/* COR PADRONIZADA: Card BG/Borda */}
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR PADRONIZADA: Title Muted */}
                     Entrevistas Agendadas
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold dark:text-white">
-                    12 {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO PADRÃO */}
+                    12
                   </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +3 esta semana {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
+                    +3 esta semana
                   </p>
                 </CardContent>
               </Card>
               {/* Card 4: Vagas Abertas */}
-              <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                {" "}
+                {/* COR PADRONIZADA: Card BG/Borda */}
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-300">
+                  <CardTitle className="text-sm font-medium text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR PADRONIZADA: Title Muted */}
                     Vagas Abertas
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold dark:text-white">
-                    8 {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO PADRÃO */}8
                   </div>
                   <p className="text-xs text-muted-foreground dark:text-gray-400">
-                    +2 esta semana {/* Exemplo */}
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
+                    +2 esta semana
                   </p>
                 </CardContent>
               </Card>
             </div>
-
-            {/* Abas para Listagem de Candidatos */}
+            {/* Abas para Listagem de Candidatos - COR TABS PADRONIZADA */}
             <Tabs defaultValue="all" className="w-full">
               {/* Container para Abas e Ordenação */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
                 {/* Lista de Abas (TabsList) */}
-                <TabsList className="dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md p-1 flex-wrap h-auto sm:h-10">
-                  {/* Ajuste para wrap e altura auto/fixa */}
+                <TabsList className="bg-gray-100 dark:bg-zinc-800 rounded-md p-1 flex gap-1 w-full max-w-full overflow-hidden">
                   <TabsTrigger
                     value="all"
-                    className="dark:text-gray-300 data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white"
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Todos os Candidatos
                   </TabsTrigger>
                   <TabsTrigger
                     value="recommended"
-                    className="dark:text-gray-300 data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white"
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Recomendados
                   </TabsTrigger>
                   <TabsTrigger
                     value="shortlisted"
-                    className="dark:text-gray-300 data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white"
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Pré-selecionados
                   </TabsTrigger>
                 </TabsList>
-                {/* Seletor de Ordenação */}
+
+                {/* Seletor de Ordenação - COR SELECT PADRONIZADA */}
                 <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
-                  {" "}
-                  {/* Garante que não quebre layout */}
                   <span className="text-sm text-muted-foreground dark:text-gray-400">
+                    {" "}
+                    {/* COR TEXTO MUTED PADRÃO */}
                     Ordenar por:
                   </span>
-                  {/* Usando um select básico, pode ser substituído por um DropdownMenu do ShadCN */}
-                  <select className="flex-grow sm:flex-grow-0 h-8 rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                  <select className="flex-grow sm:flex-grow-0 h-8 rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:bg-zinc-900 dark:border-zinc-700 dark:text-gray-300 cursor-pointer">
+                    {" "}
+                    {/* COR PADRONIZADA: Select */}
                     <option value="relevance">Relevância</option>
                     <option value="recent">Recente</option>
                     <option value="experience">Experiência</option>
@@ -265,30 +303,38 @@ const DashboardEmpresa: React.FC = () => {
               {/* Conteúdo da Aba "Todos os Candidatos" */}
               <TabsContent value="all" className="mt-0">
                 <div className="grid gap-4">
-                  {/* --- Card Candidato 1 --- */}
-                  <Card className="overflow-hidden dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
-                    {/* Layout Flexível para conteúdo e sidebar do card */}
+                  {/* --- Card Candidato 1 - COR CARD/AVATAR/BOTÃO PADRONIZADA --- */}
+                  <Card className="overflow-hidden bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <div className="flex flex-col md:flex-row">
-                      {/* Seção Principal do Card (Esquerda/Topo) */}
+                      {/* Seção Principal do Card */}
                       <div className="p-4 md:p-6 md:flex-grow-[2] md:basis-0">
-                        {" "}
-                        {/* Equivalente a md:w-2/3 */}
-                        {/* Cabeçalho do Candidato (Avatar, Nome, Badge, Ação) */}
+                        {/* Cabeçalho do Candidato */}
                         <div className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3">
                           {/* Info do Candidato */}
                           <div className="flex items-center gap-4">
-                            <Avatar className="h-12 w-12 flex-shrink-0">
+                            <Avatar className="h-12 w-12 flex-shrink-0 border dark:border-zinc-700">
+                              {" "}
+                              {/* COR PADRONIZADA: Avatar Borda */}
                               <AvatarImage
-                                src="https://github.com/shadcn.png" // Placeholder
+                                src="https://github.com/shadcn.png"
                                 alt="Jane Doe"
                               />
-                              <AvatarFallback>JD</AvatarFallback>
+                              <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                                JD
+                              </AvatarFallback>{" "}
+                              {/* Avatar Fallback Mantido */}
                             </Avatar>
                             <div>
                               <h3 className="font-semibold dark:text-white">
+                                {" "}
+                                {/* COR TEXTO PADRÃO */}
                                 Jane Doe
                               </h3>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Engenheira de Software Sênior
                               </p>
                             </div>
@@ -296,6 +342,8 @@ const DashboardEmpresa: React.FC = () => {
                           {/* Ações / Badges */}
                           <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
                             <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400 whitespace-nowrap">
+                              {" "}
+                              {/* Badge Colorido Mantido */}
                               98% Compatível
                             </Badge>
                             <Button
@@ -303,19 +351,25 @@ const DashboardEmpresa: React.FC = () => {
                               size="icon"
                               className="h-8 w-8"
                             >
-                              <Star className="h-4 w-4 text-muted-foreground hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400" />
+                              <div className="dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400">
+                                <Star className="h-4 w-4 text-muted-foreground" />{" "}
+                              </div>
+                              {/* COR Ícone/Hover Mantido */}
                               <span className="sr-only">Pré-selecionar</span>
                             </Button>
                           </div>
                         </div>
-                        {/* Detalhes (Habilidades, Experiência, Scores) */}
+                        {/* Detalhes */}
                         <div className="space-y-4">
                           {/* Habilidades */}
                           <div>
                             <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Habilidades Principais
                             </h4>
                             <div className="flex flex-wrap gap-1.5">
+                              {/* Badges Secundários - Mantendo padrão ShadCN por enquanto */}
                               <Badge variant="secondary">React</Badge>
                               <Badge variant="secondary">TypeScript</Badge>
                               <Badge variant="secondary">Node.js</Badge>
@@ -326,9 +380,13 @@ const DashboardEmpresa: React.FC = () => {
                           {/* Resumo */}
                           <div>
                             <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Resumo da Experiência
                             </h4>
                             <p className="text-sm text-muted-foreground dark:text-gray-400 line-clamp-2">
+                              {" "}
+                              {/* COR TEXTO MUTED PADRÃO */}
                               Mais de 7 anos de experiência em desenvolvimento
                               full-stack com foco em aplicações web escaláveis e
                               otimizadas. Liderança técnica em projetos...
@@ -336,6 +394,7 @@ const DashboardEmpresa: React.FC = () => {
                           </div>
                           {/* Scores */}
                           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm">
+                            {/* Cores específicas mantidas */}
                             <div className="flex items-center gap-1 text-purple-600 dark:text-purple-400">
                               <Brain className="h-3.5 w-3.5" />
                               <span>Lógica: 95%</span>
@@ -352,43 +411,63 @@ const DashboardEmpresa: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Barra Lateral do Card (Direita/Baixo) */}
-                      <div className="bg-gray-50 dark:bg-gray-800/40 p-4 md:p-6 flex flex-col justify-between md:flex-grow-[1] md:basis-0 border-t md:border-t-0 md:border-l dark:border-gray-700/50">
+                      {/* Barra Lateral do Card - COR CARD SIDE/BORDER/TEXT PADRONIZADA */}
+                      <div className="bg-gray-50 dark:bg-zinc-800/50 p-4 md:p-6 rounded-lg flex flex-col justify-between md:flex-grow-[1] md:basis-0 border-t md:border-t-0 md:border-l dark:border-zinc-700">
                         {" "}
-                        {/* Equivalente a md:w-1/3 */}
-                        {/* Informações Adicionais */}
+                        {/* COR PADRONIZADA: Side BG/Borda */}
                         <div className="space-y-3 mb-4 md:mb-0">
                           <div>
-                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-300 mb-0.5">
+                              {" "}
+                              {/* COR PADRONIZADA: Side Title */}
                               Localização
                             </h4>
                             <p className="text-sm dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               San Francisco, CA (Remoto)
                             </p>
                           </div>
                           <div>
-                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-300 mb-0.5">
+                              {" "}
+                              {/* COR PADRONIZADA: Side Title */}
                               Educação
                             </h4>
                             <p className="text-sm dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               M.Sc. Ciência da Computação, Stanford
                             </p>
                           </div>
                           <div>
-                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-300 mb-0.5">
+                              {" "}
+                              {/* COR PADRONIZADA: Side Title */}
                               Disponibilidade
                             </h4>
                             <p className="text-sm dark:text-gray-300">
-                              2 semanas
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}2 semanas
                             </p>
                           </div>
                         </div>
                         {/* Botões de Ação */}
                         <div className="flex flex-col gap-2 mt-auto">
-                          {" "}
-                          {/* mt-auto empurra para baixo */}
-                          <Button size="sm">Ver Perfil Completo</Button>
-                          <Button size="sm" variant="outline">
+                          <Button
+                            size="sm"
+                            className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
+                          >
+                            Ver Perfil Completo
+                          </Button>{" "}
+                          {/* Botão Primário Padrão */}
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                          >
+                            {" "}
+                            {/* COR PADRONIZADA: Botão Outline */}
                             Agendar Entrevista
                           </Button>
                         </div>
@@ -397,7 +476,9 @@ const DashboardEmpresa: React.FC = () => {
                   </Card>
 
                   {/* --- Card Candidato 2 (Estrutura similar) --- */}
-                  <Card className="overflow-hidden dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+                  <Card className="overflow-hidden bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* COR PADRONIZADA: Card BG/Borda */}
                     <div className="flex flex-col md:flex-row">
                       {/* Seção Principal */}
                       <div className="p-4 md:p-6 md:flex-grow-[2] md:basis-0">
@@ -405,14 +486,23 @@ const DashboardEmpresa: React.FC = () => {
                         <div className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3">
                           {/* Info */}
                           <div className="flex items-center gap-4">
-                            <Avatar className="h-12 w-12 flex-shrink-0">
-                              <AvatarFallback>MS</AvatarFallback>
+                            <Avatar className="h-12 w-12 flex-shrink-0 border dark:border-zinc-700">
+                              {" "}
+                              {/* COR PADRONIZADA: Avatar Borda */}
+                              <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                                MS
+                              </AvatarFallback>{" "}
+                              {/* Avatar Fallback Mantido */}
                             </Avatar>
                             <div>
                               <h3 className="font-semibold dark:text-white">
+                                {" "}
+                                {/* COR TEXTO PADRÃO */}
                                 Michael Smith
                               </h3>
                               <p className="text-sm text-muted-foreground dark:text-gray-400">
+                                {" "}
+                                {/* COR TEXTO MUTED PADRÃO */}
                                 Gerente de Produto
                               </p>
                             </div>
@@ -420,6 +510,8 @@ const DashboardEmpresa: React.FC = () => {
                           {/* Ações / Badges */}
                           <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
                             <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 whitespace-nowrap">
+                              {" "}
+                              {/* Badge Colorido Mantido */}
                               85% Compatível
                             </Badge>
                             <Button
@@ -427,7 +519,10 @@ const DashboardEmpresa: React.FC = () => {
                               size="icon"
                               className="h-8 w-8"
                             >
-                              <Star className="h-4 w-4 text-muted-foreground hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400" />
+                              <div className="dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400">
+                                <Star className="h-4 w-4 text-muted-foreground" />{" "}
+                              </div>
+                              {/* COR Ícone/Hover Mantido */}
                               <span className="sr-only">Pré-selecionar</span>
                             </Button>
                           </div>
@@ -437,9 +532,12 @@ const DashboardEmpresa: React.FC = () => {
                           {/* Habilidades */}
                           <div>
                             <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Habilidades Principais
                             </h4>
                             <div className="flex flex-wrap gap-1.5">
+                              {/* Badges Secundários - Mantendo padrão */}
                               <Badge variant="secondary">
                                 Estratégia Produto
                               </Badge>
@@ -453,15 +551,20 @@ const DashboardEmpresa: React.FC = () => {
                           {/* Resumo */}
                           <div>
                             <h4 className="text-sm font-medium mb-1 dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Resumo da Experiência
                             </h4>
                             <p className="text-sm text-muted-foreground dark:text-gray-400 line-clamp-2">
-                              5 anos de experiência em gerenciamento de produtos
-                              SaaS B2B, focado em crescimento e retenção.
+                              {" "}
+                              {/* COR TEXTO MUTED PADRÃO */}5 anos de
+                              experiência em gerenciamento de produtos SaaS B2B,
+                              focado em crescimento e retenção.
                             </p>
                           </div>
                           {/* Scores */}
                           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm">
+                            {/* Cores específicas mantidas */}
                             <div className="flex items-center gap-1 text-purple-600 dark:text-purple-400">
                               <Brain className="h-3.5 w-3.5" />
                               <span>Lógica: 88%</span>
@@ -472,42 +575,68 @@ const DashboardEmpresa: React.FC = () => {
                             </div>
                             <div className="flex items-center gap-1 text-violet-600 dark:text-violet-400">
                               <FileCheck className="h-3.5 w-3.5" />
-                              <span>Produto: 85%</span> {/* Exemplo */}
+                              <span>Produto: 85%</span>
                             </div>
                           </div>
                         </div>
                       </div>
                       {/* Barra Lateral */}
-                      <div className="bg-gray-50 dark:bg-gray-800/40 p-4 md:p-6 flex flex-col justify-between md:flex-grow-[1] md:basis-0 border-t md:border-t-0 md:border-l dark:border-gray-700/50">
+                      <div className="bg-gray-50 dark:bg-zinc-800/50 p-4 md:p-6 rounded-lg flex flex-col justify-between md:flex-grow-[1] md:basis-0 border-t md:border-t-0 md:border-l dark:border-zinc-700">
+                        {" "}
+                        {/* COR PADRONIZADA: Side BG/Borda */}
                         <div className="space-y-3 mb-4 md:mb-0">
                           <div>
-                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-300 mb-0.5">
+                              {" "}
+                              {/* COR PADRONIZADA: Side Title */}
                               Localização
                             </h4>
                             <p className="text-sm dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               New York, NY (Híbrido)
                             </p>
                           </div>
                           <div>
-                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-300 mb-0.5">
+                              {" "}
+                              {/* COR PADRONIZADA: Side Title */}
                               Educação
                             </h4>
                             <p className="text-sm dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               MBA, Harvard Business School
                             </p>
                           </div>
                           <div>
-                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-500 mb-0.5">
+                            <h4 className="text-xs font-semibold uppercase text-muted-foreground dark:text-gray-300 mb-0.5">
+                              {" "}
+                              {/* COR PADRONIZADA: Side Title */}
                               Disponibilidade
                             </h4>
                             <p className="text-sm dark:text-gray-300">
+                              {" "}
+                              {/* COR TEXTO PADRÃO */}
                               Imediata
                             </p>
                           </div>
                         </div>
                         <div className="flex flex-col gap-2 mt-auto">
-                          <Button size="sm">Ver Perfil Completo</Button>
-                          <Button size="sm" variant="outline">
+                          <Button
+                            size="sm"
+                            className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
+                          >
+                            Ver Perfil Completo
+                          </Button>{" "}
+                          {/* Botão Primário Padrão */}
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                          >
+                            {" "}
+                            {/* COR PADRONIZADA: Botão Outline */}
                             Agendar Entrevista
                           </Button>
                         </div>
@@ -519,155 +648,143 @@ const DashboardEmpresa: React.FC = () => {
                 </div>
               </TabsContent>
 
-              {/* Conteúdo da Aba "Recomendados" */}
+              {/* Conteúdo da Aba "Recomendados" - COR CARD PADRONIZADA */}
               <TabsContent value="recommended" className="mt-0">
-                <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardContent className="p-6">
                     {/* Estado Vazio/Placeholder */}
                     <div className="flex flex-col items-center justify-center py-12 text-center">
                       <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
-                        <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                        {" "}
+                        {/* BG Ícone Mantido */}
+                        <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <h3 className="text-lg font-medium mb-2 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Recomendações Inteligentes em Breve
                       </h3>
                       <p className="text-muted-foreground max-w-md mx-auto mb-4 dark:text-gray-400 text-sm">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Nossa IA está processando os melhores candidatos para
                         suas vagas abertas. Volte em breve para ver as
                         recomendações.
                       </p>
-                      <Button disabled>Atualizando Recomendações...</Button>
+                      <Button disabled>
+                        Atualizando Recomendações...
+                      </Button>{" "}
+                      {/* Botão Padrão (Disabled) */}
                     </div>
                   </CardContent>
                 </Card>
               </TabsContent>
 
-              {/* Conteúdo da Aba "Pré-selecionados" */}
+              {/* Conteúdo da Aba "Pré-selecionados" - COR CARD PADRONIZADA */}
               <TabsContent value="shortlisted" className="mt-0">
-                <Card className="dark:bg-gray-800/60 border dark:border-gray-700/50 shadow-sm dark:shadow-none">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* COR PADRONIZADA: Card BG/Borda */}
                   <CardContent className="p-6">
                     {/* Estado Vazio/Placeholder */}
                     <div className="flex flex-col items-center justify-center py-12 text-center">
                       <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/30">
-                        <Star className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />
+                        {" "}
+                        {/* BG Ícone Mantido */}
+                        <Star className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />{" "}
+                        {/* Cor Ícone Mantida */}
                       </div>
                       <h3 className="text-lg font-medium mb-2 dark:text-white">
+                        {" "}
+                        {/* COR TEXTO PADRÃO */}
                         Nenhum Candidato Pré-selecionado
                       </h3>
                       <p className="text-muted-foreground max-w-md mx-auto mb-4 dark:text-gray-400 text-sm">
+                        {" "}
+                        {/* COR TEXTO MUTED PADRÃO */}
                         Você ainda não pré-selecionou nenhum candidato. Clique
                         no ícone de estrela{" "}
                         <Star className="inline h-4 w-4 align-text-bottom" />{" "}
                         nos perfis para adicioná-los aqui.
                       </p>
-                      {/* Adicionar um botão ou link para voltar para a aba "Todos" se desejado */}
                       {/* <Button variant="outline">Ver Todos os Candidatos</Button> */}
                     </div>
                   </CardContent>
                 </Card>
               </TabsContent>
             </Tabs>
-
-            {/* Paginação */}
-            <div
-              className={cn(
-                "flex flex-col sm:flex-row items-center justify-center sm:justify-between", // Responsividade e Alinhamento
-                "gap-4 pt-4 border-t dark:border-gray-700/50", // Estilos
-                "mt-auto" // Empurra para baixo
-              )}
-            >
-              {/* Texto informativo */}
-              <div className="text-sm text-muted-foreground dark:text-gray-400 shrink-0">
-                {" "}
-                {/* shrink-0 evita que encolha demais */}
-                Exibindo{" "}
-                <strong>
-                  {startIndex}-{endIndex}
-                </strong>{" "}
-                de <strong>{totalItems}</strong> candidatos
+            {/* Paginação - COR BORDA TOP PADRONIZADA */}
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 pt-4 border-t dark:border-zinc-700">
+              <div className="text-sm text-muted-foreground dark:text-gray-400 text-center md:text-left">
+                Mostrando <strong>1-3</strong> de <strong>12</strong> candidatos
               </div>
 
-              {/* Componente de Paginação do ShadCN */}
-              {/* Não precisa de classes extras de alinhamento aqui, o pai cuida */}
-              <Pagination>
-                <PaginationContent>
-                  {/* Botão Anterior */}
-                  <PaginationItem>
-                    <PaginationPrevious
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      className={cn(
-                        currentPage === 1
-                          ? "pointer-events-none opacity-50"
-                          : ""
-                      )}
-                      aria-disabled={currentPage === 1}
-                    />
-                  </PaginationItem>
+              <div className="flex flex-wrap justify-center items-center gap-2 w-full md:w-auto">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled
+                  className="disabled:opacity-50 dark:text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800"
+                >
+                  Anterior
+                </Button>
 
-                  {/* Números (Lógica de exemplo) */}
-                  <PaginationItem>
-                    <PaginationLink
-                      onClick={() => handlePageChange(1)}
-                      isActive={currentPage === 1}
-                    >
-                      1
-                    </PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink
-                      onClick={() => handlePageChange(2)}
-                      isActive={currentPage === 2}
-                    >
-                      2
-                    </PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink
-                      onClick={() => handlePageChange(3)}
-                      isActive={currentPage === 3}
-                    >
-                      3
-                    </PaginationLink>
-                  </PaginationItem>
-                  {totalPages > 5 && currentPage < totalPages - 2 && (
-                    <PaginationItem>
-                      <PaginationEllipsis />
-                    </PaginationItem>
-                  )}
-                  {totalPages > 4 && currentPage < totalPages - 1 && (
-                    <PaginationItem>
-                      <PaginationLink
-                        onClick={() => handlePageChange(totalPages)}
-                        isActive={currentPage === totalPages}
-                      >
-                        {totalPages}
-                      </PaginationLink>
-                    </PaginationItem>
-                  )}
-                  {/* Fim da lógica de exemplo dos números */}
+                {/* Select para mobile */}
+                <Select defaultValue="1">
+                  <SelectTrigger className="w-24 h-8 md:hidden">
+                    <SelectValue placeholder="Página 1" />
+                  </SelectTrigger>
+                  <SelectContent className="dark:bg-zinc-900">
+                    <SelectItem value="1">Página 1</SelectItem>
+                    <SelectItem value="2">Página 2</SelectItem>
+                    <SelectItem value="3">Página 3</SelectItem>
+                    <SelectItem value="4">Página 4</SelectItem>
+                  </SelectContent>
+                </Select>
 
-                  {/* Botão Próximo */}
-                  <PaginationItem>
-                    <PaginationNext
-                      onClick={() => handlePageChange(currentPage + 1)}
+                {/* Botões numéricos para desktop */}
+                <div className="hidden md:flex items-center gap-2">
+                  {[1, 2, 3].map((page) => (
+                    <Button
+                      key={page}
+                      variant={page === 1 ? "outline" : "outline"}
+                      size="sm"
                       className={cn(
-                        currentPage === totalPages
-                          ? "pointer-events-none opacity-50"
-                          : ""
+                        "w-8 p-0 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800",
+                        page === 1 && "bg-zinc-100 dark:bg-zinc-800"
                       )}
-                      aria-disabled={currentPage === totalPages}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+                    >
+                      {page}
+                    </Button>
+                  ))}
+                  <span className="text-muted-foreground dark:text-gray-500">
+                    ...
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-8 p-0 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                  >
+                    4
+                  </Button>
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                >
+                  Próxima
+                </Button>
+              </div>
             </div>
-
             {/* ---- FIM DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}
           </main>
-        </div>{" "}
-        {/* Fim da área de conteúdo principal */}
-      </div>{" "}
-      {/* Fim do container flex principal */}
+        </div>
+      </div>
     </SidebarProvider>
   );
 };
