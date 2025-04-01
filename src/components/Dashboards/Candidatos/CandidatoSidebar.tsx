@@ -56,8 +56,8 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
       "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors dark:text-zinc-400 hover:bg-accent hover:text-foreground",
       !isOpen ? "justify-center px-2" : "",
       isActive
-        ? "bg-accent text-foreground dark:bg-zinc-700 dark:text-white" // Estilo ativo
-        : "hover:dark:bg-zinc-800" // Estilo hover não ativo no dark mode (opcional, pode ajustar)
+        ? "bg-accent text-foreground bg-zinc-200/70 dark:bg-zinc-700 dark:text-white" // Estilo ativo
+        : "hover:bg-zinc-200/40 hover:dark:bg-zinc-800" // Estilo hover não ativo no dark mode (opcional, pode ajustar)
     );
 
   return (
@@ -97,7 +97,7 @@ export const CandidatoSidebar: React.FC<CandidatoSidebarProps> = ({
           >
             <PanelRightOpen
               className={cn(
-                "h-6 w-6 transform transition-transform duration-300 dark:text-white",
+                "h-6 w-6 transform transition-transform duration-200 dark:text-white",
                 !isOpen ? "rotate-180" : ""
               )}
             />

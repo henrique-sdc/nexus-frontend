@@ -97,11 +97,11 @@ export default function VagasSalvas() {
   return (
     <SidebarProvider>
       {/* Container principal Flex (Estrutura padrão) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950">
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black">
         {/* --- Sidebar Desktop (Estrutura padrão) --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-700",
             "bg-background dark:bg-gray-900",
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
@@ -124,7 +124,7 @@ export default function VagasSalvas() {
           <SheetContent
             side="left"
             className={cn(
-              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
+              "p-0 w-64 lg:hidden border-r dark:border-zinc-700",
               "bg-white dark:bg-gray-900"
             )}
           >
@@ -154,7 +154,7 @@ export default function VagasSalvas() {
           />
 
           {/* Conteúdo Principal (Main) - Layout padrão */}
-          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-black overflow-x-hidden">
             {/* ================================================================== */}
             {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA DE VAGAS SALVAS           */}
             {/* ================================================================== */}
@@ -175,7 +175,7 @@ export default function VagasSalvas() {
                   <Input
                     type="search"
                     placeholder="Buscar vagas salvas..."
-                    className="pl-8 bg-white dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700"
+                    className="pl-8 bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -183,7 +183,7 @@ export default function VagasSalvas() {
               </div>
 
               {/* Card Principal com a Lista */}
-              <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
                 <CardHeader>
                   <CardTitle className="text-gray-900 dark:text-white">
                     Suas Vagas Salvas
@@ -202,11 +202,11 @@ export default function VagasSalvas() {
                       // Item Individual de Vaga Salva
                       <div
                         key={job.id}
-                        className="border rounded-lg p-4 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700/50 transition-colors"
+                        className="border rounded-lg p-4 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-700/50 transition-colors"
                       >
                         <div className="flex flex-col md:flex-row md:items-start gap-4">
                           {/* Avatar da Empresa */}
-                          <Avatar className="h-12 w-12 border dark:border-gray-600 flex-shrink-0">
+                          <Avatar className="h-12 w-12 border dark:border-zinc-600 flex-shrink-0">
                             {/* Se tiver a URL da imagem, use AvatarImage */}
                             {job.logoSrc && (
                               <AvatarImage
@@ -214,7 +214,7 @@ export default function VagasSalvas() {
                                 alt={job.company}
                               />
                             )}
-                            <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                            <AvatarFallback className="bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300">
                               {job.logoFallback}
                             </AvatarFallback>
                           </Avatar>
@@ -269,14 +269,14 @@ export default function VagasSalvas() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="gap-1 w-full sm:w-auto dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                              className="gap-1 w-full sm:w-auto dark:text-white dark:border-zinc-600 hover:bg-zinc-200/70 hover:dark:bg-zinc-700"
                             >
                               <Eye className="h-4 w-4" />
                               <span>Detalhes</span>
                             </Button>
                             <Button
                               size="sm"
-                              className="gap-1 w-full sm:w-auto dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                             >
                               <Send className="h-4 w-4" />
                               <span>Aplicar</span>

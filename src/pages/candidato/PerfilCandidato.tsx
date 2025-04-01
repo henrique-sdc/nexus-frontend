@@ -145,12 +145,12 @@ const ProfilePageCandidate: React.FC = () => {
   return (
     <SidebarProvider>
       {/* Container principal Flex (Exatamente como na referência) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950 dark:text-white">
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black dark:text-white">
         {/* --- Sidebar Desktop (Exatamente como na referência) --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
-            "bg-background dark:bg-gray-900", // Fundo explícito
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-700",
+            "bg-background dark:bg-zinc-900", // Fundo explícito
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
         >
@@ -172,8 +172,8 @@ const ProfilePageCandidate: React.FC = () => {
           <SheetContent
             side="left"
             className={cn(
-              "p-0 w-64 lg:hidden border-r dark:border-gray-800",
-              "bg-white dark:bg-gray-900" // Fundo explícito
+              "p-0 w-64 lg:hidden border-r dark:border-zinc-700",
+              "bg-white dark:bg-zinc-900" // Fundo explícito
             )}
           >
             {/* Instanciação da Sidebar (versão mobile) */}
@@ -202,7 +202,7 @@ const ProfilePageCandidate: React.FC = () => {
           />
           {/* Conteúdo Principal (Main) - Layout da referência, conteúdo do PERFIL inserido abaixo */}
           {/* Estilos de padding, background e gap EXATAMENTE como na referência */}
-          <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
             {/* ================================================================== */}
             {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA DE PERFIL                  */}
             {/* Estilos dark mode aplicados consistentemente abaixo              */}
@@ -218,8 +218,7 @@ const ProfilePageCandidate: React.FC = () => {
                   Gerencie suas informações pessoais e currículo
                 </p>
               </div>
-              <Button className="gap-1 w-full md:w-auto dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
-                {" "}
+              <Button className="gap-1 w-full md:w-auto text-white bg-purple-800 hover:bg-purple-900 transition-all duration-200">
                 {/* Exemplo de botão primário dark */}
                 <Edit className="h-4 w-4" />
                 <span>Editar Perfil</span>
@@ -228,7 +227,7 @@ const ProfilePageCandidate: React.FC = () => {
 
             {/* --- Seção: Informações Pessoais --- */}
             {/* Card com estilos dark mode da referência */}
-            <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+            <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border-zinc-700">
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
                   Informações Pessoais
@@ -241,7 +240,7 @@ const ProfilePageCandidate: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   {/* Avatar */}
                   <div className="flex flex-col items-center space-y-2 w-full md:w-auto">
-                    <Avatar className="h-24 w-24 border dark:border-gray-600">
+                    <Avatar className="h-24 w-24 border dark:border-zinc-700">
                       <AvatarImage
                         src={userData.avatarSrc}
                         alt={`${userData.firstName} ${userData.lastName}`}
@@ -254,7 +253,7 @@ const ProfilePageCandidate: React.FC = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="gap-1 w-full dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                      className="gap-1 w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-700"
                     >
                       <Upload className="h-4 w-4" />
                       <span>Alterar Foto</span>
@@ -262,36 +261,19 @@ const ProfilePageCandidate: React.FC = () => {
                   </div>
                   {/* Campos de Informação */}
                   <div className="flex-1 space-y-4 w-full">
-                    {/* Nome / Sobrenome */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="first-name"
-                          className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                          Nome
-                        </Label>
-                        <Input
-                          id="first-name"
-                          defaultValue={userData.firstName}
-                          readOnly
-                          className="bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="last-name"
-                          className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                          Sobrenome
-                        </Label>
-                        <Input
-                          id="last-name"
-                          defaultValue={userData.lastName}
-                          readOnly
-                          className="bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                        />
-                      </div>
+                    {/* Nome Completo */}
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="first-name"
+                        className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Nome Completo
+                      </Label>
+                      <Input
+                        id="first-name"
+                        defaultValue={userData.firstName}
+                        className="bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
+                      />
                     </div>
                     {/* Email / Telefone */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -303,15 +285,14 @@ const ProfilePageCandidate: React.FC = () => {
                           E-mail
                         </Label>
                         <div className="flex">
-                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-gray-750 dark:border-gray-600">
-                            <Mail className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-purple-800 dark:border-zinc-600">
+                            <Mail className="h-4 w-4 text-muted-foreground text-purple-200" />
                           </div>
                           <Input
                             id="email"
                             type="email"
                             defaultValue={userData.email}
-                            className="rounded-l-none bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                            readOnly
+                            className="rounded-l-none bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                           />
                         </div>
                       </div>
@@ -323,15 +304,14 @@ const ProfilePageCandidate: React.FC = () => {
                           Telefone
                         </Label>
                         <div className="flex">
-                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-gray-750 dark:border-gray-600">
-                            <Phone className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-purple-800 dark:border-zinc-600">
+                            <Phone className="h-4 w-4 text-muted-foreground text-purple-200" />
                           </div>
                           <Input
                             id="phone"
                             type="tel"
                             defaultValue={userData.phone}
-                            className="rounded-l-none bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                            readOnly
+                            className="rounded-l-none bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                           />
                         </div>
                       </div>
@@ -345,14 +325,13 @@ const ProfilePageCandidate: React.FC = () => {
                         Localização
                       </Label>
                       <div className="flex">
-                        <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-gray-750 dark:border-gray-600">
-                          <MapPin className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                        <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-purple-800 dark:border-zinc-600">
+                          <MapPin className="h-4 w-4 text-muted-foreground text-purple-200" />
                         </div>
                         <Input
                           id="location"
                           defaultValue={userData.location}
-                          className="rounded-l-none bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                          readOnly
+                          className="rounded-l-none bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                         />
                       </div>
                     </div>
@@ -369,8 +348,7 @@ const ProfilePageCandidate: React.FC = () => {
                   <Input
                     id="professional-title"
                     defaultValue={userData.professionalTitle}
-                    readOnly
-                    className="bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                    className="bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                   />
                 </div>
                 {/* Resumo Profissional */}
@@ -383,16 +361,15 @@ const ProfilePageCandidate: React.FC = () => {
                   </Label>
                   <Textarea
                     id="summary"
-                    className="min-h-[120px] bg-gray-100/50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                    className="min-h-[120px] bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                     defaultValue={userData.summary}
-                    readOnly
                   />
                 </div>
               </CardContent>
             </Card>
 
             {/* --- Seção: Experiência Profissional --- */}
-            <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+            <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -405,7 +382,7 @@ const ProfilePageCandidate: React.FC = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                  className="gap-1 dark:text-white hover:bg-zinc-100 dark:border-zinc-600 hover:dark:bg-zinc-800"
                 >
                   <Plus className="h-4 w-4" />
                   Adicionar Experiência
@@ -415,9 +392,9 @@ const ProfilePageCandidate: React.FC = () => {
                 {userData.experiences.map((exp) => (
                   <div
                     key={exp.id}
-                    className="border rounded-lg p-4 bg-gray-50 dark:bg-gray-750 dark:border-gray-600 transition-shadow hover:shadow-md dark:hover:border-gray-500"
+                    className="border rounded-lg p-4 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 transition-shadow hover:shadow-md dark:hover:border-zinc-500"
                   >
-                    {/* ... (Conteúdo do item de experiência como antes, com estilos dark) ... */}
+                    {/* Conteúdo do item de experiência */}
                     <div className="flex flex-col sm:flex-row justify-between items-start mb-3 gap-2">
                       <div>
                         <h3 className="font-medium text-base text-gray-900 dark:text-white">
@@ -441,29 +418,26 @@ const ProfilePageCandidate: React.FC = () => {
                     </div>
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground dark:text-gray-400 mb-3">
                       <div className="flex items-center gap-1">
-                        {" "}
-                        <Calendar className="h-4 w-4" />{" "}
+                        <Calendar className="h-4 w-4" />
                         <span>
                           {exp.startDate} - {exp.endDate}
-                        </span>{" "}
+                        </span>
                       </div>
                       <span className="hidden sm:inline">•</span>
                       <div className="flex items-center gap-1">
-                        {" "}
-                        <MapPin className="h-4 w-4" />{" "}
-                        <span>{exp.location}</span>{" "}
+                        <MapPin className="h-4 w-4" />
+                        <span>{exp.location}</span>
                       </div>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                      {" "}
-                      {exp.description}{" "}
+                      {exp.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-3">
                       {exp.skills.map((skill) => (
                         <Badge
                           key={skill}
                           variant="outline"
-                          className="font-normal dark:border-gray-500 dark:text-gray-400"
+                          className="font-normal dark:border-zinc-500 dark:text-gray-400"
                         >
                           {skill}
                         </Badge>
@@ -474,19 +448,17 @@ const ProfilePageCandidate: React.FC = () => {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-8 px-2 gap-1 text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100"
+                          className="h-8 px-2 gap-1 text-zinc-600 hover:bg-zinc-200/70 dark:text-gray-400 hover:dark:bg-zinc-700 dark:hover:text-gray-100"
                         >
-                          {" "}
-                          <Edit className="h-3.5 w-3.5" /> <span>Editar</span>{" "}
+                          <Edit className="h-3.5 w-3.5" /> <span>Editar</span>
                         </Button>
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-8 px-2 gap-1 text-red-600 hover:bg-red-100 dark:text-red-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+                          className="h-8 px-2 gap-1 text-red-600 hover:bg-red-100 dark:text-red-500 hover:dark:bg-red-900/20 dark:hover:text-red-400"
                         >
-                          {" "}
                           <Trash2 className="h-3.5 w-3.5" />{" "}
-                          <span>Excluir</span>{" "}
+                          <span>Excluir</span>
                         </Button>
                       </div>
                     </div>
@@ -496,7 +468,7 @@ const ProfilePageCandidate: React.FC = () => {
             </Card>
 
             {/* --- Seção: Formação Acadêmica --- */}
-            <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+            <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -509,19 +481,17 @@ const ProfilePageCandidate: React.FC = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                  className="gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                 >
-                  {" "}
-                  <Plus className="h-4 w-4" /> Adicionar Formação{" "}
+                  <Plus className="h-4 w-4" /> Adicionar Formação
                 </Button>
               </CardHeader>
               <CardContent className="space-y-4 pt-4">
                 {userData.education.map((edu) => (
                   <div
                     key={edu.id}
-                    className="border rounded-lg p-4 bg-gray-50 dark:bg-gray-750 dark:border-gray-600 transition-shadow hover:shadow-md dark:hover:border-gray-500"
+                    className="border rounded-lg p-4 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600 transition-shadow hover:shadow-md dark:hover:border-zinc-500"
                   >
-                    {/* ... (Conteúdo do item de educação como antes, com estilos dark) ... */}
                     <div className="flex flex-col sm:flex-row justify-between items-start mb-3 gap-2">
                       <div>
                         <h3 className="font-medium text-base text-gray-900 dark:text-white">
@@ -537,42 +507,37 @@ const ProfilePageCandidate: React.FC = () => {
                     </div>
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground dark:text-gray-400 mb-3">
                       <div className="flex items-center gap-1">
-                        {" "}
-                        <Calendar className="h-4 w-4" />{" "}
+                        <Calendar className="h-4 w-4" />
                         <span>
                           {edu.startDate} - {edu.endDate}
-                        </span>{" "}
+                        </span>
                       </div>
                       {edu.gpa && (
                         <>
-                          {" "}
-                          <span className="hidden sm:inline">•</span>{" "}
-                          <span className="text-sm">GPA: {edu.gpa}</span>{" "}
+                          <span className="hidden sm:inline">•</span>
+                          <span className="text-sm">GPA: {edu.gpa}</span>
                         </>
                       )}
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                      {" "}
-                      {edu.description}{" "}
+                      {edu.description}
                     </p>
                     <div className="flex justify-end mt-3">
                       <div className="flex gap-2">
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-8 px-2 gap-1 text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100"
+                          className="h-8 px-2 gap-1 text-zinc-600 hover:bg-zinc-200/70 dark:text-gray-400 hover:dark:bg-zinc-700 dark:hover:text-gray-100"
                         >
-                          {" "}
-                          <Edit className="h-3.5 w-3.5" /> <span>Editar</span>{" "}
+                          <Edit className="h-3.5 w-3.5" /> <span>Editar</span>
                         </Button>
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-8 px-2 gap-1 text-red-600 hover:bg-red-100 dark:text-red-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+                          className="h-8 px-2 gap-1 text-red-600 hover:bg-red-100 dark:text-red-500 hover:dark:bg-red-900/20 dark:hover:text-red-400"
                         >
-                          {" "}
                           <Trash2 className="h-3.5 w-3.5" />{" "}
-                          <span>Excluir</span>{" "}
+                          <span>Excluir</span>
                         </Button>
                       </div>
                     </div>
@@ -582,7 +547,7 @@ const ProfilePageCandidate: React.FC = () => {
             </Card>
 
             {/* --- Seção: Habilidades --- */}
-            <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+            <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -595,10 +560,9 @@ const ProfilePageCandidate: React.FC = () => {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                  className="gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                 >
-                  {" "}
-                  <Plus className="h-4 w-4" /> Adicionar Habilidade{" "}
+                  <Plus className="h-4 w-4" /> Adicionar Habilidade
                 </Button>
               </CardHeader>
               <CardContent className="pt-4">
@@ -607,7 +571,7 @@ const ProfilePageCandidate: React.FC = () => {
                     <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Habilidades Técnicas
                     </Label>
-                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-gray-750 dark:border-gray-600">
+                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600">
                       {userData.technicalSkills.map((skill) => (
                         <Badge
                           key={skill}
@@ -623,7 +587,7 @@ const ProfilePageCandidate: React.FC = () => {
                     <Label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Competências Comportamentais
                     </Label>
-                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-gray-750 dark:border-gray-600">
+                    <div className="flex flex-wrap gap-2 p-3 border rounded-md bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600">
                       {userData.softSkills.map((skill) => (
                         <Badge
                           key={skill}
@@ -640,7 +604,7 @@ const ProfilePageCandidate: React.FC = () => {
             </Card>
 
             {/* --- Seção: Currículo/CV --- */}
-            <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+            <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
                   Currículo/CV
@@ -650,9 +614,9 @@ const ProfilePageCandidate: React.FC = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="border rounded-md p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50 dark:bg-gray-750 dark:border-gray-600">
+                <div className="border rounded-md p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-600">
                   <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <div className="h-10 w-10 bg-gray-200 dark:bg-gray-600 rounded-md flex items-center justify-center flex-shrink-0">
+                    <div className="h-10 w-10 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center justify-center flex-shrink-0">
                       <User className="h-6 w-6 text-gray-600 dark:text-gray-400" />
                     </div>
                     <div className="flex-grow min-w-0">
@@ -668,18 +632,16 @@ const ProfilePageCandidate: React.FC = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1 sm:flex-none dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                      className="flex-1 sm:flex-none dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-700"
                     >
-                      {" "}
-                      Visualizar{" "}
+                      Visualizar
                     </Button>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="gap-1 flex-1 sm:flex-none dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                      className="gap-1 flex-1 sm:flex-none dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-700"
                     >
-                      {" "}
-                      <Upload className="h-4 w-4" /> <span>Atualizar</span>{" "}
+                      <Upload className="h-4 w-4" /> <span>Atualizar</span>
                     </Button>
                   </div>
                 </div>
@@ -689,11 +651,11 @@ const ProfilePageCandidate: React.FC = () => {
             {/* ================================================================== */}
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE PERFIL                     */}
             {/* ================================================================== */}
-          </main>{" "}
+          </main>
           {/* Fim do <main> */}
-        </div>{" "}
+        </div>
         {/* Fim da Área de Conteúdo Principal Flex */}
-      </div>{" "}
+      </div>
       {/* Fim do Container principal Flex */}
     </SidebarProvider>
   );

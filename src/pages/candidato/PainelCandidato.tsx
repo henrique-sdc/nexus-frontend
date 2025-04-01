@@ -109,7 +109,7 @@ const CandidatoDashboard: React.FC = () => {
 
           {/* Conteúdo Principal (Main) */}
           {/* Adicionado overflow-x-hidden para evitar scroll horizontal indesejado no <main> se algo vazar */}
-          <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-black overflow-x-hidden">
+          <main className="flex-1 p-4 md:p-6 grid grid-cols-1 gap-6 bg-gray-50/50 dark:bg-black overflow-x-hidden">
             {/* Cabeçalho do Conteúdo */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>

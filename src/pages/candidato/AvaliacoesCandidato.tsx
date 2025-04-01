@@ -76,11 +76,11 @@ export default function AvaliacoesCandidato() {
   return (
     <SidebarProvider>
       {/* Container principal Flex (Estrutura padrão) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950">
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black">
         {/* --- Sidebar Desktop (Estrutura padrão) --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-700",
             "bg-background dark:bg-gray-900",
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
@@ -150,7 +150,7 @@ export default function AvaliacoesCandidato() {
                   </p>
                 </div>
                 {/* Botão com estilo dark consistente */}
-                <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                   Ver Todos os Testes
                 </Button>
               </div>
@@ -174,7 +174,7 @@ export default function AvaliacoesCandidato() {
                 {/* Barra de progresso com valor dinâmico */}
                 <Progress
                   value={overallProgress}
-                  className="h-2 [&>div]:bg-blue-600 dark:[&>div]:bg-blue-500"
+                  className="h-2 bg-zinc-200 dark:bg-zinc-800 [&>*]:bg-purple-600 dark:[&>*]:bg-purple-500"
                 />{" "}
                 {/* Cor customizada para destaque */}
               </div>
@@ -182,7 +182,7 @@ export default function AvaliacoesCandidato() {
               {/* Grid de Cards das Avaliações Principais */}
               <div className="grid gap-6 md:grid-cols-3">
                 {/* Card: Avaliação de Lógica */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 border border-purple-200/80 dark:border-purple-800/50">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 border border-purple-200/80 dark:border-purple-800/50">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -250,7 +250,7 @@ export default function AvaliacoesCandidato() {
                     {/* Botão com estilo dark */}
                     <Button
                       variant="outline"
-                      className="w-full dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                      className="w-full dark:text-white dark:bg-black dark:border-gray-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                     >
                       Ver Detalhes
                     </Button>
@@ -258,7 +258,7 @@ export default function AvaliacoesCandidato() {
                 </Card>
 
                 {/* Card: Fit Cultural */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 border border-indigo-200/80 dark:border-indigo-800/50">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 border border-indigo-200/80 dark:border-indigo-800/50">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -323,7 +323,7 @@ export default function AvaliacoesCandidato() {
                   <CardFooter>
                     <Button
                       variant="outline"
-                      className="w-full dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                      className="w-full dark:text-white dark:bg-black dark:border-gray-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                     >
                       Ver Detalhes
                     </Button>
@@ -331,7 +331,7 @@ export default function AvaliacoesCandidato() {
                 </Card>
 
                 {/* Card: Habilidades Técnicas */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 border border-violet-200/80 dark:border-violet-800/50">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 border border-violet-200/80 dark:border-violet-800/50">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -405,7 +405,7 @@ export default function AvaliacoesCandidato() {
                   </CardContent>
                   <CardFooter>
                     {/* Botão principal com estilo dark */}
-                    <Button className="w-full gap-1 dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                    <Button className="w-full gap-1 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                       <Play className="h-4 w-4" />
                       <span>Continuar Avaliação</span>
                     </Button>
@@ -414,7 +414,7 @@ export default function AvaliacoesCandidato() {
               </div>
 
               {/* Card: Avaliações Recomendadas */}
-              <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
                 <CardHeader>
                   <CardTitle className="text-gray-900 dark:text-white">
                     Avaliações Recomendadas
@@ -428,7 +428,7 @@ export default function AvaliacoesCandidato() {
                   <div className="grid gap-4">
                     {/* Avaliação Recomendada 1 */}
                     {/* Item com hover e estilo dark */}
-                    <div className="flex items-center p-4 border rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700/50 transition-colors">
+                    <div className="flex items-center p-4 border rounded-lg hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-700/50 transition-colors">
                       <div className="mr-4">
                         <div className="rounded-full bg-purple-100 p-2 dark:bg-purple-900/30">
                           <Brain className="h-5 w-5 text-purple-600 dark:text-purple-400" />
@@ -445,7 +445,7 @@ export default function AvaliacoesCandidato() {
                       <div>
                         <Button
                           size="sm"
-                          className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                          className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                         >
                           Iniciar
                         </Button>
@@ -453,7 +453,7 @@ export default function AvaliacoesCandidato() {
                     </div>
 
                     {/* Avaliação Recomendada 2 */}
-                    <div className="flex items-center p-4 border rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700/50 transition-colors">
+                    <div className="flex items-center p-4 border rounded-lg hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-700/50 transition-colors">
                       <div className="mr-4">
                         <div className="rounded-full bg-indigo-100 p-2 dark:bg-indigo-900/30">
                           <FileCheck className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
@@ -470,7 +470,7 @@ export default function AvaliacoesCandidato() {
                       <div>
                         <Button
                           size="sm"
-                          className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                          className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                         >
                           Iniciar
                         </Button>
@@ -478,7 +478,7 @@ export default function AvaliacoesCandidato() {
                     </div>
 
                     {/* Avaliação Recomendada 3 */}
-                    <div className="flex items-center p-4 border rounded-lg hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700/50 transition-colors">
+                    <div className="flex items-center p-4 border rounded-lg hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-700/50 transition-colors">
                       <div className="mr-4">
                         <div className="rounded-full bg-violet-100 p-2 dark:bg-violet-900/30">
                           <Users className="h-5 w-5 text-violet-600 dark:text-violet-400" />
@@ -495,7 +495,7 @@ export default function AvaliacoesCandidato() {
                       <div>
                         <Button
                           size="sm"
-                          className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                          className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                         >
                           Iniciar
                         </Button>
@@ -506,7 +506,7 @@ export default function AvaliacoesCandidato() {
               </Card>
 
               {/* Card: Insights das Avaliações (Placeholder) */}
-              <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+              <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
                 <CardHeader>
                   <CardTitle className="text-gray-900 dark:text-white">
                     Insights das Avaliações

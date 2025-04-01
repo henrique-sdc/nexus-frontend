@@ -36,6 +36,13 @@ import {
   Search,
   Sliders,
 } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "src/components/ui/select";
 
 // --- Importações para Navegação (Opcional, descomentar se usar) ---
 // import { useNavigate } from 'react-router-dom';
@@ -76,13 +83,13 @@ export default function VagasCompativeis() {
   return (
     <SidebarProvider>
       {/* Container principal Flex (Estrutura da página funcional) */}
-      <div className="flex min-h-screen bg-gray-100/50 dark:bg-gray-950">
+      <div className="flex min-h-screen bg-gray-100/50 dark:bg-black">
         {" "}
         {/* Cor de fundo como na página funcional */}
         {/* --- Sidebar Desktop (Estrutura da página funcional) --- */}
         <div
           className={cn(
-            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-gray-800",
+            "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-800",
             "bg-background dark:bg-gray-900", // Fundo explícito
             isDesktopSidebarOpen ? "w-64" : "w-16" // Largura dinâmica
           )}
@@ -134,7 +141,9 @@ export default function VagasCompativeis() {
 
           {/* Conteúdo Principal (Main) - Layout geral da página funcional */}
           {/* Aplicando padding e background consistentes */}
-          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
+          <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
+            {" "}
+            {/* CORREÇÃO: Fundo dark:bg-zinc-900/60 */}
             {/* ================================================================== */}
             {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA DE VAGAS                  */}
             {/* Este container interno mantém o espaçamento original 'space-y-6'  */}
@@ -153,11 +162,11 @@ export default function VagasCompativeis() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {/* Botões com estilo dark consistente */}
+                  {/* Botões Outline com estilo dark consistente */}
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-8 gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    className="h-8 gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // CORREÇÃO: Borda e Hover
                   >
                     <Filter className="h-3.5 w-3.5" />
                     <span>Filtros</span>
@@ -165,7 +174,7 @@ export default function VagasCompativeis() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-8 gap-1 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    className="h-8 gap-1 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // CORREÇÃO: Borda e Hover
                   >
                     <Sliders className="h-3.5 w-3.5" />
                     <span>Preferências</span>
@@ -180,16 +189,20 @@ export default function VagasCompativeis() {
                 <Input
                   type="search"
                   placeholder="Buscar vagas, empresas ou locais..."
-                  className="pl-8 w-full md:w-2/3 lg:w-1/2 bg-white dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700"
+                  className="pl-8 w-full md:w-2/3 lg:w-1/2 bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // CORREÇÃO: Fundo e Borda
                 />
               </div>
 
               {/* Cards de Estatísticas Resumidas */}
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {/* Cards com estilo dark consistente */}
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* CORREÇÃO: Fundo e Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* CORREÇÃO: Cor do texto */}
                       Pontuação de Compatibilidade
                     </CardTitle>
                   </CardHeader>
@@ -202,9 +215,13 @@ export default function VagasCompativeis() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* CORREÇÃO: Fundo e Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* CORREÇÃO: Cor do texto */}
                       Novas Vagas Compatíveis
                     </CardTitle>
                   </CardHeader>
@@ -217,9 +234,13 @@ export default function VagasCompativeis() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                  {" "}
+                  {/* CORREÇÃO: Fundo e Borda */}
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-700 dark:text-gray-400">
+                      {" "}
+                      {/* CORREÇÃO: Cor do texto */}
                       Candidaturas
                     </CardTitle>
                   </CardHeader>
@@ -235,24 +256,25 @@ export default function VagasCompativeis() {
               </div>
 
               {/* Sistema de Abas para Vagas */}
-              {/* As Tabs precisam de estilo dark manual ou via CSS global se não herdarem */}
               <Tabs defaultValue="recomendadas" className="w-full">
-                <TabsList className="bg-gray-100 dark:bg-gray-800">
+                <TabsList className="bg-gray-100 dark:bg-zinc-800 gap-1">
+                  {" "}
+                  {/* CORREÇÃO: Fundo dark */}
                   <TabsTrigger
                     value="recomendadas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:data-[state=inactive]:hover:bg-zinc-700 dark:text-gray-400" // CORREÇÃO: Fundo ativo dark
                   >
                     Recomendadas
                   </TabsTrigger>
                   <TabsTrigger
                     value="aplicadas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:data-[state=inactive]:hover:bg-zinc-700 dark:text-gray-400" // CORREÇÃO: Fundo ativo dark
                   >
                     Aplicadas
                   </TabsTrigger>
                   <TabsTrigger
                     value="salvas"
-                    className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-400"
+                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:data-[state=inactive]:hover:bg-zinc-700 dark:text-gray-400" // CORREÇÃO: Fundo ativo dark
                   >
                     Salvas
                   </TabsTrigger>
@@ -262,21 +284,23 @@ export default function VagasCompativeis() {
                 <TabsContent value="recomendadas" className="mt-4">
                   <div className="grid gap-4">
                     {/* --- Exemplo de Card de Vaga 1 --- */}
-                    {/* Card com estilo dark */}
-                    <Card className="overflow-hidden bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                    <Card className="overflow-hidden bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                      {" "}
+                      {/* CORREÇÃO: Fundo e Borda */}
                       <div className="flex flex-col md:flex-row">
                         {/* Seção Principal */}
-                        <div className="p-6 md:w-2/3">
+                        <div className="p-4 md:p-6 md:w-2/3">
                           <div className="flex items-start justify-between mb-4">
                             <div className="flex items-center gap-4">
-                              <Avatar className="h-12 w-12 border dark:border-gray-600">
+                              <Avatar className="h-12 w-12 border dark:border-zinc-700">
+                                {" "}
+                                {/* CORREÇÃO: Borda */}
                                 <AvatarImage
                                   src={userData.avatarSrc}
                                   alt="Logo Empresa"
-                                />{" "}
-                                {/* Usando avatar de exemplo */}
+                                />
                                 <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                                  TC
+                                  TC {/* Mantido como estava no Perfil */}
                                 </AvatarFallback>
                               </Avatar>
                               <div>
@@ -288,19 +312,18 @@ export default function VagasCompativeis() {
                                 </p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                              {/* Badge com estilo dark já aplicado no original */}
-                              <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400">
-                                95% Compatível
+                            <div className="flex xs:flex-row items-center xs:items-center gap-1 xs:gap-2">
+                              <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400 whitespace-nowrap">
+                                95% Compatível{" "}
+                                {/* Estilo consistente com Perfil */}
                               </Badge>
-                              {/* Botão fantasma com estilo dark */}
                               <Button
                                 variant="ghost"
                                 size="icon"
                                 aria-label="Salvar vaga"
-                                className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
+                                className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400" // Consistente com Perfil (hover)
                               >
-                                <Heart className="h-4 w-4" />
+                                <Heart className="w-8 h-8 flex-shrink-0" />
                               </Button>
                             </div>
                           </div>
@@ -323,35 +346,35 @@ export default function VagasCompativeis() {
                               <h4 className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                                 Habilidades Requeridas
                               </h4>
-                              {/* Badges outline com estilo dark */}
+                              {/* Badges outline com estilo dark consistente */}
                               <div className="flex flex-wrap gap-2">
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda (mais sutil como no Perfil)
                                 >
                                   React
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   TypeScript
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   Tailwind CSS
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   CSS
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   5+ anos
                                 </Badge>
@@ -363,8 +386,10 @@ export default function VagasCompativeis() {
                             </p>
                           </div>
                         </div>
-                        {/* Seção Lateral com estilo dark */}
-                        <div className="bg-gray-50 dark:bg-gray-800/50 p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-gray-700">
+                        {/* Seção Lateral com estilo dark consistente */}
+                        <div className="bg-gray-50 dark:bg-zinc-800/50 rounded-lg p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-zinc-700 md:p-6">
+                          {" "}
+                          {/* CORREÇÃO: Fundo e Borda */}
                           <div className="space-y-4">
                             <div>
                               <h4 className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -386,16 +411,18 @@ export default function VagasCompativeis() {
                             </div>
                           </div>
                           <div className="flex flex-col gap-2 mt-4">
+                            {/* Botão Primário Azul (mantido para diferenciar ação principal aqui) */}
                             <Button
                               size="sm"
-                              className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200" // Adicionado bg light para consistência
                             >
                               Candidatar-se Agora
                             </Button>
+                            {/* Botão Outline */}
                             <Button
                               variant="outline"
                               size="sm"
-                              className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                              className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // CORREÇÃO: Borda e Hover
                             >
                               Ver Detalhes
                             </Button>
@@ -405,13 +432,17 @@ export default function VagasCompativeis() {
                     </Card>
 
                     {/* --- Exemplo de Card de Vaga 2 --- */}
-                    <Card className="overflow-hidden bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                    <Card className="overflow-hidden bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                      {" "}
+                      {/* CORREÇÃO: Fundo e Borda */}
                       <div className="flex flex-col md:flex-row">
                         {/* Seção Principal */}
                         <div className="p-6 md:w-2/3">
                           <div className="flex items-start justify-between mb-4">
                             <div className="flex items-center gap-4">
-                              <Avatar className="h-12 w-12 border dark:border-gray-600">
+                              <Avatar className="h-12 w-12 border dark:border-zinc-700">
+                                {" "}
+                                {/* CORREÇÃO: Borda */}
                                 {/* <AvatarImage src="/assets/images/company-logo-innovate.png" alt="InnovateLabs" /> */}
                                 <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
                                   IL
@@ -426,9 +457,10 @@ export default function VagasCompativeis() {
                                 </p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400">
-                                88% Compatível
+                            <div className="flex xs:flex-row items-center xs:items-center gap-1 xs:gap-2">
+                              <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 whitespace-nowrap">
+                                88% Compatível{" "}
+                                {/* Estilo consistente com Perfil */}
                               </Badge>
                               <Button
                                 variant="ghost"
@@ -436,7 +468,7 @@ export default function VagasCompativeis() {
                                 aria-label="Salvar vaga"
                                 className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
                               >
-                                <Heart className="h-4 w-4" />
+                                <Heart className="w-8 h-8 flex-shrink-0" />
                               </Button>
                             </div>
                           </div>
@@ -462,31 +494,31 @@ export default function VagasCompativeis() {
                               <div className="flex flex-wrap gap-2">
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   Node.js
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   React
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   Java
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   PostgreSQL
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-gray-600 dark:text-gray-400"
+                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
                                 >
                                   3+ anos
                                 </Badge>
@@ -500,7 +532,9 @@ export default function VagasCompativeis() {
                           </div>
                         </div>
                         {/* Seção Lateral */}
-                        <div className="bg-gray-50 dark:bg-gray-800/50 p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-gray-700">
+                        <div className="bg-gray-50 dark:bg-zinc-800/50 rounded-lg p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-zinc-700 md:p-6">
+                          {" "}
+                          {/* CORREÇÃO: Fundo e Borda */}
                           <div className="space-y-4">
                             <div>
                               <h4 className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -524,14 +558,14 @@ export default function VagasCompativeis() {
                           <div className="flex flex-col gap-2 mt-4">
                             <Button
                               size="sm"
-                              className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200" // Adicionado bg light
                             >
                               Candidatar-se Agora
                             </Button>
                             <Button
                               variant="outline"
                               size="sm"
-                              className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                              className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // CORREÇÃO: Borda e Hover
                             >
                               Ver Detalhes
                             </Button>
@@ -545,9 +579,10 @@ export default function VagasCompativeis() {
 
                 {/* Conteúdo da Aba: Aplicadas */}
                 <TabsContent value="aplicadas" className="mt-4">
-                  <Card className="p-6 bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="p-6 bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* CORREÇÃO: Fundo e Borda */}
                     <div className="flex flex-col items-center justify-center py-8 text-center">
-                      {/* Ícone e texto com estilo dark */}
                       <div className="rounded-full bg-purple-100 p-3 dark:bg-purple-900/20 mb-4">
                         <Building2 className="h-10 w-10 text-purple-600 dark:text-purple-400" />
                       </div>
@@ -558,7 +593,9 @@ export default function VagasCompativeis() {
                         Você tem 5 candidaturas de emprego ativas. Acompanhe o
                         status aqui.
                       </p>
-                      <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                      <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
+                        {" "}
+                        {/* Adicionado bg light */}
                         Ver Candidaturas
                       </Button>
                     </div>
@@ -567,9 +604,10 @@ export default function VagasCompativeis() {
 
                 {/* Conteúdo da Aba: Salvas */}
                 <TabsContent value="salvas" className="mt-4">
-                  <Card className="p-6 bg-background shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
+                  <Card className="p-6 bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+                    {" "}
+                    {/* CORREÇÃO: Fundo e Borda */}
                     <div className="flex flex-col items-center justify-center py-8 text-center">
-                      {/* Ícone e texto com estilo dark */}
                       <div className="rounded-full bg-indigo-100 p-3 dark:bg-indigo-900/20 mb-4">
                         <Heart className="h-10 w-10 text-indigo-600 dark:text-indigo-400" />
                       </div>
@@ -580,7 +618,9 @@ export default function VagasCompativeis() {
                         Você tem 8 vagas salvas. Revise-as e candidate-se quando
                         estiver pronto.
                       </p>
-                      <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                      <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
+                        {" "}
+                        {/* Adicionado bg light */}
                         Ver Vagas Salvas
                       </Button>
                     </div>
@@ -588,61 +628,67 @@ export default function VagasCompativeis() {
                 </TabsContent>
               </Tabs>
 
-              {/* Controles de Paginação (Placeholder) */}
-              <div className="flex items-center justify-between pt-4 border-t dark:border-gray-700">
-                <div className="text-sm text-muted-foreground dark:text-gray-400">
+              {/* Controles de Paginação */}
+              <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 pt-4 border-t dark:border-zinc-700">
+                <div className="text-sm text-muted-foreground dark:text-gray-400 text-center md:text-left">
                   Mostrando <strong>1-3</strong> de <strong>12</strong> vagas
                   recomendadas
                 </div>
-                {/* Botões de paginação com estilo dark */}
-                <div className="flex items-center gap-2">
+
+                <div className="flex flex-wrap justify-center items-center gap-2 w-full md:w-auto">
                   <Button
                     variant="outline"
                     size="sm"
                     disabled
-                    className="dark:text-gray-500 dark:border-gray-600 dark:bg-gray-800"
+                    className="disabled:opacity-50 dark:text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800"
                   >
                     Anterior
                   </Button>
+
+                  {/* Select para mobile */}
+                  <Select defaultValue="1">
+                    <SelectTrigger className="w-24 h-8 md:hidden">
+                      <SelectValue placeholder="Página 1" />
+                    </SelectTrigger>
+                    <SelectContent className="dark:bg-zinc-900">
+                      <SelectItem value="1">Página 1</SelectItem>
+                      <SelectItem value="2">Página 2</SelectItem>
+                      <SelectItem value="3">Página 3</SelectItem>
+                      <SelectItem value="4">Página 4</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {/* Botões numéricos para desktop */}
+                  <div className="hidden md:flex items-center gap-2">
+                    {[1, 2, 3].map((page) => (
+                      <Button
+                        key={page}
+                        variant={page === 1 ? "outline" : "outline"}
+                        size="sm"
+                        className={cn(
+                          "w-8 p-0 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800",
+                          page === 1 && "bg-zinc-100 dark:bg-zinc-800"
+                        )}
+                      >
+                        {page}
+                      </Button>
+                    ))}
+                    <span className="text-muted-foreground dark:text-gray-500">
+                      ...
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-8 p-0 dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                    >
+                      4
+                    </Button>
+                  </div>
+
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-8 p-0 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
-                  >
-                    1
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-8 p-0 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
-                  >
-                    2
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-8 p-0 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
-                  >
-                    3
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-8 p-0 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
-                  >
-                    ...
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-8 p-0 dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
-                  >
-                    4
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="dark:text-white dark:border-gray-600 hover:dark:bg-gray-700"
+                    className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                   >
                     Próxima
                   </Button>
