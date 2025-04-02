@@ -45,7 +45,7 @@ export default function Contato() {
           <div className="mb-8">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors dark:text-white dark:hover:text-zinc-400 hover:text-black"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-zinc-500 dark:text-white dark:hover:text-zinc-400"
             >
               <ArrowLeft className="h-4 w-4" />
               Voltar para Início
@@ -63,7 +63,7 @@ export default function Contato() {
               </p>
             </div>
 
-            <Card className="shadow-sm dark:text-white">
+            <Card className="shadow-sm dark:text-white dark:bg-black/20">
               <CardHeader>
                 <CardTitle>Fale Conosco</CardTitle>
               </CardHeader>
@@ -139,7 +139,7 @@ export default function Contato() {
                   <div className="flex justify-center">
                     <Button
                       type="submit"
-                      className="mx-auto text-white bg-purple-900 hover:bg-black transition-all duration-200"
+                      className="mx-auto bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                     >
                       Enviar Mensagem
                     </Button>
