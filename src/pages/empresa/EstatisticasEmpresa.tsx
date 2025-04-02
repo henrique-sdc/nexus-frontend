@@ -321,24 +321,22 @@ export default function AnalisesEmpresa() {
 
               {/* Abas para Gráficos Detalhados - COR TABS PADRONIZADA */}
               <Tabs defaultValue="candidaturas" className="w-full">
-                <TabsList className="bg-gray-100 dark:bg-zinc-800">
-                  {" "}
-                  {/* COR PADRONIZADA: TabsList BG */}
+                <TabsList className="bg-gray-100 dark:bg-zinc-800 rounded-md p-1 flex gap-1 w-9/12 max-w-full overflow-hidden">
                   <TabsTrigger
                     value="candidaturas"
-                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 dark:data-[state=inactive]:hover:bg-zinc-700" // COR PADRONIZADA: TabsTrigger
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Candidaturas
                   </TabsTrigger>
                   <TabsTrigger
                     value="fontes"
-                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 dark:data-[state=inactive]:hover:bg-zinc-700" // COR PADRONIZADA: TabsTrigger
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Fontes
                   </TabsTrigger>
                   <TabsTrigger
                     value="vagas"
-                    className="dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 dark:data-[state=inactive]:hover:bg-zinc-700" // COR PADRONIZADA: TabsTrigger
+                    className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"
                   >
                     Vagas
                   </TabsTrigger>

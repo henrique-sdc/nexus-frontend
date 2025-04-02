@@ -268,7 +268,7 @@ export default function MensagensEmpresa() {
               </div>
 
               {/* Grid Principal: Lista de Conversas | Janela de Chat */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-15rem)] md:h-[calc(100vh-14rem)]">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto md:h-[calc(100vh-14rem)] lg:h-[calc(100vh-15rem)]">
                 {/* Coluna da Lista de Conversas - COR CARD/INPUT/DIVIDER PADRONIZADA */}
                 <Card className="col-span-1 overflow-hidden flex flex-col bg-background dark:bg-zinc-900 dark:border dark:border-zinc-700">
                   {" "}
@@ -301,7 +301,7 @@ export default function MensagensEmpresa() {
                           className={cn(
                             "p-4 cursor-pointer transition-colors hover:bg-gray-100 dark:hover:bg-zinc-800/50", // COR PADRONIZADA: hover
                             selectedConversation === conv.id
-                              ? "bg-gray-100 dark:bg-zinc-700" // COR PADRONIZADA: active
+                              ? "bg-gray-200/70 dark:bg-zinc-700" // COR PADRONIZADA: active
                               : ""
                           )}
                         >
@@ -366,36 +366,25 @@ export default function MensagensEmpresa() {
                   </div>
                 </Card>
 
-                {/* Coluna da Janela de Chat - COR CARD/AVATAR/MSG BUBBLE PADRONIZADA */}
-                <Card className="col-span-1 lg:col-span-2 flex flex-col overflow-hidden bg-background dark:bg-zinc-900 dark:border dark:border-zinc-700">
-                  {" "}
-                  {/* COR PADRONIZADA: Card BG/Borda */}
+                {/* Coluna da Janela de Chat */}
+                <Card className="col-span-1 lg:col-span-2 flex flex-col overflow-hidden h-auto lg:h-full min-h-[500px] bg-background dark:bg-zinc-900 dark:border dark:border-zinc-700">
                   {/* Cabeçalho do Chat */}
                   {activeConversationData ? (
                     <div className="p-4 border-b dark:border-zinc-700">
-                      {" "}
-                      {/* COR PADRONIZADA: border-b */}
                       <div className="flex items-center gap-3">
                         <Avatar className="h-10 w-10 border dark:border-zinc-700">
-                          {" "}
-                          {/* COR PADRONIZADA: border */}
                           <AvatarImage
                             src={activeConversationData.avatar || undefined}
                             alt={activeConversationData.name}
                           />
                           <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                            {" "}
-                            {/* Fallback Mantido */}
                             {activeConversationData.initials}
                           </AvatarFallback>
                         </Avatar>
                         <div>
                           <h3 className="font-medium text-gray-900 dark:text-white">
-                            {" "}
-                            {/* COR TEXTO PADRÃO */}
                             {activeConversationData.name}
                           </h3>
-                          {/* Badge Mantido como estava */}
                           <div className="flex items-center gap-2 flex-wrap">
                             <Badge
                               className={cn(
@@ -413,41 +402,31 @@ export default function MensagensEmpresa() {
                     </div>
                   ) : (
                     <div className="p-4 border-b dark:border-zinc-700 text-center text-muted-foreground dark:text-gray-500">
-                      {" "}
-                      {/* COR PADRONIZADA: border-b / Placeholder Text */}
                       Selecione uma conversa para começar
                     </div>
                   )}
+
                   {/* Área das Mensagens com Scroll */}
                   <div
                     ref={chatContainerRef}
-                    className="flex-1 overflow-y-auto p-4 space-y-4"
+                    className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[300px] md:max-h-[calc(100vh-15rem)]"
                   >
                     {activeConversationData ? (
                       messages.map((msg, index) => (
                         <React.Fragment key={msg.id}>
-                          {/* Separador de Data */}
                           {(index === 0 ||
                             messages[index - 1].date !== msg.date) && (
                             <div className="relative flex py-3 items-center">
-                              <div className="flex-grow border-t dark:border-zinc-700"></div>{" "}
-                              {/* COR PADRONIZADA: border-t */}
+                              <div className="flex-grow border-t dark:border-zinc-700"></div>
                               <span className="flex-shrink mx-4 text-xs text-muted-foreground dark:text-gray-400">
-                                {" "}
-                                {/* COR TEXTO MUTED PADRÃO */}
                                 {msg.date}
                               </span>
-                              <div className="flex-grow border-t dark:border-zinc-700"></div>{" "}
-                              {/* COR PADRONIZADA: border-t */}
+                              <div className="flex-grow border-t dark:border-zinc-700"></div>
                             </div>
                           )}
-
-                          {/* Mensagem Recebida */}
                           {msg.type === "received" && (
                             <div className="flex gap-3 max-w-[85%] sm:max-w-[75%]">
                               <Avatar className="h-8 w-8 border dark:border-zinc-700 flex-shrink-0">
-                                {" "}
-                                {/* COR PADRONIZADA: border */}
                                 <AvatarImage
                                   src={
                                     activeConversationData?.avatar || undefined
@@ -455,54 +434,37 @@ export default function MensagensEmpresa() {
                                   alt={activeConversationData?.name}
                                 />
                                 <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                                  {" "}
-                                  {/* Fallback Mantido */}
                                   {activeConversationData?.initials}
                                 </AvatarFallback>
                               </Avatar>
                               <div className="space-y-1">
                                 <div className="bg-gray-100 dark:bg-zinc-800 p-3 rounded-lg rounded-tl-none">
-                                  {" "}
-                                  {/* COR PADRONIZADA: Received Bubble BG */}
                                   <p className="text-sm text-gray-900 dark:text-gray-100">
-                                    {" "}
-                                    {/* COR PADRONIZADA: Received Text */}
                                     {msg.text}
                                   </p>
                                 </div>
                                 <span className="text-xs text-muted-foreground dark:text-gray-500">
-                                  {" "}
-                                  {/* COR TEXTO PLACEHOLDER PADRÃO */}
                                   {msg.time}
                                 </span>
                               </div>
                             </div>
                           )}
-
-                          {/* Mensagem Enviada */}
                           {msg.type === "sent" && (
                             <div className="flex gap-3 justify-end">
                               <div className="space-y-1 text-right max-w-[85%] sm:max-w-[75%]">
-                                {/* Cor Azul Mantida para Mensagem Enviada */}
                                 <div className="bg-blue-600 text-white dark:bg-blue-700 dark:text-blue-50 p-3 rounded-lg rounded-tr-none">
                                   <p className="text-sm">{msg.text}</p>
                                 </div>
                                 <span className="text-xs text-muted-foreground dark:text-gray-500">
-                                  {" "}
-                                  {/* COR TEXTO PLACEHOLDER PADRÃO */}
                                   {msg.time}
                                 </span>
                               </div>
                               <Avatar className="h-8 w-8 border dark:border-zinc-700 flex-shrink-0">
-                                {" "}
-                                {/* COR PADRONIZADA: border */}
                                 <AvatarImage
                                   src={empresaData.logoSrc}
                                   alt="Você"
                                 />
                                 <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                                  {" "}
-                                  {/* Fallback Mantido */}
                                   {empresaData.initials}
                                 </AvatarFallback>
                               </Avatar>
@@ -512,42 +474,38 @@ export default function MensagensEmpresa() {
                       ))
                     ) : (
                       <div className="flex items-center justify-center h-full text-muted-foreground dark:text-gray-500">
-                        {" "}
-                        {/* COR TEXTO PLACEHOLDER PADRÃO */}
                         Selecione uma conversa para ver as mensagens.
                       </div>
                     )}
                   </div>
-                  {/* Input de Mensagem - COR PADRONIZADA */}
+
+                  {/* Input de Mensagem */}
                   {activeConversationData && (
                     <div className="p-4 border-t dark:border-zinc-700">
-                      {" "}
-                      {/* COR PADRONIZADA: border-t */}
                       <div className="flex gap-2 items-center">
                         <Button
                           variant="outline"
                           size="icon"
-                          className="rounded-full flex-shrink-0 dark:text-white dark:border-zinc-600 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
+                          className="rounded-full flex-shrink-0 dark:text-white hover:bg-zinc-200 dark:border-zinc-600 hover:dark:bg-zinc-800"
                         >
                           <Paperclip className="h-4 w-4" />
                           <span className="sr-only">Anexar arquivo</span>
                         </Button>
                         <Input
                           placeholder="Digite uma mensagem..."
-                          className="flex-1 bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700" // COR PADRONIZADA: Input
+                          className="flex-1 bg-white dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                         />
                         <Button
                           variant="outline"
                           size="icon"
-                          className="rounded-full flex-shrink-0 dark:text-white dark:border-zinc-600 hover:dark:bg-zinc-800" // COR PADRONIZADA: Botão Outline
+                          className="rounded-full flex-shrink-0 dark:text-white hover:bg-zinc-200 dark:border-zinc-600 hover:dark:bg-zinc-800"
                         >
                           <Smile className="h-4 w-4" />
                           <span className="sr-only">Adicionar emoji</span>
                         </Button>
-                        {/* Botão Enviar Azul Mantido */}
                         <Button
                           size="icon"
-                          className="rounded-full flex-shrink-0 dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700"
+                          className="rounded-full flex-shrink-0 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                         >
                           <Send className="h-4 w-4" />
                           <span className="sr-only">Enviar mensagem</span>

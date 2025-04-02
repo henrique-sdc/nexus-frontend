@@ -238,56 +238,55 @@ export default function ConfiguracoesEmpresa() {
               {/* Abas Principais - RESPONSIVIDADE E CORES PADRONIZADAS */}
               <Tabs defaultValue="perfil" className="w-full">
                 {/* Ajustado para flex e cores zinc */}
+                {/* Lista de Abas - CORREÇÃO RESPONSIVIDADE */}
                 <TabsList className="flex w-full gap-1 bg-gray-200/50 dark:bg-zinc-800 p-1 rounded-lg">
                   {" "}
-                  {/* COR PADRONIZADA: dark:bg-zinc-800 */}
+                  {/* Estrutura Flex, BG, Padding OK */}
+                  {/* COR PADRONIZADA (TabsList BG) */}
+                  {/* Perfil Trigger */}
                   <TabsTrigger
                     value="perfil"
                     className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
                     <User className="h-4 w-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">Perfil</span>{" "}
-                    {/* Texto responsivo */}
-                    <span className="sm:hidden">Perfil</span>{" "}
-                    {/* Texto sempre visível em telas muito pequenas se necessário */}
+                    {/* APENAS este span deve existir para o texto */}
+                    <span className="hidden sm:inline">Perfil</span>
                   </TabsTrigger>
+                  {/* Equipe Trigger */}
                   <TabsTrigger
                     value="equipe"
                     className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
                     <Users className="h-4 w-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">Equipe</span>{" "}
-                    {/* Texto responsivo */}
-                    <span className="sm:hidden">Equipe</span> {/* Fallback */}
+                    {/* APENAS este span deve existir para o texto */}
+                    <span className="hidden sm:inline">Equipe</span>
                   </TabsTrigger>
+                  {/* Cobrança Trigger */}
                   <TabsTrigger
                     value="cobranca"
                     className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
                     <CreditCard className="h-4 w-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">Cobrança</span>{" "}
-                    {/* Texto responsivo */}
-                    <span className="sm:hidden">Cobrança</span> {/* Fallback */}
+                    {/* APENAS este span deve existir para o texto */}
+                    <span className="hidden sm:inline">Cobrança</span>
                   </TabsTrigger>
+                  {/* Notificações Trigger */}
                   <TabsTrigger
                     value="notificacoes"
                     className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
                     <Bell className="h-4 w-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">Notificações</span>{" "}
-                    {/* Texto responsivo */}
-                    <span className="sm:hidden">Notif.</span>{" "}
-                    {/* Abreviação fallback */}
+                    {/* APENAS este span deve existir para o texto */}
+                    <span className="hidden sm:inline">Notificações</span>
                   </TabsTrigger>
+                  {/* Segurança Trigger */}
                   <TabsTrigger
                     value="seguranca"
                     className="flex flex-1 items-center justify-center gap-1.5 px-2 py-1.5 text-xs sm:text-sm rounded-md data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors" // Estilo e Cores Padronizadas
                   >
                     <Lock className="h-4 w-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">Segurança</span>{" "}
-                    {/* Texto responsivo */}
-                    <span className="sm:hidden">Segur.</span>{" "}
-                    {/* Abreviação fallback */}
+                    {/* APENAS este span deve existir para o texto */}
+                    <span className="hidden sm:inline">Segurança</span>
                   </TabsTrigger>
                 </TabsList>
 
@@ -458,7 +457,7 @@ export default function ConfiguracoesEmpresa() {
                         Cancelar
                       </Button>
                       {/* Botão Primário Azul Mantido */}
-                      <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                      <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                         Salvar Alterações
                       </Button>
                     </CardFooter>
@@ -530,7 +529,7 @@ export default function ConfiguracoesEmpresa() {
                         Cancelar
                       </Button>
                       {/* Botão Primário Azul Mantido */}
-                      <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                      <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                         Salvar Alterações
                       </Button>
                     </CardFooter>
@@ -558,7 +557,7 @@ export default function ConfiguracoesEmpresa() {
                       <div className="space-y-4">
                         <div className="flex justify-end">
                           {/* Botão Primário Azul Mantido */}
-                          <Button className="gap-1 dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                          <Button className="gap-1 bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                             <Users className="h-4 w-4" />
                             <span>Convidar Membro</span>
                           </Button>
@@ -680,7 +679,7 @@ export default function ConfiguracoesEmpresa() {
                             </ul>
                           </div>
                           {/* Botão Primário Azul Mantido */}
-                          <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700 w-full md:w-auto">
+                          <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200 w-full md:w-auto">
                             Gerenciar Assinatura
                           </Button>
                         </div>
@@ -961,7 +960,7 @@ export default function ConfiguracoesEmpresa() {
                         Cancelar
                       </Button>
                       {/* Botão Primário Azul Mantido */}
-                      <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                      <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                         Salvar Alterações
                       </Button>
                     </CardFooter>
@@ -1037,7 +1036,7 @@ export default function ConfiguracoesEmpresa() {
                         Cancelar
                       </Button>
                       {/* Botão Primário Azul Mantido */}
-                      <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                      <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                         Atualizar Senha
                       </Button>
                     </CardFooter>
@@ -1075,7 +1074,7 @@ export default function ConfiguracoesEmpresa() {
                           </p>
                         </div>
                         {/* Botão Primário Azul Mantido */}
-                        <Button className="dark:text-white dark:bg-blue-600 hover:dark:bg-blue-700">
+                        <Button className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200">
                           Habilitar
                         </Button>
                       </div>
