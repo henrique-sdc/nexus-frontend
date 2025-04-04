@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeProvider"; // Gerenciamento global do tema
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./styles/Animations.css";
 
 import Home from "./pages/Home";
@@ -35,6 +36,7 @@ import ConfiguracoesEmpresaPage from "./pages/empresa/ConfiguracoesEmpresa";
 function App() {
   return (
     <ThemeProvider>
+      <ScrollToTop />
       <Routes>
         {/* Páginas Gerais */}
         <Route path="/" element={<Home />} />

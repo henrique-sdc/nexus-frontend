@@ -59,14 +59,14 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button
-                    className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
+                    className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200 px-24 py-6"
                     size="lg"
                     asChild
                   >
                     <Link to="/cadastro">Comece Agora</Link>
                   </Button>
                   <Button
-                    className="bg-white dark:bg-black dark:border-zinc-900 hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-200"
+                    className="bg-white dark:bg-black dark:border-zinc-900 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all duration-200 px-24 py-6"
                     size="lg"
                     variant="outline"
                     asChild
@@ -108,7 +108,7 @@ export default function Home() {
             </div>
             <div className="grid gap-8 md:grid-cols-3">
               {/* Card 1: Avaliação Única */}
-              <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.4)] transition-all">
+              <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.2)] transition-all">
                 <div
                   className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 
                   bg-purple-500/20 dark:bg-purple-500/30 rounded-full blur-2xl 
@@ -127,7 +127,7 @@ export default function Home() {
               </div>
 
               {/* Card 2: Correspondência Potencializada por IA */}
-              <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.4)] transition-all">
+              <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.2)] transition-all">
                 <div
                   className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 
                   bg-indigo-500/20 dark:bg-indigo-500/30 rounded-full blur-2xl 
@@ -146,7 +146,7 @@ export default function Home() {
               </div>
 
               {/* Card 3: Recrutamento Eficiente */}
-              <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.4)] transition-all">
+              <div className="group relative overflow-hidden rounded-lg border bg-background dark:bg-black/90 p-6 hover:shadow-md dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.2)] transition-all">
                 <div
                   className="absolute top-0 right-0 h-20 w-20 translate-x-6 -translate-y-6 
                   bg-violet-500/20 dark:bg-violet-500/30 rounded-full blur-2xl 

@@ -77,7 +77,7 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
       <div className="flex items-center gap-3 md:gap-4 ml-auto">
         {" "}
         {/* Botao de troca de modo */}
-        <div className="rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800">
+        <div className="rounded-lg hover:bg-zinc-200 active:bg-zinc-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-800 ">
           <ModeToggle />
         </div>
         {/* ml-auto empurra para a direita */}

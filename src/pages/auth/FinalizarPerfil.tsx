@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "src/components/ui/button";
+import { cn } from "src/lib/utils";
 import {
   Card,
   CardContent,
@@ -136,36 +137,38 @@ const ProfileCompletion: React.FC = () => {
           className="w-full"
         >
           {/* Container principal para Abas e botão Pular */}
-          <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-            {/* Container Visual das Abas */}
-            {/* w-full em telas pequenas, sm:w-auto para encolher em telas maiores */}
-            <div className="bg-gray-200/50 dark:bg-gray-800/60 p-1 rounded-lg w-full sm:w-auto">
-              {/* Lista de Abas: Usando Flexbox para responsividade */}
-              <TabsList className="flex flex-wrap justify-center gap-1 sm:flex-nowrap sm:justify-start dark:bg-transparent">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            {/* Container Visual das Abas: w-full (padrão), sm:w-auto (desktop) */}
+            <div className="w-full sm:w-auto bg-gray-200/50 dark:bg-gray-800/60 p-1 rounded-lg">
+              {/* Lista de Abas: flex, w-full (para preencher container), gap-1 */}
+              <TabsList className="flex w-full gap-1 dark:bg-transparent">
                 {tabOrder.map((tabValue) => (
                   <TabsTrigger
                     key={tabValue}
                     value={tabValue}
-                    // Estilos Ativo/Inativo (mantidos)
-                    className={`flex items-center justify-center gap-1 rounded-md p-1.5 text-xs sm:text-sm transition-colors duration-200 ease-in-out ${
-                      isTabActive(tabValue)
-                        ? "bg-purple-300/40 text-gray-900 dark:bg-purple-900/50 dark:text-white shadow-sm" // Estilo ativo
-                        : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-gray-700/50" // Estilo inativo
-                    }`}
+                    // Estilo base: flex-1, centralizado. Padding/Gap responsivo
+                    className={cn(
+                      `flex flex-1 items-center justify-center rounded-md transition-colors duration-200 ease-in-out`,
+                      `gap-1 px-2 py-1.5 pl-0.5`, // Padding/Gap base (menor)
+                      `text-xs sm:text-sm sm:px-3 sm:gap-1.5`, // Aumenta padding/gap e texto em SM+
+                      isTabActive(tabValue) // Estilos Ativo/Inativo
+                        ? "bg-purple-300/40 text-gray-900 dark:bg-purple-900/50 dark:text-white shadow-sm"
+                        : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-200/50 dark:hover:bg-gray-700/50"
+                    )}
                   >
-                    {/* Ícone */}
+                    {/* Ícone da aba */}
                     {isTabCompleted(tabValue) ? (
-                      <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-green-600 dark:text-green-400" />
                     ) : (
                       <Clock
-                        className={`h-3.5 w-3.5 flex-shrink-0 ${
+                        className={`h-4 w-4 flex-shrink-0 ${
                           isTabActive(tabValue)
                             ? "text-purple-600 dark:text-purple-400"
                             : "text-gray-400 dark:text-gray-500"
                         }`}
                       />
                     )}
-                    {/* Texto da Aba (Mobile) - Mantido sm:hidden */}
+                    {/* Texto da Aba (Mobile) */}
                     <span className="sm:hidden capitalize">
                       {
                         {
@@ -177,7 +180,7 @@ const ProfileCompletion: React.FC = () => {
                         }[tabValue]
                       }
                     </span>
-                    {/* Texto da Aba (Desktop) - Mantido hidden sm:inline */}
+                    {/* Texto da Aba (Desktop) */}
                     <span className="hidden sm:inline capitalize">
                       {
                         {
@@ -194,11 +197,11 @@ const ProfileCompletion: React.FC = () => {
               </TabsList>
             </div>
 
-            {/* Botão Pular */}
+            {/* Botão Pular: w-full (padrão), sm:w-auto (desktop) */}
             <Button
               variant="ghost"
               onClick={handleSkip}
-              className="w-full sm:w-auto hover:bg-gray-200/50 dark:hover:bg-gray-700/50"
+              className="w-full sm:w-auto flex-shrink-0 hover:bg-gray-200/50 dark:hover:bg-gray-700/50" // Adicionado flex-shrink-0 por segurança
             >
               Pular por enquanto
             </Button>

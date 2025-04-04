@@ -61,4 +61,14 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+
+  /* Estilos de hover aplicados apenas em dispositivos que suportam hover (desktop) */
+  @media (hover: hover) {
+    .hover-desktop\:bg-zinc-100:hover {
+      background-color: #f4f4f5; /* bg-zinc-100 */
+    }
+    .dark .hover-desktop\:bg-zinc-800:hover {
+      background-color: #27272a; /* bg-zinc-800 */
+    }
+  }
 }
