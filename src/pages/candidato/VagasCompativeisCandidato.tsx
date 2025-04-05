@@ -43,6 +43,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "src/components/ui/select";
+import Footer from "src/components/Footer/Footer";
 
 // --- Importações para Navegação (Opcional, descomentar se usar) ---
 // import { useNavigate } from 'react-router-dom';
@@ -285,22 +286,24 @@ export default function VagasCompativeis() {
                   <div className="grid gap-4">
                     {/* --- Exemplo de Card de Vaga 1 --- */}
                     <Card className="overflow-hidden bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
-                      {" "}
-                      {/* CORREÇÃO: Fundo e Borda */}
                       <div className="flex flex-col md:flex-row">
                         {/* Seção Principal */}
+                        {/* Aplicado padding e largura como no código a ser mudado */}
                         <div className="p-4 md:p-6 md:w-2/3">
-                          <div className="flex items-start justify-between mb-4">
+                          {/* Div Externa do Header - CORRIGIDO com flex-col sm:flex-row e gap */}
+                          <div className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3">
+                            {" "}
+                            {/* <<< CORREÇÃO APLICADA AQUI */}
+                            {/* Info do Candidato (Avatar, Nome, Título) */}
                             <div className="flex items-center gap-4">
                               <Avatar className="h-12 w-12 border dark:border-zinc-700">
-                                {" "}
-                                {/* CORREÇÃO: Borda */}
                                 <AvatarImage
-                                  src={userData.avatarSrc}
+                                  src={userData.avatarSrc} // Usando userData como exemplo
                                   alt="Logo Empresa"
                                 />
                                 <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                                  TC {/* Mantido como estava no Perfil */}
+                                  {/* Adapte o fallback se necessário */}
+                                  TC
                                 </AvatarFallback>
                               </Avatar>
                               <div>
@@ -312,21 +315,26 @@ export default function VagasCompativeis() {
                                 </p>
                               </div>
                             </div>
-                            <div className="flex xs:flex-row items-center xs:items-center gap-1 xs:gap-2">
+                            {/* Ações / Badges - CORRIGIDO com self-start/center, shrink-0 e gap padronizado */}
+                            <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
+                              {" "}
+                              {/* <<< CORREÇÃO APLICADA AQUI */}
                               <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400 whitespace-nowrap">
-                                95% Compatível{" "}
-                                {/* Estilo consistente com Perfil */}
+                                95% Compatível
                               </Badge>
                               <Button
                                 variant="ghost"
                                 size="icon"
                                 aria-label="Salvar vaga"
-                                className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400" // Consistente com Perfil (hover)
+                                // Ajustado tamanho do botão/ícone e cores/hovers para consistência
+                                className="h-8 w-8 text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
                               >
-                                <Heart className="w-8 h-8 flex-shrink-0" />
+                                <Heart className="h-5 w-5" />{" "}
+                                {/* Ajustado tamanho do ícone */}
                               </Button>
                             </div>
                           </div>
+                          {/* Restante do conteúdo do card (inalterado) */}
                           <div className="space-y-4">
                             <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground dark:text-gray-400">
                               <div className="flex items-center gap-1">
@@ -346,35 +354,34 @@ export default function VagasCompativeis() {
                               <h4 className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                                 Habilidades Requeridas
                               </h4>
-                              {/* Badges outline com estilo dark consistente */}
                               <div className="flex flex-wrap gap-2">
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda (mais sutil como no Perfil)
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   React
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   TypeScript
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   Tailwind CSS
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   CSS
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   5+ anos
                                 </Badge>
@@ -386,10 +393,8 @@ export default function VagasCompativeis() {
                             </p>
                           </div>
                         </div>
-                        {/* Seção Lateral com estilo dark consistente */}
-                        <div className="bg-gray-50 dark:bg-zinc-800/50 rounded-lg p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-zinc-700 md:p-6">
-                          {" "}
-                          {/* CORREÇÃO: Fundo e Borda */}
+                        {/* Seção Lateral (inalterada) */}
+                        <div className="bg-gray-50 dark:bg-zinc-800/50 rounded-b-lg md:rounded-bl-none md:rounded-r-lg p-4 md:p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-zinc-700">
                           <div className="space-y-4">
                             <div>
                               <h4 className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -411,18 +416,16 @@ export default function VagasCompativeis() {
                             </div>
                           </div>
                           <div className="flex flex-col gap-2 mt-4">
-                            {/* Botão Primário Azul (mantido para diferenciar ação principal aqui) */}
                             <Button
                               size="sm"
-                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200" // Adicionado bg light para consistência
+                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                             >
                               Candidatar-se Agora
                             </Button>
-                            {/* Botão Outline */}
                             <Button
                               variant="outline"
                               size="sm"
-                              className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // CORREÇÃO: Borda e Hover
+                              className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                             >
                               Ver Detalhes
                             </Button>
@@ -433,17 +436,19 @@ export default function VagasCompativeis() {
 
                     {/* --- Exemplo de Card de Vaga 2 --- */}
                     <Card className="overflow-hidden bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
-                      {" "}
-                      {/* CORREÇÃO: Fundo e Borda */}
                       <div className="flex flex-col md:flex-row">
                         {/* Seção Principal */}
-                        <div className="p-6 md:w-2/3">
-                          <div className="flex items-start justify-between mb-4">
+                        {/* Aplicado padding e largura */}
+                        <div className="p-4 md:p-6 md:w-2/3">
+                          {" "}
+                          {/* Ajustado padding p/ 4 no mobile */}
+                          {/* Div Externa do Header - CORRIGIDO com flex-col sm:flex-row e gap */}
+                          <div className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3">
+                            {" "}
+                            {/* <<< CORREÇÃO APLICADA AQUI */}
+                            {/* Info da Empresa */}
                             <div className="flex items-center gap-4">
                               <Avatar className="h-12 w-12 border dark:border-zinc-700">
-                                {" "}
-                                {/* CORREÇÃO: Borda */}
-                                {/* <AvatarImage src="/assets/images/company-logo-innovate.png" alt="InnovateLabs" /> */}
                                 <AvatarFallback className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
                                   IL
                                 </AvatarFallback>
@@ -457,21 +462,25 @@ export default function VagasCompativeis() {
                                 </p>
                               </div>
                             </div>
-                            <div className="flex xs:flex-row items-center xs:items-center gap-1 xs:gap-2">
+                            {/* Ações / Badges - CORRIGIDO com self-start/center, shrink-0 e gap padronizado */}
+                            <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
+                              {" "}
+                              {/* <<< CORREÇÃO APLICADA AQUI */}
                               <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 whitespace-nowrap">
-                                88% Compatível{" "}
-                                {/* Estilo consistente com Perfil */}
+                                88% Compatível
                               </Badge>
                               <Button
                                 variant="ghost"
                                 size="icon"
                                 aria-label="Salvar vaga"
-                                className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
+                                className="h-8 w-8 text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
                               >
-                                <Heart className="w-8 h-8 flex-shrink-0" />
+                                <Heart className="h-5 w-5" />{" "}
+                                {/* Ajustado tamanho */}
                               </Button>
                             </div>
                           </div>
+                          {/* Restante do conteúdo (inalterado) */}
                           <div className="space-y-4">
                             <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground dark:text-gray-400">
                               <div className="flex items-center gap-1">
@@ -494,31 +503,31 @@ export default function VagasCompativeis() {
                               <div className="flex flex-wrap gap-2">
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   Node.js
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   React
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   Java
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   PostgreSQL
                                 </Badge>
                                 <Badge
                                   variant="outline"
-                                  className="dark:border-zinc-500 dark:text-gray-400" // CORREÇÃO: Borda
+                                  className="dark:border-zinc-500 dark:text-gray-400"
                                 >
                                   3+ anos
                                 </Badge>
@@ -531,10 +540,8 @@ export default function VagasCompativeis() {
                             </p>
                           </div>
                         </div>
-                        {/* Seção Lateral */}
-                        <div className="bg-gray-50 dark:bg-zinc-800/50 rounded-lg p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-zinc-700 md:p-6">
-                          {" "}
-                          {/* CORREÇÃO: Fundo e Borda */}
+                        {/* Seção Lateral (inalterada) */}
+                        <div className="bg-gray-50 dark:bg-zinc-800/50 rounded-b-lg md:rounded-bl-none md:rounded-r-lg p-4 md:p-6 flex flex-col justify-between md:w-1/3 border-t md:border-t-0 md:border-l dark:border-zinc-700">
                           <div className="space-y-4">
                             <div>
                               <h4 className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -558,14 +565,14 @@ export default function VagasCompativeis() {
                           <div className="flex flex-col gap-2 mt-4">
                             <Button
                               size="sm"
-                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200" // Adicionado bg light
+                              className="bg-purple-800 text-white hover:bg-purple-900 transition-all duration-200"
                             >
                               Candidatar-se Agora
                             </Button>
                             <Button
                               variant="outline"
                               size="sm"
-                              className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800" // CORREÇÃO: Borda e Hover
+                              className="dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                             >
                               Ver Detalhes
                             </Button>
@@ -699,6 +706,8 @@ export default function VagasCompativeis() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE VAGAS                    */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

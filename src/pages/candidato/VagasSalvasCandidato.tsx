@@ -16,6 +16,7 @@ import { Input } from "src/components/ui/input";
 import { Badge } from "src/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
 import { Calendar, Clock, MapPin, Search, Send, Eye } from "lucide-react";
+import Footer from "src/components/Footer/Footer";
 
 /**
  * Página "Vagas Salvas" do Dashboard do Candidato.
@@ -302,6 +303,8 @@ export default function VagasSalvas() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE VAGAS SALVAS              */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

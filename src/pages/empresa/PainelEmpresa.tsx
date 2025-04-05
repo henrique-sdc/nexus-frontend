@@ -27,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "src/components/ui/select";
+import Footer from "src/components/Footer/Footer";
 
 const DashboardEmpresa: React.FC = () => {
   // --- Estado ---
@@ -783,6 +784,8 @@ const DashboardEmpresa: React.FC = () => {
             </div>
             {/* ---- FIM DO CONTEÚDO ESPECÍFICO DO DASHBOARD EMPRESA ---- */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

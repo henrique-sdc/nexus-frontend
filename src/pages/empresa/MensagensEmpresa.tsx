@@ -17,6 +17,8 @@ import { Badge } from "src/components/ui/badge";
 // --- Importações dos Ícones ---
 import { Paperclip, Search, Send, Smile } from "lucide-react";
 
+import Footer from "src/components/Footer/Footer";
+
 // --- Importações para Navegação (Opcional) ---
 // import { useNavigate } from 'react-router-dom';
 
@@ -520,6 +522,8 @@ export default function MensagensEmpresa() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE MENSAGENS                */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

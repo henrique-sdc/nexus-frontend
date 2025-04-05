@@ -29,40 +29,32 @@ import {
   Trash2,
   Upload,
   User,
+  Save, // <--- Importado ícone de Salvar (opcional)
 } from "lucide-react";
+import Footer from "src/components/Footer/Footer";
 
-/**
- * Página Completa de Perfil do Candidato.
- * Inclui Navbar e Sidebar com estado local e estilos dark mode
- * consistentes com o CandidatoDashboard de referência.
- */
-const ProfilePageCandidate: React.FC = () => {
-  // --- Estado para Controle da Sidebar (Exatamente como na referência) ---
+// Nome do componente ajustado para corresponder ao nome do arquivo geralmente
+const PerfilCandidatoPage: React.FC = () => {
+  // --- Estado para Controle da Sidebar (Mantido) ---
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true);
   const [isMobileSheetOpen, setIsMobileSheetOpen] = useState(false);
 
-  // --- Handlers para Sidebar/Sheet (Exatamente como na referência) ---
+  // --- Handlers para Sidebar/Sheet (Mantidos) ---
   const toggleDesktopSidebar = () => setIsDesktopSidebarOpen((prev) => !prev);
   const openMobileSheet = () => setIsMobileSheetOpen(true);
-  // Função de navegação placeholder - ajuste se a sidebar tiver links reais
   const navigateTo = (page: string) => {
     console.log("Navegar para (placeholder):", page);
-    // Se estiver usando react-router, substitua o console.log pela navegação real
-    // Ex: navigate(`/dashboard/candidato/${page}`); // Onde 'navigate' vem de useNavigate()
-    setIsMobileSheetOpen(false); // Fecha o sheet mobile ao clicar em um item
+    setIsMobileSheetOpen(false);
   };
 
-  // --- Dados de Exemplo do Usuário (Combinados para Layout e Conteúdo) ---
-  // Usar dados consistentes para Navbar, Sidebar e Conteúdo do Perfil
+  // --- Dados de Exemplo do Usuário (Mantidos) ---
   const userData = {
-    // Para Navbar/Sidebar
     name: "Ana Silva",
     title: "Engenheira de Software Sênior",
     initials: "AS",
-    avatarSrc: "https://github.com/shadcn.png", // Substitua pela URL real ou lógica
-    messageCount: 3, // Exemplo
-    notificationCount: 5, // Exemplo
-    // Para Conteúdo do Perfil
+    avatarSrc: "https://github.com/shadcn.png",
+    messageCount: 3,
+    notificationCount: 5,
     firstName: "Ana",
     lastName: "Silva",
     email: "ana.silva@exemplo.com",
@@ -142,43 +134,48 @@ const ProfilePageCandidate: React.FC = () => {
     resume: { fileName: "Ana_Silva_CV.pdf", uploadDate: "10 de Março de 2025" },
   };
 
+  // Handler para o botão Salvar (placeholder)
+  const handleSaveChanges = () => {
+    console.log("Salvando alterações...");
+    // Aqui você implementaria a lógica para enviar os dados atualizados para a API
+    // Ex: updateProfileData(formData);
+  };
+
   return (
     <SidebarProvider>
-      {/* Container principal Flex (Exatamente como na referência) */}
+      {/* Container principal Flex (Mantido) */}
       <div className="flex min-h-screen bg-gray-100/50 dark:bg-black dark:text-white">
-        {/* --- Sidebar Desktop (Exatamente como na referência) --- */}
+        {/* --- Sidebar Desktop (Mantido) --- */}
         <div
           className={cn(
             "hidden lg:flex h-screen sticky top-0 transition-all duration-300 ease-in-out border-r dark:border-zinc-700",
-            "bg-background dark:bg-zinc-900", // Fundo explícito
+            "bg-background dark:bg-zinc-900",
             isDesktopSidebarOpen ? "w-64" : "w-16"
           )}
         >
-          {/* Instanciação da Sidebar */}
           <CandidatoSidebar
             isOpen={isDesktopSidebarOpen}
-            toggleSidebar={toggleDesktopSidebar} // Handler para abrir/fechar
+            toggleSidebar={toggleDesktopSidebar}
             userName={userData.name}
             userTitle={userData.title}
             userInitials={userData.initials}
             userAvatarSrc={userData.avatarSrc}
             messageCount={userData.messageCount}
-            onNavigate={navigateTo} // Handler para cliques nos itens (se aplicável)
-            activePage="profile" // **IMPORTANTE**: Indica qual página está ativa para highlight
+            onNavigate={navigateTo}
+            activePage="profile"
           />
         </div>
-        {/* --- Sidebar Mobile (Sheet - Exatamente como na referência) --- */}
+        {/* --- Sidebar Mobile (Sheet - Mantido) --- */}
         <Sheet open={isMobileSheetOpen} onOpenChange={setIsMobileSheetOpen}>
           <SheetContent
             side="left"
             className={cn(
               "p-0 w-64 lg:hidden border-r dark:border-zinc-700",
-              "bg-white dark:bg-zinc-900" // Fundo explícito
+              "bg-white dark:bg-zinc-900"
             )}
           >
-            {/* Instanciação da Sidebar (versão mobile) */}
             <CandidatoSidebar
-              isOpen={true} // Sempre aberta dentro do Sheet
+              isOpen={true}
               isMobileView={true}
               userName={userData.name}
               userTitle={userData.title}
@@ -186,28 +183,22 @@ const ProfilePageCandidate: React.FC = () => {
               userAvatarSrc={userData.avatarSrc}
               messageCount={userData.messageCount}
               onNavigate={navigateTo}
-              activePage="profile" // **IMPORTANTE**: Indica qual página está ativa
+              activePage="profile"
             />
           </SheetContent>
         </Sheet>
-        {/* --- Área de Conteúdo Principal (Layout da referência) --- */}
+        {/* --- Área de Conteúdo Principal (Mantido) --- */}
         <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Exatamente como na referência) */}
+          {/* Navbar Superior (Mantido) */}
           <DashboardNavbar
-            onMobileMenuClick={openMobileSheet} // Handler para abrir o Sheet no mobile
+            onMobileMenuClick={openMobileSheet}
             userName={userData.name}
             userInitials={userData.initials}
             userAvatarSrc={userData.avatarSrc}
             notificationCount={userData.notificationCount}
           />
-          {/* Conteúdo Principal (Main) - Layout da referência, conteúdo do PERFIL inserido abaixo */}
-          {/* Estilos de padding, background e gap EXATAMENTE como na referência */}
+          {/* Conteúdo Principal (Main) */}
           <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
-            {/* ================================================================== */}
-            {/* INÍCIO DO CONTEÚDO ESPECÍFICO DA PÁGINA DE PERFIL                  */}
-            {/* Estilos dark mode aplicados consistentemente abaixo              */}
-            {/* ================================================================== */}
-
             {/* Cabeçalho do Conteúdo do Perfil */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
@@ -218,16 +209,13 @@ const ProfilePageCandidate: React.FC = () => {
                   Gerencie suas informações pessoais e currículo
                 </p>
               </div>
-              <Button className="gap-1 w-full md:w-auto text-white bg-purple-800 hover:bg-purple-900 transition-all duration-200">
-                {/* Exemplo de botão primário dark */}
-                <Edit className="h-4 w-4" />
-                <span>Editar Perfil</span>
-              </Button>
+              {/* <<< BOTÃO EDITAR REMOVIDO DAQUI >>> */}
             </div>
 
             {/* --- Seção: Informações Pessoais --- */}
-            {/* Card com estilos dark mode da referência */}
+            {/* O conteúdo desta seção permanece o mesmo */}
             <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border-zinc-700">
+              {/* ... CardHeader e CardContent inalterados ... */}
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
                   Informações Pessoais
@@ -271,7 +259,9 @@ const ProfilePageCandidate: React.FC = () => {
                       </Label>
                       <Input
                         id="first-name"
-                        defaultValue={userData.firstName}
+                        defaultValue={
+                          userData.firstName + " " + userData.lastName
+                        } // Combinei nome e sobrenome aqui
                         className="bg-gray-100/50 dark:bg-zinc-900 dark:text-gray-300 dark:border-zinc-700"
                       />
                     </div>
@@ -285,8 +275,8 @@ const ProfilePageCandidate: React.FC = () => {
                           E-mail
                         </Label>
                         <div className="flex">
-                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-purple-800 dark:border-zinc-600">
-                            <Mail className="h-4 w-4 text-muted-foreground text-purple-200" />
+                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-zinc-800 dark:border-zinc-700">
+                            <Mail className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
                           </div>
                           <Input
                             id="email"
@@ -304,8 +294,8 @@ const ProfilePageCandidate: React.FC = () => {
                           Telefone
                         </Label>
                         <div className="flex">
-                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-purple-800 dark:border-zinc-600">
-                            <Phone className="h-4 w-4 text-muted-foreground text-purple-200" />
+                          <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-zinc-800 dark:border-zinc-700">
+                            <Phone className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
                           </div>
                           <Input
                             id="phone"
@@ -325,8 +315,8 @@ const ProfilePageCandidate: React.FC = () => {
                         Localização
                       </Label>
                       <div className="flex">
-                        <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-purple-800 dark:border-zinc-600">
-                          <MapPin className="h-4 w-4 text-muted-foreground text-purple-200" />
+                        <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-gray-100 dark:bg-zinc-800 dark:border-zinc-700">
+                          <MapPin className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
                         </div>
                         <Input
                           id="location"
@@ -366,10 +356,13 @@ const ProfilePageCandidate: React.FC = () => {
                   />
                 </div>
               </CardContent>
+              {/* Removido CardFooter daqui se houver, ou mantido se tiver outras ações */}
             </Card>
 
             {/* --- Seção: Experiência Profissional --- */}
+            {/* O conteúdo desta seção permanece o mesmo */}
             <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+              {/* ... CardHeader e CardContent inalterados ... */}
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -465,10 +458,13 @@ const ProfilePageCandidate: React.FC = () => {
                   </div>
                 ))}
               </CardContent>
+              {/* Removido CardFooter daqui se houver */}
             </Card>
 
             {/* --- Seção: Formação Acadêmica --- */}
+            {/* O conteúdo desta seção permanece o mesmo */}
             <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+              {/* ... CardHeader e CardContent inalterados ... */}
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -544,10 +540,13 @@ const ProfilePageCandidate: React.FC = () => {
                   </div>
                 ))}
               </CardContent>
+              {/* Removido CardFooter daqui se houver */}
             </Card>
 
             {/* --- Seção: Habilidades --- */}
+            {/* O conteúdo desta seção permanece o mesmo */}
             <Card className="bg-background shadow-sm dark:bg-zinc-900 dark:border dark:border-zinc-700">
+              {/* ... CardHeader e CardContent inalterados ... */}
               <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 pb-2">
                 <div>
                   <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -601,6 +600,7 @@ const ProfilePageCandidate: React.FC = () => {
                   </div>
                 </div>
               </CardContent>
+              {/* Removido CardFooter daqui se houver */}
             </Card>
 
             {/* --- Seção: Currículo/CV --- */}
@@ -614,6 +614,7 @@ const ProfilePageCandidate: React.FC = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                {/* Conteúdo inalterado */}
                 <div className="border rounded-md p-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50 dark:bg-zinc-900 dark:border-zinc-600">
                   <div className="flex items-center gap-3 w-full sm:w-auto">
                     <div className="h-10 w-10 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center justify-center flex-shrink-0">
@@ -648,17 +649,26 @@ const ProfilePageCandidate: React.FC = () => {
               </CardContent>
             </Card>
 
+            <div className="flex justify-end border-t dark:border-zinc-700 pt-6">
+              <Button
+                className="gap-1 text-white bg-purple-800 hover:bg-purple-900 transition-all duration-200"
+                onClick={handleSaveChanges} // Adiciona o handler de clique
+              >
+                <Save className="h-4 w-4" /> {/* Ícone Salvar opcional */}
+                <span>Salvar Alterações</span>
+              </Button>
+            </div>
+
             {/* ================================================================== */}
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE PERFIL                     */}
             {/* ================================================================== */}
           </main>
-          {/* Fim do <main> */}
+          {/* Rodapé */}
+          <Footer />
         </div>
-        {/* Fim da Área de Conteúdo Principal Flex */}
       </div>
-      {/* Fim do Container principal Flex */}
     </SidebarProvider>
   );
 };
 
-export default ProfilePageCandidate; // Exporta com o nome correto
+export default PerfilCandidatoPage; // Export nomeado (ajustado)

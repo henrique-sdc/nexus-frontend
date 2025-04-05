@@ -43,6 +43,8 @@ import {
   Users, // Equipe
 } from "lucide-react";
 
+import Footer from "src/components/Footer/Footer";
+
 // --- Importações para Navegação (Opcional) ---
 // import { useNavigate } from 'react-router-dom';
 
@@ -1157,6 +1159,8 @@ export default function ConfiguracoesEmpresa() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA CONFIGURAÇÕES (EMPRESA)     */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

@@ -31,6 +31,7 @@ import { cn } from "src/lib/utils";
 
 import { DashboardNavbar } from "src/components/Dashboards/DashboardNavbar";
 import { CandidatoSidebar } from "src/components/Dashboards/Candidatos/CandidatoSidebar";
+import Footer from "src/components/Footer/Footer";
 
 const CandidatoDashboard: React.FC = () => {
   // --- Estado ---
@@ -772,6 +773,8 @@ const CandidatoDashboard: React.FC = () => {
               </CardFooter>
             </Card>
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>{" "}
         {/* Fim da área de conteúdo principal */}
       </div>{" "}

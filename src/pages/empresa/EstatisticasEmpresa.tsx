@@ -36,6 +36,8 @@ import {
   ArrowDown, // Ícone para diminuição
 } from "lucide-react"; // Adicionadas setas
 
+import Footer from "src/components/Footer/Footer";
+
 // --- Importações para Navegação (Opcional) ---
 // import { useNavigate } from 'react-router-dom';
 
@@ -517,6 +519,8 @@ export default function AnalisesEmpresa() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE ANÁLISES                 */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

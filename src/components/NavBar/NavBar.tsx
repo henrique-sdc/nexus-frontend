@@ -99,7 +99,7 @@ const NavBar = () => {
           {/* Botões de "Entrar" e "Cadastre-se" DESKTOP - Estilos Originais */}
           <div className="hidden md:flex gap-2">
             <Button
-              className="hover:bg-gray-100 dark:hover:bg-zinc-800 bg-white dark:bg-black dark:border-black border transition-all duration-100"
+              className="hover:bg-gray-100 dark:hover:bg-zinc-800 bg-white dark:bg-black dark:border-zinc-700 border transition-all duration-100"
               variant="outline"
               asChild
             >
@@ -198,7 +198,7 @@ const NavBar = () => {
                 <div className="flex flex-col gap-3">
                   {/* Botão Entrar Padronizado com Hover Shadow */}
                   <Button
-                    className="w-full hover:bg-gray-100 dark:hover:bg-zinc-800 bg-background dark:bg-transparent dark:border-zinc-800 transition-all duration-300 ease-in-out dark:text-white dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
+                    className="w-full hover:bg-gray-100 dark:hover:bg-zinc-800 bg-background dark:bg-transparent dark:border-zinc-700 transition-all duration-300 ease-in-out dark:text-white dark:hover:shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
                     variant="outline"
                     asChild
                   >

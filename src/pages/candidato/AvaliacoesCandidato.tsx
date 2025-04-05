@@ -29,6 +29,7 @@ import {
   Play, // Ícone de play/continuar
   Users, // Ícone para fit cultural/usuários
 } from "lucide-react";
+import Footer from "src/components/Footer/Footer";
 
 // --- Importações para Navegação (Opcional) ---
 // import { useNavigate } from 'react-router-dom';
@@ -534,6 +535,8 @@ export default function AvaliacoesCandidato() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA DE AVALIAÇÕES                */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>

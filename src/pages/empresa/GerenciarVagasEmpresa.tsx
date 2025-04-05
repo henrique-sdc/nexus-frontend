@@ -34,6 +34,7 @@ import {
   Trash2,
   Users,
 } from "lucide-react";
+import Footer from "src/components/Footer/Footer";
 
 // --- Importações para Navegação (Opcional) ---
 // import { useNavigate } from 'react-router-dom';
@@ -545,6 +546,8 @@ export default function GerenciarVagas() {
             {/* FIM DO CONTEÚDO ESPECÍFICO DA PÁGINA GERENCIAR VAGAS             */}
             {/* ================================================================== */}
           </main>
+          {/* Rodapé */}
+          <Footer />
         </div>
       </div>
     </SidebarProvider>
