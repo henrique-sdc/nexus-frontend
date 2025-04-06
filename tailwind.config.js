@@ -4,6 +4,24 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        // Adicionando cor roxa principal para fácil reutilização
+        "nexus-purple": "#6b21a8",
+      },
+
+      ringOpacity: {
+        DEFAULT: "0.8", // Força a opacidade padrão
+      },
+
+      // --- Cor Padrão do Anel de Foco (Ring) ---
+      ringColor: {
+        DEFAULT: "#8026d9",
+      },
+
+      ringOffsetColor: {
+        DEFAULT: "#ffffff", // Branco para modo claro (padrão Tailwind)
+        dark: "#ffffff",
+      },
       // Adicionando keyframes e animations dentro do extend existente
       keyframes: {
         "accordion-down": {
