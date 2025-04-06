@@ -123,15 +123,17 @@ export default function AvaliacoesCandidato() {
         </Sheet>
 
         {/* --- Área de Conteúdo Principal (Estrutura padrão) --- */}
-        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Estrutura padrão) */}
-          <DashboardNavbar
-            onMobileMenuClick={openMobileSheet}
-            userName={userData.name}
-            userInitials={userData.initials}
-            userAvatarSrc={userData.avatarSrc}
-            notificationCount={userData.notificationCount}
-          />
+        <div className="flex-1 flex flex-col min-w-0 relative">
+          <div className="sticky top-0 z-50">
+            {/* Navbar Superior */}
+            <DashboardNavbar
+              onMobileMenuClick={openMobileSheet}
+              userName={userData.name}
+              userInitials={userData.initials}
+              userAvatarSrc={userData.avatarSrc}
+              notificationCount={userData.notificationCount}
+            />
+          </div>
 
           {/* Conteúdo Principal (Main) - Layout padrão */}
           <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-gray-950/60 overflow-x-hidden">
@@ -251,7 +253,7 @@ export default function AvaliacoesCandidato() {
                     {/* Botão com estilo dark */}
                     <Button
                       variant="outline"
-                      className="w-full dark:text-white dark:bg-black dark:border-gray-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                      className="w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                     >
                       Ver Detalhes
                     </Button>
@@ -324,7 +326,7 @@ export default function AvaliacoesCandidato() {
                   <CardFooter>
                     <Button
                       variant="outline"
-                      className="w-full dark:text-white dark:bg-black dark:border-gray-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
+                      className="w-full dark:text-white dark:border-zinc-600 hover:bg-zinc-100 hover:dark:bg-zinc-800"
                     >
                       Ver Detalhes
                     </Button>

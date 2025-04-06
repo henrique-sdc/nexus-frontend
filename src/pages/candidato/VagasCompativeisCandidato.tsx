@@ -130,15 +130,17 @@ export default function VagasCompativeis() {
           </SheetContent>
         </Sheet>
         {/* --- Área de Conteúdo Principal (Estrutura da página funcional) --- */}
-        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Dentro da área de conteúdo, como na página funcional) */}
-          <DashboardNavbar
-            onMobileMenuClick={openMobileSheet} // Handler para abrir o Sheet no mobile
-            userName={userData.name}
-            userInitials={userData.initials}
-            userAvatarSrc={userData.avatarSrc}
-            notificationCount={userData.notificationCount}
-          />
+        <div className="flex-1 flex flex-col min-w-0 relative">
+          <div className="sticky top-0 z-50">
+            {/* Navbar Superior */}
+            <DashboardNavbar
+              onMobileMenuClick={openMobileSheet}
+              userName={userData.name}
+              userInitials={userData.initials}
+              userAvatarSrc={userData.avatarSrc}
+              notificationCount={userData.notificationCount}
+            />
+          </div>
 
           {/* Conteúdo Principal (Main) - Layout geral da página funcional */}
           {/* Aplicando padding e background consistentes */}
@@ -258,7 +260,7 @@ export default function VagasCompativeis() {
 
               {/* Sistema de Abas para Vagas */}
               <Tabs defaultValue="recomendadas" className="w-full">
-                <TabsList className="bg-gray-100 dark:bg-zinc-800 gap-1">
+                <TabsList className="bg-gray-100 dark:bg-zinc-800 lg:w-9/12 w-full gap-1">
                   {" "}
                   {/* CORREÇÃO: Fundo dark */}
                   <TabsTrigger

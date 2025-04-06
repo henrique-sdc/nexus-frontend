@@ -188,15 +188,17 @@ const PerfilCandidatoPage: React.FC = () => {
           </SheetContent>
         </Sheet>
         {/* --- Área de Conteúdo Principal (Mantido) --- */}
-        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Mantido) */}
-          <DashboardNavbar
-            onMobileMenuClick={openMobileSheet}
-            userName={userData.name}
-            userInitials={userData.initials}
-            userAvatarSrc={userData.avatarSrc}
-            notificationCount={userData.notificationCount}
-          />
+        <div className="flex-1 flex flex-col min-w-0 relative">
+          <div className="sticky top-0 z-50">
+            {/* Navbar Superior */}
+            <DashboardNavbar
+              onMobileMenuClick={openMobileSheet}
+              userName={userData.name}
+              userInitials={userData.initials}
+              userAvatarSrc={userData.avatarSrc}
+              notificationCount={userData.notificationCount}
+            />
+          </div>
           {/* Conteúdo Principal (Main) */}
           <main className="flex-1 p-4 md:p-6 grid gap-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
             {/* Cabeçalho do Conteúdo do Perfil */}

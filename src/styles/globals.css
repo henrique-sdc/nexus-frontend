@@ -23,7 +23,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 270 70% 50%;
+    --ring: 271 40% 65%;
     --radius: 0.75rem;
   }
 
@@ -47,7 +47,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 270 70% 50%;
+    --ring: 271 40% 65%;
   }
 
   /* Aplicando os estilos globais utilizando as variáveis definidas */

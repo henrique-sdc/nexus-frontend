@@ -188,15 +188,17 @@ export default function Configuracoes() {
         </Sheet>
 
         {/* --- Área de Conteúdo Principal (Estrutura padrão) --- */}
-        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior (Estrutura padrão) */}
-          <DashboardNavbar
-            onMobileMenuClick={openMobileSheet}
-            userName={userData.name}
-            userInitials={userData.initials}
-            userAvatarSrc={userData.avatarSrc}
-            notificationCount={userData.notificationCount}
-          />
+        <div className="flex-1 flex flex-col min-w-0 relative">
+          <div className="sticky top-0 z-50">
+            {/* Navbar Superior */}
+            <DashboardNavbar
+              onMobileMenuClick={openMobileSheet}
+              userName={userData.name}
+              userInitials={userData.initials}
+              userAvatarSrc={userData.avatarSrc}
+              notificationCount={userData.notificationCount}
+            />
+          </div>
 
           {/* Conteúdo Principal (Main) - Layout padrão - COR FUNDO MAIN PADRONIZADA */}
           <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">

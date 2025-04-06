@@ -27,9 +27,38 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
     : "Pesquisar por vagas, empresas...";
 
   const [searchActive, setSearchActive] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const searchMobileContainerRef = useRef<HTMLDivElement>(null);
   const inputMobileRef = useRef<HTMLInputElement>(null);
 
+  // Controle de scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll <= 0) {
+        setIsVisible(true);
+        return;
+      }
+
+      if (Math.abs(currentScroll - lastScrollY) < 5) return;
+
+      if (currentScroll > lastScrollY) {
+        // Scroll para baixo
+        setIsVisible(false);
+      } else {
+        // Scroll para cima
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  // Restante dos efeitos originais...
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -59,7 +88,12 @@ export const DashboardNavbar: React.FC<DashboardNavbarProps> = ({
   }, [searchActive]);
 
   return (
-    <header className="top-0 z-40 flex h-16 items-center justify-between gap-4 border-b bg-background px-4 sm:px-6 dark:border-zinc-700 dark:bg-zinc-900 relative">
+    <header
+      className={cn(
+        "sticky top-0 z-40 flex h-16 items-center justify-between gap-4 border-b bg-background px-4 sm:px-6 dark:border-zinc-700 dark:bg-zinc-900 transition-transform duration-300",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}
+    >
       {/* --- Elementos da Esquerda --- */}
       <div
         className={cn(

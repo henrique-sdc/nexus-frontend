@@ -160,15 +160,17 @@ export default function AnalisesEmpresa() {
           </SheetContent>
         </Sheet>
         {/* --- Área de Conteúdo Principal --- */}
-        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior */}
-          <DashboardNavbar
-            onMobileMenuClick={openMobileSheet}
-            userName={empresaData.name}
-            userInitials={empresaData.initials}
-            userAvatarSrc={empresaData.logoSrc}
-            notificationCount={empresaData.notificationCount}
-          />
+        <div className="flex-1 flex flex-col min-w-0 relative">
+          <div className="sticky top-0 z-50">
+            {/* Navbar Superior */}
+            <DashboardNavbar
+              onMobileMenuClick={openMobileSheet}
+              userName={empresaData.name}
+              userInitials={empresaData.initials}
+              userAvatarSrc={empresaData.logoSrc}
+              notificationCount={empresaData.notificationCount}
+            />
+          </div>
 
           {/* Conteúdo Principal (Main) - COR FUNDO MAIN PADRONIZADA */}
           <main className="flex-1 p-4 md:p-6 bg-gray-50/50 dark:bg-zinc-900/60 overflow-x-hidden">
@@ -323,7 +325,7 @@ export default function AnalisesEmpresa() {
 
               {/* Abas para Gráficos Detalhados - COR TABS PADRONIZADA */}
               <Tabs defaultValue="candidaturas" className="w-full">
-                <TabsList className="bg-gray-100 dark:bg-zinc-800 rounded-md p-1 flex gap-1 w-9/12 max-w-full overflow-hidden">
+                <TabsList className="bg-gray-100 dark:bg-zinc-800 rounded-md p-1 flex gap-1 lg:w-9/12 w-full overflow-hidden">
                   <TabsTrigger
                     value="candidaturas"
                     className="w-1/3 sm:w-auto text-[0.7rem] sm:text-sm px-2 py-1 flex items-center justify-center data-[state=active]:bg-gray-300/70 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-white dark:text-gray-400 data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-gray-200 dark:data-[state=inactive]:hover:bg-zinc-700 transition-colors"

@@ -98,15 +98,17 @@ const CandidatoDashboard: React.FC = () => {
         </Sheet>
         {/* --- Área de Conteúdo Principal --- */}
         {/* Adicionado 'min-w-0' para permitir que o container flex encolha corretamente em telas menores */}
-        <div className="flex-1 flex flex-col overflow-y-auto min-w-0">
-          {/* Navbar Superior */}
-          <DashboardNavbar
-            onMobileMenuClick={openMobileSheet}
-            userName={userData.name}
-            userInitials={userData.initials}
-            userAvatarSrc={userData.avatarSrc}
-            notificationCount={userData.notificationCount}
-          />
+        <div className="flex-1 flex flex-col min-w-0 relative">
+          <div className="sticky top-0 z-50">
+            {/* Navbar Superior */}
+            <DashboardNavbar
+              onMobileMenuClick={openMobileSheet}
+              userName={userData.name}
+              userInitials={userData.initials}
+              userAvatarSrc={userData.avatarSrc}
+              notificationCount={userData.notificationCount}
+            />
+          </div>
 
           {/* Conteúdo Principal (Main) */}
           {/* Adicionado overflow-x-hidden para evitar scroll horizontal indesejado no <main> se algo vazar */}
